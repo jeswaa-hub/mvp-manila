@@ -21,6 +21,7 @@ const JSONLD = () => {
             description:
               "Securing people, facilities, and assets with reliability, integrity, and service excellence since 2013.",
             telephone: "+63283537353",
+            email: "mvpmanila2013@yahoo.com",
             address: {
               "@type": "PostalAddress",
               streetAddress: "1269 Estrada Street, Brgy. 749 Zone 81",

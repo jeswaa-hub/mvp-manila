@@ -1,60 +1,195 @@
 "use client";
 
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronUp } from "lucide-react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { ChevronUp, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import Link from "next/link";
 
 interface FooterProps {
   showScrollTop?: boolean;
 }
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
 
 export default function Footer({ showScrollTop = false }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const quickLinks = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about-us" },
+    { name: "Services", href: "/services" },
+    { name: "Clients", href: "/clients" },
+    { name: "Careers", href: "/careers" },
+  ];
+
   return (
-    <footer className="bg-navy text-white pt-16 pb-8 border-t-4 border-gold relative">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-        
-        <div>
-          <div className="font-montserrat font-bold text-2xl text-white tracking-tight mb-6">
-            MVP MANILA
+    <motion.footer
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={fadeInUp}
+      className="bg-[#0A192F] text-white pt-20 pb-8 relative"
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 mb-16">
+          {/* Column 1: Brand Authority */}
+          <div className="lg:col-span-1">
+            <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6">
+              <span className="font-montserrat font-bold text-xl text-white">LOGO</span>
+            </div>
+            <h3 className="font-montserrat font-bold text-2xl text-white tracking-tight mb-4">
+              MVP MANILA
+            </h3>
+            <p className="font-roboto text-sm text-slate-400 leading-relaxed mb-6">
+              Securing people, facilities, and assets with reliability and integrity since 2013.
+            </p>
+            <div className="flex gap-4">
+              <a
+                href="mailto:mvpmanila2013@yahoo.com"
+                className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors group"
+                aria-label="Email"
+              >
+                <Mail size={18} className="text-slate-400 group-hover:text-gold transition-colors" />
+              </a>
+              <a
+                href="tel:83537353"
+                className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors group"
+                aria-label="Call"
+              >
+                <Phone size={18} className="text-slate-400 group-hover:text-gold transition-colors" />
+              </a>
+            </div>
           </div>
-          <p className="font-roboto text-gray-300 leading-relaxed mb-6">
-            Securing people, facilities, and assets with reliability, integrity, and service excellence.
-          </p>
-          <div className="space-y-2 font-roboto text-gray-300">
-            <p>Email: <a href="mailto:info@mvpmanila.com" className="text-gold hover:underline">info@mvpmanila.com</a></p>
-            <p>Phone: +63 (2) 1234 5678</p>
+
+          {/* Column 2: Quick Links */}
+          <div>
+            <h4 className="font-montserrat font-bold text-sm text-white tracking-wider mb-6 uppercase">
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="font-roboto text-sm text-slate-400 hover:text-gold transition-colors relative inline-block group"
+                  >
+                    {link.name}
+                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Office Locations */}
+          <div>
+            <h4 className="font-montserrat font-bold text-sm text-white tracking-wider mb-6 uppercase">
+              Office Locations
+            </h4>
+            <div className="space-y-6">
+              <div>
+                <div className="flex items-start gap-3">
+                  <MapPin size={16} className="text-gold mt-0.5 shrink-0" />
+                  <div>
+                    <p className="font-montserrat font-semibold text-sm text-white mb-1">
+                      Main Office (Manila)
+                    </p>
+                    <p className="font-roboto text-sm text-slate-400 leading-relaxed">
+                      1269 Estrada Street<br />
+                      Brgy. 749, Sta. Ana<br />
+                      Manila 1009, Philippines
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="flex items-start gap-3">
+                  <MapPin size={16} className="text-gold mt-0.5 shrink-0" />
+                  <div>
+                    <p className="font-montserrat font-semibold text-sm text-white mb-1">
+                      Satellite Office (Legazpi)
+                    </p>
+                    <p className="font-roboto text-sm text-slate-400 leading-relaxed">
+                      272 Purok 2, Brgy. 40<br />
+                      Washington Drive, Cruzada<br />
+                      Legazpi City 4500, Philippines
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 4: Professional Contact */}
+          <div>
+            <h4 className="font-montserrat font-bold text-sm text-white tracking-wider mb-6 uppercase">
+              Contact Us
+            </h4>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <a
+                  href="mailto:mvpmanila2013@yahoo.com"
+                  className="font-roboto text-sm text-slate-400 hover:text-gold transition-colors block"
+                >
+                  info@mvpmanila.com
+                </a>
+                <a
+                  href="mailto:mvpmanila2013@gmail.com"
+                  className="font-roboto text-sm text-slate-400 hover:text-gold transition-colors block"
+                >
+                  careers@mvpmanila.com
+                </a>
+              </div>
+              <div className="pt-2 space-y-3">
+                <div className="flex items-center gap-3">
+                  <Phone size={14} className="text-gold shrink-0" />
+                  <div>
+                    <p className="font-roboto text-xs text-slate-500 mb-0.5">Landline</p>
+                    <a href="tel:83537353" className="font-roboto text-sm text-white hover:text-gold transition-colors">
+                      8353-7353
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone size={14} className="text-gold shrink-0" />
+                  <div>
+                    <p className="font-roboto text-xs text-slate-500 mb-0.5">Mobile</p>
+                    <a href="tel:09258771953" className="font-roboto text-sm text-white hover:text-gold transition-colors">
+                      0925-8771953
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div>
-          <h4 className="font-montserrat font-bold text-lg text-gold mb-6">Main Office (Manila)</h4>
-          <address className="not-italic font-roboto text-gray-300 leading-relaxed">
-            1269 Estrada Street<br />
-            Brgy. 749 Zone 81, Sta. Ana<br />
-            Manila 1009, Philippines
-          </address>
-        </div>
-
-        <div>
-          <h4 className="font-montserrat font-bold text-lg text-gold mb-6">Satellite Office (Legazpi)</h4>
-          <address className="not-italic font-roboto text-gray-300 leading-relaxed">
-            272 Purok 2, Brgy. 40<br />
-            Washington Drive, Cruzada<br />
-            Legazpi City 4500, Philippines
-          </address>
-        </div>
-
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 pt-8 border-t border-gray-700/50 flex flex-col md:flex-row justify-between items-center text-sm font-roboto text-gray-400">
-        <p>&copy; {new Date().getFullYear()} MVP Manila Security Agency Inc. All rights reserved.</p>
-        <div className="flex gap-6 mt-4 md:mt-0">
-          <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-gold transition-colors">Terms of Service</a>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="font-roboto text-xs text-slate-500">
+              &copy; {new Date().getFullYear()} MVP Manila Security Agency Inc. All Rights Reserved.
+            </p>
+            <div className="flex gap-6">
+              <a
+                href="#"
+                className="font-roboto text-xs text-slate-500 hover:text-gold transition-colors"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="#"
+                className="font-roboto text-xs text-slate-500 hover:text-gold transition-colors"
+              >
+                Terms of Service
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -65,14 +200,16 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 p-3 bg-gold text-navy rounded-full shadow-lg hover:bg-yellow-400 transition-colors z-50 md:bottom-10 md:right-10"
+            className="fixed bottom-8 right-8 w-12 h-12 bg-gold text-navy rounded-full shadow-lg hover:shadow-xl hover:bg-yellow-400 transition-all z-50 flex items-center justify-center"
             aria-label="Scroll to top"
           >
-            <ChevronUp size={24} />
+            <ArrowUp size={20} strokeWidth={2.5} />
           </motion.button>
         )}
       </AnimatePresence>
-    </footer>
+    </motion.footer>
   );
 }
