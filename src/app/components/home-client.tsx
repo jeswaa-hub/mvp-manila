@@ -251,9 +251,7 @@ export default function HomeClient() {
                 <motion.div 
                   key={`award-${item}`}
                   variants={fadeInUp}
-                  className={`bg-slate rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow ${
-                    item === 1 || item === 4 ? "md:row-span-2 md:col-span-2 aspect-video md:aspect-auto" : "aspect-square"
-                  }`}
+                  className="bg-slate rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow aspect-square"
                 >
                   <div className="w-full h-full min-h-[200px] flex items-center justify-center text-gray-400 font-roboto text-sm bg-gray-100">
                     Certificate Image {item}

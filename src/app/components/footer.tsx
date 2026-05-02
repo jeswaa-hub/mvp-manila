@@ -19,14 +19,6 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about-us" },
-    { name: "Services", href: "/services" },
-    { name: "Clients", href: "/clients" },
-    { name: "Careers", href: "/careers" },
-  ];
-
   return (
     <motion.footer
       initial="hidden"
@@ -36,9 +28,9 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
       className="bg-[#0A192F] text-white pt-20 pb-8 relative"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 mb-16">
           {/* Column 1: Brand Authority */}
-          <div className="lg:col-span-1">
+          <div className="md:col-span-1">
             <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6">
               <span className="font-montserrat font-bold text-xl text-white">LOGO</span>
             </div>
@@ -66,27 +58,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div>
-            <h4 className="font-montserrat font-bold text-sm text-white tracking-wider mb-6 uppercase">
-              Quick Links
-            </h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="font-roboto text-sm text-slate-400 hover:text-gold transition-colors relative inline-block group"
-                  >
-                    {link.name}
-                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Office Locations */}
+          {/* Column 2: Office Locations */}
           <div>
             <h4 className="font-montserrat font-bold text-sm text-white tracking-wider mb-6 uppercase">
               Office Locations
@@ -125,7 +97,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
             </div>
           </div>
 
-          {/* Column 4: Professional Contact */}
+          {/* Column 3: Professional Contact */}
           <div>
             <h4 className="font-montserrat font-bold text-sm text-white tracking-wider mb-6 uppercase">
               Contact Us

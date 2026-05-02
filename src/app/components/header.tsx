@@ -89,8 +89,11 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
               );
             })}
             <li className="pt-2 md:pt-0 md:hidden">
-              <button className="w-full bg-gold text-navy font-bold py-3 rounded-sm font-montserrat">
-                Get a Free Consultation
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="w-full bg-gold text-navy font-bold py-3 rounded-sm font-montserrat"
+              >
+                Contact Us
               </button>
             </li>
           </ul>
