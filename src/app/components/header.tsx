@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import ContactModal from "./contact-modal";
 
 interface HeaderProps {
@@ -32,9 +33,13 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center border border-gray-300">
-            <span className="text-[8px] text-gray-500 text-center">Logo</span>
-          </div>
+          <Image
+            src="/images/logo1.jpg"
+            alt="MVPManila Logo"
+            width={48}
+            height={48}
+            className="rounded-lg"
+          />
           <div className="font-montserrat">
             <div className="font-bold text-2xl text-navy tracking-tight">MVPManila</div>
             <div className="text-xs text-gray-600 tracking-wide">Security Agency Inc.</div>

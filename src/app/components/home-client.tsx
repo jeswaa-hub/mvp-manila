@@ -150,12 +150,20 @@ export default function HomeClient() {
               className="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-24"
             >
               <motion.div variants={fadeInUp} className="flex gap-8 items-center">
-                <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center border-4 border-white shadow-md">
-                  <span className="text-xs text-gray-500 text-center px-2">Logo 1 Placeholder</span>
-                </div>
-                <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center border-4 border-white shadow-md">
-                  <span className="text-xs text-gray-500 text-center px-2">Logo 2 Placeholder</span>
-                </div>
+                <Image
+                  src="/images/logo1.jpg"
+                  alt="DOLE Certificate"
+                  width={96}
+                  height={96}
+                  className="w-30 h-25 shadow-md"
+                />
+                <Image
+                  src="/images/logo2.jpg"
+                  alt="MVPManila Logo"
+                  width={100}
+                  height={100}
+                  className="w-30 h-25 shadow-md"
+                />
               </motion.div>
               
               <motion.div variants={fadeInUp} className="text-center md:text-left max-w-2xl">

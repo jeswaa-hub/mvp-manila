@@ -4,6 +4,7 @@ import React from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { ChevronUp, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface FooterProps {
   showScrollTop?: boolean;
@@ -31,9 +32,13 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 mb-16">
           {/* Column 1: Brand Authority */}
           <div className="md:col-span-1">
-            <div className="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6">
-              <span className="font-montserrat font-bold text-xl text-white">LOGO</span>
-            </div>
+            <Image
+              src="/images/logo1.jpg"
+              alt="MVPManila Logo"
+              width={100}
+              height={100}
+              className="rounded-md mb-6"
+            />
             <h3 className="font-montserrat font-bold text-2xl text-white tracking-tight mb-4">
               MVPManila
             </h3>
