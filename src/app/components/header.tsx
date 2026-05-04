@@ -36,7 +36,7 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
             <span className="text-[8px] text-gray-500 text-center">Logo</span>
           </div>
           <div className="font-montserrat">
-            <div className="font-bold text-2xl text-navy tracking-tight">MVP MANILA</div>
+            <div className="font-bold text-2xl text-navy tracking-tight">MVPManila</div>
             <div className="text-xs text-gray-600 tracking-wide">Security Agency Inc.</div>
           </div>
         </div>

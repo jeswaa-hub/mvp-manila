@@ -11,7 +11,7 @@ const JSONLD = () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "MVP Manila Security Agency Inc.",
+            name: "MVPManila Security Agency Inc.",
             url: "https://mvpmanila.com/",
             logo: "https://mvpmanila.com/wp-content/uploads/2023/08/MVP-MANILA-LOGO-HORIZPONTAL.png",
             image: [

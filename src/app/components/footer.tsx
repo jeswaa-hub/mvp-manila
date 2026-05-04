@@ -35,7 +35,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
               <span className="font-montserrat font-bold text-xl text-white">LOGO</span>
             </div>
             <h3 className="font-montserrat font-bold text-2xl text-white tracking-tight mb-4">
-              MVP MANILA
+              MVPManila
             </h3>
             <p className="font-roboto text-sm text-slate-400 leading-relaxed mb-6">
               Securing people, facilities, and assets with reliability and integrity since 2013.
@@ -145,7 +145,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-roboto text-xs text-slate-500">
-              &copy; {new Date().getFullYear()} MVP Manila Security Agency Inc. All Rights Reserved.
+              &copy; {new Date().getFullYear()} MVPManila Security Agency Inc. All Rights Reserved.
             </p>
             <div className="flex gap-6">
               <a

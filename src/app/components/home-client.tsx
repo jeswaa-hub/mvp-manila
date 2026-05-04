@@ -62,7 +62,7 @@ export default function HomeClient() {
         <section 
           id="home" 
           className="relative h-[90vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden bg-navy"
-          aria-label="Welcome to MVP Manila Security Agency"
+          aria-label="Welcome to MVPManila Security Agency"
         >
           <motion.div 
             className="absolute inset-0 z-0 w-full h-[120%]"
@@ -131,7 +131,7 @@ export default function HomeClient() {
             >
               <button 
                 className="group relative flex items-center justify-center bg-gold text-navy font-bold py-4 px-10 rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-navy"
-                aria-label="Learn more about MVP Manila Security Agency services"
+                aria-label="Learn more about MVPManila Security Agency services"
               >
                 <span className="relative z-10 font-montserrat text-base md:text-lg">Learn More About Us</span>
                 <div className="absolute inset-0 h-full w-0 bg-yellow-400 transition-all duration-300 ease-out group-hover:w-full z-0"></div>
@@ -170,7 +170,7 @@ export default function HomeClient() {
 
         <section id="services" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <SectionHeading>Why Choose MVP Manila</SectionHeading>
+            <SectionHeading>Why Choose MVPManila</SectionHeading>
             
             <motion.div 
               variants={staggerContainer}

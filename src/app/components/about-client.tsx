@@ -103,7 +103,7 @@ export default function AboutClient() {
       <main className="grow pt-20">
       <section 
         className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden bg-navy"
-        aria-label="About MVP Manila Security Agency"
+        aria-label="About MVPManila Security Agency"
       >
         <motion.div 
           className="absolute inset-0 z-0 w-full h-[120%]"
@@ -263,12 +263,26 @@ export default function AboutClient() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-4">Expanded Lists of MVPMSAI Services Offerings</h2>
-            <div className="w-24 h-1 bg-gold mx-auto rounded-full" />
-          </div>
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="text-center mb-20"
+          >
+            <motion.h2 
+              variants={fadeInUp}
+              className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-6"
+            >
+              Industries We Protect
+            </motion.h2>
+            <motion.div 
+              variants={fadeInUp}
+              className="w-24 h-1 bg-gold mx-auto rounded-full" 
+            />
+          </motion.div>
           
           <motion.div 
             variants={staggerContainer}
@@ -281,14 +295,27 @@ export default function AboutClient() {
               <motion.div 
                 key={idx}
                 variants={fadeInUp}
-                className="group p-8 rounded-xl border border-gray-100 bg-slate hover:bg-navy transition-colors duration-300 flex flex-col items-center text-center cursor-default shadow-sm hover:shadow-md"
+                className="group bg-white border border-[#E2E8F0] rounded-[16px] overflow-hidden hover:shadow-[0_12px_32px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
               >
-                <div className="text-navy group-hover:text-gold transition-colors duration-300 mb-5">
-                  {industry.icon}
+                {/* Image Placeholder - 4:3 Aspect Ratio */}
+                <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#F8FAFC] to-[#E2E8F0] aspect-video flex items-center justify-center border-b border-[#E2E8F0]">
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 opacity-40 group-hover:opacity-0 transition-opacity duration-500" />
+                  <div className="relative z-10 text-center">
+                    <div className="text-sm font-roboto text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                      Industry Image
+                    </div>
+                  </div>
                 </div>
-                <h4 className="font-montserrat font-bold text-navy group-hover:text-white transition-colors duration-300 leading-tight">
-                  {industry.title}
-                </h4>
+
+                {/* Content Area */}
+                <div className="p-6 flex flex-col flex-1 justify-between">
+                  <div className="font-mono text-xs font-semibold text-gray-400 group-hover:text-gold transition-colors duration-300 tracking-widest uppercase">
+                    {String(idx + 1).padStart(2, '0')}
+                  </div>
+                  <h4 className="font-montserrat font-bold text-navy group-hover:text-gold transition-colors duration-300 text-base md:text-lg leading-snug mt-4">
+                    {industry.title}
+                  </h4>
+                </div>
               </motion.div>
             ))}
           </motion.div>

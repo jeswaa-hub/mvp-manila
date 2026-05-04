@@ -49,7 +49,7 @@ export default function ServicesClient() {
       <main className="grow pt-20">
         <section 
           className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden bg-navy"
-          aria-label="MVP Manila Security Agency Services"
+          aria-label="MVPManila Security Agency Services"
         >
           <motion.div 
             className="absolute inset-0 z-0 w-full h-[120%]"

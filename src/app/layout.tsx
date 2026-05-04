@@ -17,22 +17,22 @@ const roboto = Roboto({
 // Base metadata - will be overridden by page-specific metadata
 export const metadata: Metadata = {
   title: {
-    template: "%s | MVP Manila Security Agency Inc.",
-    default: "MVP Manila Security Agency Inc.",
+    template: "%s | MVPManila Security Agency Inc.",
+    default: "MVPManila Security Agency Inc.",
   },
   description: "Securing people, facilities, and assets with reliability, integrity, and service excellence.",
   // Open Graph / Facebook
   openGraph: {
-    title: "MVP Manila Security Agency Inc.",
+    title: "MVPManila Security Agency Inc.",
     description: "Professional security services provider in the Philippines since 2013",
     url: "https://mvpmanila.com/",
-    siteName: "MVP Manila Security Agency Inc.",
+    siteName: "MVPManila Security Agency Inc.",
     images: [
       {
         url: "https://mvpmanila.com/wp-content/uploads/2023/08/MVP-MANILA-LOGO-HORIZPONTAL.png",
         width: 1200,
         height: 630,
-        alt: "MVP Manila Security Agency Logo",
+        alt: "MVPManila Security Agency Logo",
       },
     ],
     locale: "en_PH",
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
   // Twitter
   twitter: {
     card: "summary_large_image",
-    title: "MVP Manila Security Agency Inc.",
+    title: "MVPManila Security Agency Inc.",
     description: "Professional security services provider in the Philippines since 2013",
     images: ["https://mvpmanila.com/wp-content/uploads/2023/08/MVP-MANILA-LOGO-HORIZPONTAL.png"],
   },
   // Additional metadata
-  authors: [{ name: "MVP Manila Security Agency Inc." }],
-  creator: "MVP Manila Security Agency Inc.",
-  publisher: "MVP Manila Security Agency Inc.",
+  authors: [{ name: "MVPManila Security Agency Inc." }],
+  creator: "MVPManila Security Agency Inc.",
+  publisher: "MVPManila Security Agency Inc.",
   formatDetection: {
     email: false,
     address: false,

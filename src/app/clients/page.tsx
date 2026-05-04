@@ -106,7 +106,7 @@ export default function Clients() {
         {/* 1. Hero Section (Clients Overview) */}
         <section 
           className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden bg-navy"
-          aria-label="MVP Manila Clients and Partners"
+          aria-label="MVPManila Clients and Partners"
         >
           <motion.div 
             className="absolute inset-0 z-0 w-full h-[120%]"
