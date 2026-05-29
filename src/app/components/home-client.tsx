@@ -10,6 +10,7 @@ import {
   HeartHandshake
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Footer from "./footer";
 import Header from "./header";
 
@@ -256,13 +257,14 @@ export default function HomeClient() {
                 style={{ transform: "translateZ(40px)" }}
                 className="mt-2 w-full sm:mt-4"
               >
-                <button 
+                <Link
+                  href="/about-us"
                   className="group relative inline-flex min-h-14 w-full items-center justify-center overflow-hidden rounded-full bg-gold px-6 py-4 text-navy shadow-[0_0_40px_rgba(255,215,0,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400 hover:shadow-[0_0_60px_rgba(255,215,0,0.5)] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-[#050B14] sm:min-h-0 sm:w-auto sm:px-10 md:px-12"
                   aria-label="Learn more about MVPManila Security Agency services"
                 >
                   <span className="relative z-10 text-center font-montserrat text-sm font-bold uppercase tracking-[0.12em] sm:text-base md:text-lg">Learn More About Us</span>
                   <div className="absolute inset-0 h-full w-0 bg-white/30 transition-all duration-500 ease-out group-hover:w-full z-0 transform skew-x-12 -ml-4"></div>
-                </button>
+                </Link>
               </motion.div>
             </motion.div>
           </motion.div>
