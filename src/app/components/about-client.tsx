@@ -68,14 +68,14 @@ export default function AboutClient() {
   ];
 
   const industries = [
-    { icon: <Building2 className="w-8 h-8" />, title: "Commercial & High-Rise Buildings" },
-    { icon: <GraduationCap className="w-8 h-8" />, title: "Educational Institutions (Schools & Campuses)" },
-    { icon: <Briefcase className="w-8 h-8" />, title: "Multinational Corporations & BPOs" },
-    { icon: <HeartPulse className="w-8 h-8" />, title: "Healthcare Facilities & Hospitals" },
-    { icon: <UtensilsCrossed className="w-8 h-8" />, title: "Hospitality (Hotels & Restaurants)" },
-    { icon: <Store className="w-8 h-8" />, title: "Retail Centers & Malls" },
-    { icon: <Factory className="w-8 h-8" />, title: "Industrial, Manufacturing & Logistics" },
-    { icon: <Home className="w-8 h-8" />, title: "Residential Subdivisions & Condominiums" }
+    { icon: <Building2 className="w-8 h-8" />, title: "Commercial & High-Rise Buildings", image: "/images/industries/img1.jpeg" },
+    { icon: <GraduationCap className="w-8 h-8" />, title: "Educational Institutions (Schools & Campuses)", image: "/images/industries/img2.jpeg" },
+    { icon: <Briefcase className="w-8 h-8" />, title: "Multinational Corporations & BPOs", image: "/images/industries/img3.jpeg" },
+    { icon: <HeartPulse className="w-8 h-8" />, title: "Healthcare Facilities & Hospitals", image: "/images/industries/img4.jpeg" },
+    { icon: <UtensilsCrossed className="w-8 h-8" />, title: "Hospitality (Hotels & Restaurants)", image: "/images/industries/img5.jpeg" },
+    { icon: <Store className="w-8 h-8" />, title: "Retail Centers & Malls", image: "/images/industries/img6.jpeg" },
+    { icon: <Factory className="w-8 h-8" />, title: "Industrial, Manufacturing & Logistics", image: "/images/industries/img7.jpeg" },
+    { icon: <Home className="w-8 h-8" />, title: "Residential Subdivisions & Condominiums", image: "/images/industries/img8.jpeg" }
   ];
 
   const competencies = [
@@ -297,14 +297,14 @@ export default function AboutClient() {
                 variants={fadeInUp}
                 className="group bg-white border border-[#E2E8F0] rounded-[16px] overflow-hidden hover:shadow-[0_12px_32px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
               >
-                {/* Image Placeholder - 4:3 Aspect Ratio */}
-                <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#F8FAFC] to-[#E2E8F0] aspect-video flex items-center justify-center border-b border-[#E2E8F0]">
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 opacity-40 group-hover:opacity-0 transition-opacity duration-500" />
-                  <div className="relative z-10 text-center">
-                    <div className="text-sm font-roboto text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                      Industry Image
-                    </div>
-                  </div>
+                <div className="relative w-full overflow-hidden aspect-video border-b border-[#E2E8F0]">
+                  <Image
+                    src={industry.image}
+                    alt={industry.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
 
                 {/* Content Area */}
@@ -333,7 +333,7 @@ export default function AboutClient() {
               className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                src="/images/aboutUs.jpeg"
                 alt="Security personnel in a professional briefing"
                 fill
                 className="object-cover"

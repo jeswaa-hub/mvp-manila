@@ -17,18 +17,26 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
   const pathname = usePathname();
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   
+  const isHome = pathname === "/";
+  const isTransparent = isHome && !isScrolled;
+  
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
     { name: "Services", href: "/services" },
     { name: "Clients", href: "/clients" },
+    { name: "Job Opportunities", href: "/job-opportunities" },
   ];
 
   return (
     <>
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md py-3" : "bg-white/90 backdrop-blur-md py-5"
+        isScrolled 
+          ? "bg-white shadow-md py-3" 
+          : isTransparent 
+            ? "bg-transparent py-5" 
+            : "bg-white/90 backdrop-blur-md py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -41,14 +49,14 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
             className="rounded-lg"
           />
           <div className="font-montserrat">
-            <div className="font-bold text-2xl text-navy tracking-tight">MVPManila</div>
-            <div className="text-xs text-gray-600 tracking-wide">Security Agency Inc.</div>
+            <div className={`font-bold text-2xl tracking-tight transition-colors ${isTransparent ? "text-white" : "text-navy"}`}>MVPManila</div>
+            <div className={`text-xs tracking-wide transition-colors ${isTransparent ? "text-gray-300" : "text-gray-600"}`}>Security Agency Inc.</div>
           </div>
         </div>
         
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden text-navy p-2 relative z-50"
+          className={`md:hidden p-2 relative z-50 transition-colors ${isTransparent && !isMobileMenuOpen ? "text-white" : "text-navy"}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -72,8 +80,10 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
                   <Link 
                     href={link.href}
                     className={`block font-roboto text-base md:text-sm font-medium transition-colors py-1 ${
-                      isActive ? "text-navy font-bold" : "text-gray-600 hover:text-navy"
-                    }`}
+                      isActive 
+                        ? (isTransparent ? "text-gold font-bold" : "text-navy font-bold") 
+                        : (isTransparent ? "text-gray-200 hover:text-white" : "text-gray-600 hover:text-navy")
+                    } ${isMobileMenuOpen ? "!text-gray-600 hover:!text-navy" : ""}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -102,15 +112,17 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
               </button>
             </li>
           </ul>
-          <button 
-              onClick={() => setIsContactModalOpen(true)}
-              className="hidden md:block bg-gold hover:bg-yellow-400 text-navy font-bold py-2.5 px-6 rounded-sm transition-all transform hover:scale-105 font-montserrat text-sm"
-            >
-              Contact Us
-            </button>
-          </nav>
-        </div>
-      </header>
+        </nav>
+
+        {/* Desktop Contact Button */}
+        <button 
+          onClick={() => setIsContactModalOpen(true)}
+          className={`hidden md:block bg-gold text-navy font-bold py-2.5 px-6 rounded-sm font-montserrat transition-all duration-300 hover:bg-yellow-400 hover:shadow-md ${isTransparent ? "shadow-[0_0_15px_rgba(255,215,0,0.3)]" : ""}`}
+        >
+          Contact Us
+        </button>
+      </div>
+    </header>
 
       <ContactModal 
         isOpen={isContactModalOpen} 

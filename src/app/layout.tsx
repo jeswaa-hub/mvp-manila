@@ -16,6 +16,11 @@ const roboto = Roboto({
 
 // Base metadata - will be overridden by page-specific metadata
 export const metadata: Metadata = {
+  icons: {
+    icon: "/images/logo1.jpg",
+    shortcut: "/images/logo1.jpg",
+    apple: "/images/logo1.jpg",
+  },
   title: {
     template: "%s | MVPManila Security Agency Inc.",
     default: "MVPManila Security Agency Inc.",

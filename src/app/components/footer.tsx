@@ -29,9 +29,9 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
       className="bg-[#0A192F] text-white pt-20 pb-8 relative"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 mb-16">
+        <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-3 md:text-left lg:gap-16 mb-16">
           {/* Column 1: Brand Authority */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start">
             <Image
               src="/images/logo1.jpg"
               alt="MVPManila Logo"
@@ -45,7 +45,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
             <p className="font-roboto text-sm text-slate-400 leading-relaxed mb-6">
               Securing people, facilities, and assets with reliability and integrity since 2013.
             </p>
-            <div className="flex gap-4">
+            <div className="flex justify-center gap-4 md:justify-start">
               <a
                 href="mailto:mvpmanila2013@yahoo.com"
                 className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors group"
@@ -70,7 +70,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
             </h4>
             <div className="space-y-6">
               <div>
-                <div className="flex items-start gap-3">
+                <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">
                   <MapPin size={16} className="text-gold mt-0.5 shrink-0" />
                   <div>
                     <p className="font-montserrat font-semibold text-sm text-white mb-1">
@@ -85,7 +85,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
                 </div>
               </div>
               <div>
-                <div className="flex items-start gap-3">
+                <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">
                   <MapPin size={16} className="text-gold mt-0.5 shrink-0" />
                   <div>
                     <p className="font-montserrat font-semibold text-sm text-white mb-1">
@@ -123,7 +123,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
                 </a>
               </div>
               <div className="pt-2 space-y-3">
-                <div className="flex items-center gap-3">
+                <div className="flex flex-col items-center gap-2 md:flex-row md:items-center md:gap-3">
                   <Phone size={14} className="text-gold shrink-0" />
                   <div>
                     <p className="font-roboto text-xs text-slate-500 mb-0.5">Landline</p>
@@ -132,7 +132,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
                     </a>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-col items-center gap-2 md:flex-row md:items-center md:gap-3">
                   <Phone size={14} className="text-gold shrink-0" />
                   <div>
                     <p className="font-roboto text-xs text-slate-500 mb-0.5">Mobile</p>

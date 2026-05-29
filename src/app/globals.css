@@ -32,4 +32,25 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-roboto);
+  overflow-x: hidden;
+}
+
+.hero-fullscreen {
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+@supports (height: 100svh) {
+  .hero-fullscreen {
+    height: 100svh;
+    min-height: 100svh;
+  }
+}
+
+@supports (height: 100dvh) {
+  .hero-fullscreen {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
 }

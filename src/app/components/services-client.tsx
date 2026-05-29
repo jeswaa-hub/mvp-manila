@@ -59,7 +59,7 @@ export default function ServicesClient() {
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1621252179027-9d226a27e74d?q=80&w=2670&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=2670&auto=format&fit=crop"
               alt="Diverse team of security personnel in an active professional stance"
               fill
               priority
@@ -110,9 +110,16 @@ export default function ServicesClient() {
             >
               <motion.div 
                 variants={fadeInUp}
-                className="w-24 h-24 mx-auto mb-10 bg-gray-100 rounded-full flex items-center justify-center border-4 border-gray-50 shadow-sm"
+                className="w-24 h-24 mx-auto mb-10 bg-gray-100  flex items-center justify-center border-4 border-gray-50 shadow-sm"
               >
-                <span className="text-xs text-gray-400">Logo</span>
+                <Image
+                  src="/images/logo1.jpg"
+                  alt="MVPManila Security Agency logo"
+                  width={96}
+                  height={96}
+                  className="w-full h-full object-contain"
+                  sizes="96px"
+                />
               </motion.div>
               
               <motion.p 
@@ -137,7 +144,7 @@ export default function ServicesClient() {
               >
                 <motion.div variants={fadeInUp} className="order-2 lg:order-1 relative h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
+                    src="/images/industries/img9.png"
                     alt="Corporate building protection"
                     fill
                     className="object-cover"
@@ -202,7 +209,7 @@ export default function ServicesClient() {
 
                 <motion.div variants={fadeInUp} className="relative h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop"
+                    src="/images/industries/img10.jpeg"
                     alt="Event security management team"
                     fill
                     className="object-cover"
@@ -229,7 +236,7 @@ export default function ServicesClient() {
               >
                 <motion.div variants={fadeInUp} className="order-2 lg:order-1 relative h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=2056&auto=format&fit=crop"
+                    src="/images/industries/img11.jpeg" 
                     alt="CCTV and electronic surveillance systems"
                     fill
                     className="object-cover"
@@ -285,7 +292,7 @@ export default function ServicesClient() {
 
                 <motion.div variants={fadeInUp} className="relative h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                    src="/images/industries/img12.jpeg"
                     alt="Security risk analysis data and planning"
                     fill
                     className="object-cover"

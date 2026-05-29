@@ -25,6 +25,14 @@ const itemScale: Variants = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
+const getLogoLabel = (name: string) =>
+  name
+    .split(/[\s&()-]+/)
+    .filter(Boolean)
+    .slice(0, 3)
+    .map((word) => word[0]?.toUpperCase())
+    .join("");
+
 // Reusable Components
 const SectionHeading = ({ title, subtitle }: { title: string, subtitle?: string }) => (
   <div className="text-center mb-16">
@@ -43,17 +51,29 @@ const SectionHeading = ({ title, subtitle }: { title: string, subtitle?: string 
   </div>
 );
 
-const LogoPlaceholder = ({ name }: { name: string }) => (
+const LogoPlaceholder = ({ name, logoSrc }: { name: string, logoSrc?: string }) => (
   <motion.div 
     variants={itemScale}
-    className="group flex flex-col items-center justify-center p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 grayscale hover:grayscale-0 hover:-translate-y-1 cursor-default h-full"
+    className="group flex h-full flex-col items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-md cursor-default"
   >
-    <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold/10 transition-colors duration-500">
-      <span className="text-[10px] text-gray-400 text-center font-roboto">Logo</span>
+    <div className="mb-4 flex h-28 w-28 items-center justify-center rounded-full bg-white p-3 shadow-inner border border-gray-200 transition-transform duration-300 group-hover:-translate-y-1 md:h-36 md:w-36">
+      {logoSrc ? (
+        <Image
+          src={logoSrc}
+          alt={`${name} logo`}
+          width={144}
+          height={144}
+          className="h-full w-full object-contain rounded-full"
+          sizes="(max-width: 768px) 112px, 144px"
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-50 text-navy">
+          <span className="font-montserrat text-xl font-bold tracking-[0.08em] md:text-2xl">
+            {getLogoLabel(name)}
+          </span>
+        </div>
+      )}
     </div>
-    <span className="font-montserrat text-sm font-semibold text-navy text-center leading-tight">
-      {name}
-    </span>
   </motion.div>
 );
 
@@ -76,23 +96,59 @@ export default function Clients() {
   }, []);
 
   const accreditations = [
-    "FOPM", "APMC", "PHINMA Properties", "Anchor Land Holdings Inc.", 
-    "LKY Group", "Ever Scapes", "AFPSLAI", "Airspeed", 
-    "University of Santo Tomas-Legazpi", "Colegio de San Juan de Letran", "St. Mary's Academy"
+    { name: "FOPM", logoSrc: "/images/logo_clients/FOPM.png" },
+    { name: "APMC", logoSrc: "/images/logo_clients/APMC.jpg" },
+    { name: "PHINMA Properties", logoSrc: "/images/logo_clients/phinmaProperties.png" },
+    { name: "Anchor Land Holdings Inc.", logoSrc: "/images/logo_clients/AnchorLand.jpg" },
+    { name: "LKY Group" },
+    { name: "Ever Scapes", logoSrc: "/images/logo_clients/everScapes.jpg" },
+    { name: "AFPSLAI", logoSrc: "/images/logo_clients/AFPSLAI.jpg" },
+    { name: "Airspeed", logoSrc: "/images/logo_clients/airspeed.png" },
+    { name: "University of Santo Tomas-Legazpi", logoSrc: "/images/logo_clients/UST-Legazpi.png" },
+    { name: "Colegio de San Juan de Letran", logoSrc: "/images/logo_clients/PatriaDeusLetran.png" },
+    { name: "St. Mary's Academy", logoSrc: "/images/logo_clients/StMaryAcademy.png" }
   ];
 
   const corporatePartners = [
-    "FAST Logistics", "Max's Group", "Golfhill Gardens", "U.N. Gardens", 
-    "Marina Residential Suites", "Zenutna Development & Realty Corporation", 
-    "Narra Heights Condominium", "El Jardin Del Presidente 1", "Sherwood Heights Townhouses", 
-    "FOPM", "Anchor Land", "LKY Group", "PHINMA Properties"
+    { name: "FOPM", logoSrc: "/images/logo_clients/FOPM.png" },
+    { name: "Anchor Land", logoSrc: "/images/logo_clients/AnchorLand.jpg" },
+    { name: "PHINMA Properties", logoSrc: "/images/logo_clients/phinmaProperties.png" },
+    { name: "FAST Logistics", logoSrc: "/images/logo_clients/fastLogistic.png" },
+    { name: "Max's Group", logoSrc: "/images/logo_clients/maxGroup.png" },
+    { name: "Golfhill Gardens", logoSrc: "/images/logo_clients/golfHillGarden.png" },
+    { name: "U.N. Gardens", logoSrc: "/images/logo_clients/ungardens.jpeg" },
+    // { name: "Marina Residential Suites" },
+    { name: "Zenutna Development & Realty Corporation", logoSrc: "/images/logo_clients/zenutna.png" },
+    // { name: "Narra Heights Condominium" },
+    // { name: "El Jardin Del Presidente 1" },
+    // { name: "Sherwood Heights Townhouses" },
+    // { name: "LKY Group" }
   ];
 
+  // Build two identical long halves so the marquee can loop seamlessly with translateX(-50%).
+  const corporatePartnerSequence = Array.from({ length: 4 }, () => corporatePartners).flat();
+  const corporatePartnerSlides = [...corporatePartnerSequence, ...corporatePartnerSequence];
+
   const learningInstitutions = [
-    "Claret School", "St. Scholastica's Academy", "St. Agnes Academy", 
-    "Saint Jude Catholic School", "CKS College", "PEAC (Private Education Assistance Committee)", 
-    "Hope Christian High School", "Chiang Kai Shek College", "St. Mary's Academy Branches"
+    { name: "Claret School", logoSrc: "/images/logo_clients/claret.jpg" },
+    { name: "St. Scholastica's Academy", logoSrc: "/images/logo_clients/StScholasticaAcademy.jpg" },
+    { name: "St. Agnes Academy", logoSrc: "/images/logo_clients/StAgnesAcademy.jpg" },
+    { name: "Saint Jude Catholic School", logoSrc: "/images/logo_clients/SaintJude.png" },
+    { name: "CKS College", logoSrc: "/images/logo_clients/CKS.png" },
+    { name: "Colegio de San Juan de Letran", logoSrc: "/images/logo_clients/PatriaDeusLetran.png" },
+    { name: "PEAC (Private Education Assistance Committee)", logoSrc: "/images/logo/PEAC.png" },
+    { name: "Hope Christian High School", logoSrc: "/images/logo_clients/HopeChristianHS.jpg" },
+    { name: "Elizabeth Seton School", logoSrc: "/images/logo_clients/elizabethSetonSchool.png" },
+    { name: "St. Mary's Academy - Pasay", logoSrc: "/images/logo_clients/StMaryAcademyPasay.png" },
+    { name: "St. Mary's Academy - Sta. Ana Manila", logoSrc: "/images/logo_clients/StMaryAcademyStaAnaManila.png" },
+    { name: "St. Peter's Academy", logoSrc: "/images/logo_clients/StPeterAcademy.jpg" },
+    { name: "St. Stephen's High School", logoSrc: "/images/logo_clients/StStephenHS.png" },
+    { name: "St. Vermillion Academy", logoSrc: "/images/logo_clients/StVermillionAcademy.jpg" },
+    { name: "Philippine Institute of Quezon City", logoSrc: "/images/logo_clients/PhilippineInstituteofQC.png" },
+    { name: "University of Santo Tomas-Legazpi", logoSrc: "/images/logo_clients/UST-Legazpi.png" },
+    { name: "St. Mary's Academy Branches", logoSrc: "/images/logo_clients/StMaryAcademy.png" }
   ];
+
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -176,8 +232,8 @@ export default function Clients() {
               <SectionHeading title="AGENCY ACCREDITATION" />
               
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-                {accreditations.map((name, idx) => (
-                  <LogoPlaceholder key={`acc-${idx}`} name={name} />
+                {accreditations.map((item, idx) => (
+                  <LogoPlaceholder key={`acc-${idx}`} name={item.name} logoSrc={item.logoSrc} />
                 ))}
               </div>
             </motion.div>
@@ -202,23 +258,22 @@ export default function Clients() {
             <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 z-10 bg-linear-to-r from-slate to-transparent pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 z-10 bg-linear-to-l from-slate to-transparent pointer-events-none"></div>
             
-            <div className="flex w-max animate-marquee">
-              {/* Duplicate array to ensure seamless infinite loop */}
-              {[...Array(3)].map((_, arrayIndex) => (
-                <div key={`marquee-${arrayIndex}`} className="flex justify-around items-stretch shrink-0 min-w-max gap-6 px-3">
-                  {corporatePartners.map((partner, i) => (
-                    <div 
-                      key={`${arrayIndex}-${i}`} 
-                      className="w-48 h-48 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md flex flex-col items-center justify-center p-6 grayscale hover:grayscale-0 transition-all duration-500 hover:-translate-y-1 cursor-default shrink-0"
-                    >
-                      <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                        <span className="text-[8px] text-gray-400">Logo</span>
-                      </div>
-                      <span className="font-montserrat text-sm font-semibold text-navy text-center leading-tight">
-                        {partner}
-                      </span>
-                    </div>
-                  ))}
+            <div className="flex w-max items-stretch gap-6 animate-marquee" style={{ animationDuration: "48s" }}>
+              {corporatePartnerSlides.map((partner, i) => (
+                <div 
+                  key={`${partner.name}-${i}`} 
+                  className="flex h-44 w-44 shrink-0 items-center justify-center rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-md cursor-default md:h-48 md:w-48"
+                >
+                  <div className="flex h-28 w-28 items-center justify-center rounded-full border border-gray-200 bg-white p-3 shadow-inner md:h-32 md:w-32">
+                    <Image
+                      src={partner.logoSrc}
+                      alt={`${partner.name} logo`}
+                      width={176}
+                      height={176}
+                      className="h-full w-full object-contain rounded-full"
+                      sizes="(max-width: 768px) 112px, 128px"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
@@ -237,8 +292,8 @@ export default function Clients() {
               <SectionHeading title="PARTNERS ON LEARNING INSTITUTIONS & ORGANIZATION" />
               
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 justify-center">
-                {learningInstitutions.map((name, idx) => (
-                  <LogoPlaceholder key={`edu-${idx}`} name={name} />
+                {learningInstitutions.map((item, idx) => (
+                  <LogoPlaceholder key={`edu-${idx}`} name={item.name} logoSrc={item.logoSrc} />
                 ))}
               </div>
             </motion.div>
