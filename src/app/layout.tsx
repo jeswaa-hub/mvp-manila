@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Roboto } from "next/font/google";
 import "./globals.css";
 import JSONLD from "./components/json-ld";
+import DevToolsBlocker from "./components/devtools-blocker";
 
 const montserrat = Montserrat({
   variable: "--next-font-montserrat",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "MVPManila Security Agency Inc.",
     images: [
       {
-        url: "https://mvpmanila.com/wp-content/uploads/2023/08/MVP-MANILA-LOGO-HORIZPONTAL.png",
+        url: "https://mvp-manila.vercel.app/images/logo1.jpg",
         width: 1200,
         height: 630,
         alt: "MVPManila Security Agency Logo",
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MVPManila Security Agency Inc.",
     description: "Professional security services provider in the Philippines since 2013",
-    images: ["https://mvpmanila.com/wp-content/uploads/2023/08/MVP-MANILA-LOGO-HORIZPONTAL.png"],
+    images: ["https://mvp-manila.vercel.app/images/logo1.jpg"],
   },
   // Additional metadata
   authors: [{ name: "MVPManila Security Agency Inc." }],
@@ -58,6 +59,11 @@ export const metadata: Metadata = {
     email: false,
     address: false,
     telephone: false,
+  },
+  alternates: {
+    languages: {
+      "en-PH": "https://mvp-manila.vercel.app/",
+    },
   },
 };
 
@@ -73,6 +79,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-roboto bg-slate">
         <JSONLD />
+        <DevToolsBlocker />
         {children}
       </body>
     </html>

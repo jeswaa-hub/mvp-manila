@@ -113,11 +113,10 @@ export default function HomeClient() {
   const backgroundGradient = useMotionTemplate`radial-gradient(circle at ${mouseXProgress}% ${mouseYProgress}%, rgba(255, 215, 0, 0.15) 0%, transparent 60%)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (matchMedia("(pointer: coarse)").matches) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseXValue = (e.clientX - rect.left) / width - 0.5;
-    const mouseYValue = (e.clientY - rect.top) / height - 0.5;
+    const mouseXValue = (e.clientX - rect.left) / rect.width - 0.5;
+    const mouseYValue = (e.clientY - rect.top) / rect.height - 0.5;
     mouseX.set(mouseXValue);
     mouseY.set(mouseYValue);
   };
@@ -128,14 +127,17 @@ export default function HomeClient() {
   };
 
   useEffect(() => {
-    setIsMounted(true);
+    const frame = requestAnimationFrame(() => setIsMounted(true));
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       setScrollY(window.scrollY);
       setShowScrollTop(window.scrollY > 500);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -170,7 +172,7 @@ export default function HomeClient() {
               priority
               className="object-cover object-[62%_center] md:object-center"
               sizes="100vw"
-              quality={95}
+              quality={75}
             />
           </motion.div>
 
@@ -379,7 +381,7 @@ export default function HomeClient() {
             <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-linear-to-r from-gray-50 to-transparent pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-linear-to-l from-gray-50 to-transparent pointer-events-none"></div>
             
-            <div className="flex w-max animate-marquee">
+            <div className="flex w-max animate-marquee" style={{ willChange: "transform" }}>
               {[...Array(3)].map((_, arrayIndex) => (
                 <div key={arrayIndex} className="flex justify-around items-center shrink-0 min-w-max">
                   {welfarePartners.map((partner, i) => (

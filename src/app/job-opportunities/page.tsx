@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     siteName: "MVPManila Security Agency Inc.",
     images: [
       {
-        url: "https://mvpmanila.com/wp-content/uploads/2023/08/MVP-MANILA-LOGO-HORIZPONTAL.png",
+        url: "https://mvp-manila.vercel.app/images/logo1.jpg",
         width: 1200,
         height: 630,
         alt: "MVPManila Security Agency Logo",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "Job Opportunities - MVPManila Security Agency",
     description:
       "Explore security job opportunities, qualifications, and training support at MVPManila Security Agency Inc.",
-    images: ["https://mvpmanila.com/wp-content/uploads/2023/08/MVP-MANILA-LOGO-HORIZPONTAL.png"],
+    images: ["https://mvp-manila.vercel.app/images/logo1.jpg"],
   },
 };
 

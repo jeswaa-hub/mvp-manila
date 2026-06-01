@@ -1,8 +1,20 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Lock, Phone, Smartphone } from "lucide-react";
+import Script from "next/script";
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (cb: () => void) => void;
+      render: (container: string | HTMLElement, options: Record<string, unknown>) => number;
+      getResponse: (widgetId: number) => string;
+      reset: (widgetId: number) => void;
+    };
+  }
+}
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -16,13 +28,86 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     email: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error" | "rate-limited">("idle");
+  const [submitCount, setSubmitCount] = useState(0);
+  const [captchaError, setCaptchaError] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [captchaLoaded, setCaptchaLoaded] = useState(false);
+  const recaptchaRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<number | null>(null);
+  const MAX_SUBMISSIONS = 5;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (!isOpen || !captchaLoaded || !recaptchaRef.current || widgetIdRef.current !== null) return;
+    window.grecaptcha.ready(() => {
+      if (!recaptchaRef.current || widgetIdRef.current !== null) return;
+      widgetIdRef.current = window.grecaptcha.render(recaptchaRef.current, {
+        sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
+        theme: "light",
+        callback: () => {
+          setCaptchaVerified(true);
+          setCaptchaError(false);
+        },
+        "expired-callback": () => {
+          setCaptchaVerified(false);
+        },
+        "error-callback": () => {
+          setCaptchaVerified(false);
+        },
+      });
+    });
+  }, [isOpen, captchaLoaded]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! A security expert will contact you shortly.");
-    setFormData({ fullName: "", phoneNumber: "", email: "", message: "" });
-    onClose();
+    if (submitCount >= MAX_SUBMISSIONS) {
+      setSubmitStatus("rate-limited");
+      return;
+    }
+
+    const token = widgetIdRef.current !== null ? window.grecaptcha.getResponse(widgetIdRef.current) : "";
+    if (!token) {
+      setCaptchaError(true);
+      return;
+    }
+    setCaptchaError(false);
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setSubmitCount((prev) => prev + 1);
+        setCaptchaVerified(false);
+        setFormData({ fullName: "", phoneNumber: "", email: "", message: "" });
+        setTimeout(() => {
+          onClose();
+          setSubmitStatus("idle");
+        }, 2000);
+      } else {
+        setSubmitStatus("error");
+        if (widgetIdRef.current !== null) {
+          window.grecaptcha.reset(widgetIdRef.current);
+        }
+      }
+    } catch {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Prevent scrolling when modal is open
@@ -38,6 +123,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   }, [isOpen]);
 
   return (
+    <>
     <AnimatePresence>
       {isOpen && (
         <>
@@ -121,10 +207,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         type="tel"
                         id="phoneNumber"
                         required
+                        maxLength={11}
                         value={formData.phoneNumber}
-                        onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
+                        onChange={(e) => {
+                          const digits = e.target.value.replace(/\D/g, "").slice(0, 11);
+                          setFormData({ ...formData, phoneNumber: digits });
+                        }}
                         className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl font-roboto text-navy text-[15px] focus:bg-white focus:outline-none focus:border-gold focus:ring-4 focus:ring-gold/10 transition-all"
-                        placeholder="+63 900 000 0000"
+                        placeholder="00000000000"
                       />
                     </div>
                   </div>
@@ -145,12 +235,52 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
 
                   <div className="pt-2">
+                    <div ref={recaptchaRef} className="mb-3" />
+                    {captchaError && (
+                      <p className="text-red-500 text-[13px] mb-3 text-center font-roboto">Please verify that you are not a robot.</p>
+                    )}
                     <button
                       type="submit"
-                      className="w-full bg-gold hover:bg-[#F5CE00] text-navy font-bold py-4 px-6 rounded-xl transition-all transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(255,215,0,0.3)] font-montserrat text-[15px]"
+                      disabled={isSubmitting || submitCount >= MAX_SUBMISSIONS || !captchaVerified}
+                      className="w-full bg-gold hover:bg-[#F5CE00] text-navy font-bold py-4 px-6 rounded-xl transition-all transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(255,215,0,0.3)] font-montserrat text-[15px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
                     >
-                      Request Consultation
+                      {isSubmitting ? (
+                        <span className="flex items-center justify-center gap-2">
+                          <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                          </svg>
+                          Sending...
+                        </span>
+                      ) : (
+                        "Request Consultation"
+                      )}
                     </button>
+                    
+                    {submitStatus === "success" && (
+                      <div className="flex items-center justify-center gap-2 mt-4 text-emerald-600">
+                        <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span className="font-roboto text-[13px] font-medium">Message sent successfully!</span>
+                      </div>
+                    )}
+                    {submitStatus === "error" && (
+                      <div className="flex items-center justify-center gap-2 mt-4 text-red-500">
+                        <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                        </svg>
+                        <span className="font-roboto text-[13px] font-medium">Failed to send. Please try again.</span>
+                      </div>
+                    )}
+                    {submitStatus === "rate-limited" && (
+                      <div className="flex items-center justify-center gap-2 mt-4 text-amber-600">
+                        <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        </svg>
+                        <span className="font-roboto text-[13px] font-medium">Maximum submissions reached. Please try again later.</span>
+                      </div>
+                    )}
                     
                     {/* Trust Footer */}
                     <div className="flex items-center justify-center gap-2 mt-4 text-gray-400">
@@ -204,5 +334,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         </>
       )}
     </AnimatePresence>
+      <Script
+        src="https://www.google.com/recaptcha/api.js"
+        strategy="afterInteractive"
+        onLoad={() => setCaptchaLoaded(true)}
+      />
+    </>
   );
 }

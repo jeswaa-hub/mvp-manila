@@ -28,14 +28,17 @@ export default function ServicesClient() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const frame = requestAnimationFrame(() => setIsMounted(true));
     const handleScroll = () => {
       setScrollY(window.scrollY);
       setIsScrolled(window.scrollY > 20);
       setShowScrollTop(window.scrollY > 500);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -65,7 +68,7 @@ export default function ServicesClient() {
               priority
               className="object-cover object-center"
               sizes="100vw"
-              quality={90}
+              quality={75}
             />
           </motion.div>
           

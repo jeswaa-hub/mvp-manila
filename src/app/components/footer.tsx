@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ChevronUp, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
-import Link from "next/link";
+import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 import Image from "next/image";
+import LegalModal from "./legal-modal";
 
 interface FooterProps {
   showScrollTop?: boolean;
@@ -16,11 +16,17 @@ const fadeInUp: Variants = {
 };
 
 export default function Footer({ showScrollTop = false }: FooterProps) {
+  const [legalModal, setLegalModal] = useState<{ isOpen: boolean; type: "privacy" | "terms" }>({ isOpen: false, type: "privacy" });
+
+  const openLegalModal = (type: "privacy" | "terms") => setLegalModal({ isOpen: true, type });
+  const closeLegalModal = () => setLegalModal({ isOpen: false, type: "privacy" });
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
+    <>
     <motion.footer
       initial="hidden"
       whileInView="visible"
@@ -153,18 +159,18 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
               &copy; {new Date().getFullYear()} MVPManila Security Agency Inc. All Rights Reserved.
             </p>
             <div className="flex gap-6">
-              <a
-                href="#"
+              <button
+                onClick={() => openLegalModal("privacy")}
                 className="font-roboto text-xs text-slate-500 hover:text-gold transition-colors"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </button>
+              <button
+                onClick={() => openLegalModal("terms")}
                 className="font-roboto text-xs text-slate-500 hover:text-gold transition-colors"
               >
                 Terms of Service
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -188,5 +194,12 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
         )}
       </AnimatePresence>
     </motion.footer>
+
+      <LegalModal
+        isOpen={legalModal.isOpen}
+        onClose={closeLegalModal}
+        type={legalModal.type}
+      />
+    </>
   );
 }

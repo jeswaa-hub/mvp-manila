@@ -46,14 +46,17 @@ export default function AboutClient() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const frame = requestAnimationFrame(() => setIsMounted(true));
     const handleScroll = () => {
       setScrollY(window.scrollY);
       setIsScrolled(window.scrollY > 20);
       setShowScrollTop(window.scrollY > 500);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const logistics = [
@@ -118,10 +121,10 @@ export default function AboutClient() {
             fill
             priority
             className="object-cover object-center"
-            sizes="100vw"
-            quality={90}
-          />
-        </motion.div>
+              sizes="100vw"
+              quality={75}
+            />
+          </motion.div>
         
         <div className="absolute inset-0 z-10 bg-navy/70 mix-blend-multiply" aria-hidden="true" />
         <div className="absolute inset-0 z-10 bg-linear-to-t from-navy/90 via-navy/40 to-transparent" aria-hidden="true" />

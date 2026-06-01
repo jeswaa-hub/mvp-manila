@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: "MVPManila Security Agency Inc.",
     images: [
       {
-        url: "https://mvpmanila.com/wp-content/uploads/2023/08/MVP-MANILA-LOGO-HORIZPONTAL.png",
+        url: "https://mvp-manila.vercel.app/images/logo1.jpg",
         width: 1200,
         height: 630,
         alt: "MVPManila Security Agency Logo",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MVPManila Security Agency - Professional Security Services",
     description: "Trusted security agency in the Philippines since 2013. Offering comprehensive security solutions for businesses, residential areas, and events.",
-    images: ["https://mvpmanila.com/wp-content/uploads/2023/08/MVP-MANILA-LOGO-HORIZPONTAL.png"],
+    images: ["https://mvp-manila.vercel.app/images/logo1.jpg"],
   },
 };
 
