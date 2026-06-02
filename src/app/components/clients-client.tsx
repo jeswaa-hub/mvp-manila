@@ -99,7 +99,7 @@ export default function ClientsClient() {
   const accreditations = [
     { name: "FOPM", logoSrc: "/images/logo_clients/FOPM.png" },
     { name: "APMC", logoSrc: "/images/logo_clients/APMC.jpg" },
-    { name: "PHINMA Properties", logoSrc: "/images/logo_clients/phinmaProperties.png" },
+    { name: "PHINMA Properties", logoSrc: "/images/logo_clients/PhinmaProperties.png" },
     { name: "Anchor Land Holdings Inc.", logoSrc: "/images/logo_clients/AnchorLand.jpg" },
     { name: "LKY Group" },
     { name: "Ever Scapes", logoSrc: "/images/logo_clients/everScapes.jpg" },
@@ -113,7 +113,7 @@ export default function ClientsClient() {
   const corporatePartners = [
     { name: "FOPM", logoSrc: "/images/logo_clients/FOPM.png" },
     { name: "Anchor Land", logoSrc: "/images/logo_clients/AnchorLand.jpg" },
-    { name: "PHINMA Properties", logoSrc: "/images/logo_clients/phinmaProperties.png" },
+    { name: "PHINMA Properties", logoSrc: "/images/logo_clients/PhinmaProperties.png" },
     { name: "FAST Logistics", logoSrc: "/images/logo_clients/fastLogistic.png" },
     { name: "Max's Group", logoSrc: "/images/logo_clients/maxGroup.png" },
     { name: "Golfhill Gardens", logoSrc: "/images/logo_clients/golfHillGarden.png" },

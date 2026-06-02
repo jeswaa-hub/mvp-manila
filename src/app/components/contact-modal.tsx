@@ -33,31 +33,48 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [submitCount, setSubmitCount] = useState(0);
   const [captchaError, setCaptchaError] = useState(false);
   const [captchaVerified, setCaptchaVerified] = useState(false);
-  const [captchaLoaded, setCaptchaLoaded] = useState(false);
   const recaptchaRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<number | null>(null);
   const MAX_SUBMISSIONS = 5;
 
   useEffect(() => {
-    if (!isOpen || !captchaLoaded || !recaptchaRef.current || widgetIdRef.current !== null) return;
-    window.grecaptcha.ready(() => {
-      if (!recaptchaRef.current || widgetIdRef.current !== null) return;
-      widgetIdRef.current = window.grecaptcha.render(recaptchaRef.current, {
-        sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
-        theme: "light",
-        callback: () => {
-          setCaptchaVerified(true);
-          setCaptchaError(false);
-        },
-        "expired-callback": () => {
-          setCaptchaVerified(false);
-        },
-        "error-callback": () => {
-          setCaptchaVerified(false);
-        },
-      });
-    });
-  }, [isOpen, captchaLoaded]);
+    if (!isOpen) return;
+
+    const renderWidget = () => {
+      if (window.grecaptcha && recaptchaRef.current && widgetIdRef.current === null) {
+        widgetIdRef.current = window.grecaptcha.render(recaptchaRef.current, {
+          sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!,
+          theme: "light",
+          callback: () => {
+            setCaptchaVerified(true);
+            setCaptchaError(false);
+          },
+          "expired-callback": () => {
+            setCaptchaVerified(false);
+          },
+          "error-callback": () => {
+            setCaptchaVerified(false);
+          },
+        });
+      }
+    };
+
+    if (window.grecaptcha) {
+      renderWidget();
+    } else {
+      const interval = setInterval(() => {
+        if (window.grecaptcha) {
+          clearInterval(interval);
+          renderWidget();
+        }
+      }, 100);
+      const timeout = setTimeout(() => clearInterval(interval), 5000);
+      return () => {
+        clearInterval(interval);
+        clearTimeout(timeout);
+      };
+    }
+  }, [isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -337,7 +354,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       <Script
         src="https://www.google.com/recaptcha/api.js"
         strategy="afterInteractive"
-        onLoad={() => setCaptchaLoaded(true)}
       />
     </>
   );
