@@ -101,7 +101,6 @@ export default function ClientsClient() {
     { name: "APMC", logoSrc: "/images/logo_clients/APMC.jpg" },
     { name: "PHINMA Properties", logoSrc: "/images/logo_clients/PhinmaProperties.png" },
     { name: "Anchor Land Holdings Inc.", logoSrc: "/images/logo_clients/AnchorLand.jpg" },
-    { name: "LKY Group" },
     { name: "Ever Scapes", logoSrc: "/images/logo_clients/everScapes.jpg" },
     { name: "AFPSLAI", logoSrc: "/images/logo_clients/AFPSLAI.jpg" },
     { name: "Airspeed", logoSrc: "/images/logo_clients/airspeed.png" },
