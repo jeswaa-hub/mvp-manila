@@ -377,6 +377,7 @@ export default function AboutClient() {
         </div>
       </section>
 
+      {/* The Management Section - Commented out
       <section className="py-24 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -418,6 +419,7 @@ export default function AboutClient() {
           </div>
         </div>
       </section>
+      */}
 
       <section className="py-24 bg-slate">
         <div className="max-w-7xl mx-auto px-4">
