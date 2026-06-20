@@ -135,7 +135,6 @@ export default function ClientsClient() {
     { name: "Elizabeth Seton School", logoSrc: "/images/logo_clients/elizabethSetonSchool.png" },
     { name: "St. Mary's Academy - Pasay", logoSrc: "/images/logo_clients/StMaryAcademyPasay.png" },
     { name: "St. Mary's Academy - Sta. Ana Manila", logoSrc: "/images/logo_clients/StMaryAcademyStaAnaManila.png" },
-    { name: "St. Peter's Academy", logoSrc: "/images/logo_clients/StPeterAcademy.jpg" },
     { name: "St. Stephen's High School", logoSrc: "/images/logo_clients/StStephenHS.png" },
     { name: "St. Vermillion Academy", logoSrc: "/images/logo_clients/StVermillionAcademy.jpg" },
     { name: "Philippine Institute of Quezon City", logoSrc: "/images/logo_clients/PhilippineInstituteofQC.png" },

@@ -74,11 +74,11 @@ export default function AboutClient() {
     { icon: <Building2 className="w-8 h-8" />, title: "Commercial & High-Rise Buildings", image: "/images/industries/img1.jpeg" },
     { icon: <GraduationCap className="w-8 h-8" />, title: "Educational Institutions (Schools & Campuses)", image: "/images/industries/img2.jpeg" },
     { icon: <Briefcase className="w-8 h-8" />, title: "Multinational Corporations & BPOs", image: "/images/industries/img3.jpeg" },
-    { icon: <HeartPulse className="w-8 h-8" />, title: "Healthcare Facilities & Hospitals", image: "/images/industries/img4.jpeg" },
-    { icon: <UtensilsCrossed className="w-8 h-8" />, title: "Hospitality (Hotels & Restaurants)", image: "/images/industries/img5.jpeg" },
-    { icon: <Store className="w-8 h-8" />, title: "Retail Centers & Malls", image: "/images/industries/img6.jpeg" },
-    { icon: <Factory className="w-8 h-8" />, title: "Industrial, Manufacturing & Logistics", image: "/images/industries/img7.jpeg" },
-    { icon: <Home className="w-8 h-8" />, title: "Residential Subdivisions & Condominiums", image: "/images/industries/img8.jpeg" }
+    { icon: <HeartPulse className="w-8 h-8" />, title: "Healthcare Facilities & Hospitals", image: "/images/industries/taytayDoctors.jpg" },
+    { icon: <UtensilsCrossed className="w-8 h-8" />, title: "Hospitality (Hotels & Restaurants)", image: "/images/industries/elJardin.jpg" },
+    { icon: <Store className="w-8 h-8" />, title: "Retail Centers & Malls", image: "/images/industries/LazadaWarehouse.jpg" },
+    { icon: <Factory className="w-8 h-8" />, title: "Industrial, Manufacturing & Logistics", image: "/images/industries/Logistics.png" },
+    { icon: <Home className="w-8 h-8" />, title: "Residential Subdivisions & Condominiums", image: "/images/industries/GolfHill.jpeg" }
   ];
 
   const competencies = [
@@ -336,10 +336,10 @@ export default function AboutClient() {
               className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/images/aboutUs.jpeg"
+                src="/images/aboutUS.jpeg"
                 alt="Security personnel in a professional briefing"
                 fill
-                className="object-cover"
+                className="object-cover scale-120"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-linear-to-tr from-navy/60 to-transparent"></div>

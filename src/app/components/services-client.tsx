@@ -212,7 +212,7 @@ export default function ServicesClient() {
 
                 <motion.div variants={fadeInUp} className="relative h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/industries/img10.jpeg"
+                    src="/images/industries/GolfHill.jpeg"
                     alt="Event security management team"
                     fill
                     className="object-cover"

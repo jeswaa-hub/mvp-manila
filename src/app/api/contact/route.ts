@@ -212,13 +212,16 @@ export async function POST(request: Request) {
       htmlContent,
       sender: {
         name: process.env.BREVO_SENDER_NAME || "MVPManila Security Agency",
-        email: process.env.BREVO_SENDER_EMAIL || "noreply@mvpmanila.com",
+        email: process.env.BREVO_SENDER_EMAIL || "mvpmanila2013@gmail.com",
       },
       to: [
         {
-          email: process.env.CONTACT_RECIPIENT_EMAIL || "jeswaa1810@gmail.com",
+          email: process.env.CONTACT_RECIPIENT_EMAIL || "mvpmanila2013@yahoo.com",
           name: "MVPManila Admin",
         },
+        ...(process.env.CONTACT_RECIPIENT_EMAIL_2
+          ? [{ email: process.env.CONTACT_RECIPIENT_EMAIL_2, name: "MVPManila Admin" }]
+          : []),
       ],
       replyTo: {
         name: fullName,

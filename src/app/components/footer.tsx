@@ -110,31 +110,21 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
 
           {/* Column 3: Professional Contact */}
           <div>
-            <h4 className="font-montserrat font-bold text-sm text-white tracking-wider mb-6 uppercase">
+            <h4 className="font-montserrat font-bold text-sm text-white tracking-wider mb-3 uppercase">
               Contact Us
             </h4>
             <div className="space-y-4">
-              <div className="space-y-2">
-                <a
-                  href="mailto:mvpmanila2013@yahoo.com"
-                  className="font-roboto text-sm text-slate-400 hover:text-gold transition-colors block"
-                >
-                  info@mvpmanila.com
-                </a>
-                <a
-                  href="mailto:mvpmanila2013@gmail.com"
-                  className="font-roboto text-sm text-slate-400 hover:text-gold transition-colors block"
-                >
-                  careers@mvpmanila.com
-                </a>
-              </div>
-              <div className="pt-2 space-y-3">
+              <div className="space-y-3">
                 <div className="flex flex-col items-center gap-2 md:flex-row md:items-center md:gap-3">
                   <Phone size={14} className="text-gold shrink-0" />
                   <div>
                     <p className="font-roboto text-xs text-slate-500 mb-0.5">Landline</p>
                     <a href="tel:83537353" className="font-roboto text-sm text-white hover:text-gold transition-colors">
                       8353-7353
+                    </a>
+                    <span className="font-roboto text-xs text-slate-500 mx-1">/</span>
+                    <a href="tel:83736860" className="font-roboto text-sm text-white hover:text-gold transition-colors">
+                      8373-6860
                     </a>
                   </div>
                 </div>

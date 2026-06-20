@@ -1,18 +1,20 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, Variants, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { 
   ShieldCheck, 
   FileBadge, 
   Users, 
   Building2, 
-  HeartHandshake
+  HeartHandshake,
+  Shield
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "./footer";
 import Header from "./header";
+import ContactModal from "./contact-modal";
 
 const SectionHeading = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
   <h2 className={`font-montserrat text-3xl md:text-4xl font-bold text-navy mb-12 text-center ${className}`}>
@@ -90,209 +92,174 @@ const lawEnforcementLogos = [
 
 export default function HomeClient() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  // 3D Parallax & Tilt Effects
-  const { scrollY: framerScrollY } = useScroll();
-  const yBackground = useTransform(framerScrollY, [0, 1000], [0, 300]);
-  const opacityContent = useTransform(framerScrollY, [0, 600], [1, 0]);
-  const yContent = useTransform(framerScrollY, [0, 600], [0, 150]);
-  
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], ["5deg", "-5deg"]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], ["-5deg", "5deg"]), springConfig);
-  const mouseXProgress = useSpring(useTransform(mouseX, [-0.5, 0.5], [0, 100]), springConfig);
-  const mouseYProgress = useSpring(useTransform(mouseY, [-0.5, 0.5], [0, 100]), springConfig);
-  
-  const backgroundGradient = useMotionTemplate`radial-gradient(circle at ${mouseXProgress}% ${mouseYProgress}%, rgba(255, 215, 0, 0.15) 0%, transparent 60%)`;
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (matchMedia("(pointer: coarse)").matches) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const mouseXValue = (e.clientX - rect.left) / rect.width - 0.5;
-    const mouseYValue = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(mouseXValue);
-    mouseY.set(mouseYValue);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => setIsMounted(true));
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      setScrollY(window.scrollY);
       setShowScrollTop(window.scrollY > 500);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen relative">
+      {/* Fixed Background Logo Silhouette - follows scroll everywhere */}
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0" aria-hidden="true">
+        <Image
+          src="/images/logo1.jpg"
+          alt=""
+          width={800}
+          height={800}
+          className="w-[500px] h-[500px] md:w-[700px] md:h-[700px] object-contain opacity-[0.06]"
+          priority={false}
+        />
+      </div>
+
       <Header 
         isScrolled={isScrolled} 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen} 
       />
 
-      <main className="grow">
+      <main className="grow relative z-10">
         <section 
           id="home" 
-          className="hero-fullscreen relative w-full flex items-center justify-center overflow-hidden bg-[#050B14]"
+          className="relative w-full overflow-hidden"
           aria-label="Welcome to MVPManila Security Agency"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{ perspective: 1200 }}
         >
-          {/* Layered Parallax Background */}
-          <motion.div 
-            className="absolute inset-0 z-0 w-full h-[120%]"
-            style={{ y: yBackground }}
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-          >
-            <Image
-              src="/images/bgHeroSection.jpeg"
-              alt="Modern corporate skyscrapers representing secure facilities and corporate integrity"
-              fill
-              priority
-              className="object-cover object-[62%_center] md:object-center"
-              sizes="100vw"
-              quality={75}
-            />
-          </motion.div>
-
-          {/* Premium Gradient Overlays for Depth */}
-          <div className="absolute inset-0 z-10 bg-navy/70 mix-blend-multiply" aria-hidden="true" />
-          <div className="absolute inset-0 z-10 bg-linear-to-b from-[#050B14]/94 via-[#0A192F]/72 to-[#050B14]/96 md:from-[#050B14]/90 md:via-[#0A192F]/50 md:to-[#050B14]/95" aria-hidden="true" />
-          <motion.div 
-            className="absolute inset-0 z-10" 
-            style={{ background: backgroundGradient }} 
-            aria-hidden="true" 
-          />
-
-          {/* Glowing Orbs / Particles */}
-          <div className="pointer-events-none absolute left-1/2 top-[16%] h-48 w-48 -translate-x-1/2 rounded-full bg-gold/10 blur-[72px] mix-blend-screen md:left-1/4 md:top-1/4 md:h-96 md:w-96 md:translate-x-0 md:blur-[100px]" />
-          <div className="pointer-events-none absolute bottom-[12%] right-[8%] hidden h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[120px] mix-blend-screen md:block" />
-
-          {/* Interactive 3D Content Container */}
-          <motion.div 
-            className="relative z-20 mx-auto flex min-h-full w-full max-w-5xl flex-col items-center justify-center px-5 py-28 text-center sm:px-6 sm:py-32 md:px-6 md:py-28"
-            style={{ 
-              rotateX, 
-              rotateY,
-              y: yContent,
-              opacity: opacityContent,
-              transformStyle: "preserve-3d" 
-            }}
-          >
-            {/* Glassmorphism Panel */}
-            <motion.div
-              className="relative w-full max-w-[92vw] rounded-3xl px-1 py-2 sm:max-w-3xl md:max-w-none md:px-0 md:py-0"
-              style={{ transform: "translateZ(50px)" }}
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0, scale: 0.98 },
-                visible: {
-                  opacity: 1,
-                  scale: 1,
-                  transition: { duration: 0.8, staggerChildren: 0.04, delayChildren: 0.1 }
-                }
-              }}
-            >
-              {/* Top Accent Line */}
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+            <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-16">
+              {/* Left Column - Text Content */}
               <motion.div 
+                className="flex-1 w-full"
+                initial="hidden"
+                animate="visible"
                 variants={{
-                  hidden: { width: 0, opacity: 0 },
-                  visible: { width: "60px", opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+                  }
                 }}
-                className="mx-auto mb-6 h-1 w-12 rounded-full bg-gold shadow-[0_0_10px_rgba(255,215,0,0.5)] sm:mb-8 sm:w-[60px]"
-              />
-
-              <h1 className="mb-6 font-montserrat text-[clamp(2.55rem,10vw,4.6rem)] font-extrabold leading-[0.96] tracking-[-0.03em] text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] sm:mb-8 sm:text-[clamp(3.2rem,9vw,5.25rem)] sm:leading-[1.01] md:text-6xl md:leading-[1.03] lg:text-7xl xl:text-[80px]">
-                {"Securing people, facilities, and assets with reliability, integrity, and service excellence.".split(" ").map((word, i) => (
-                  <motion.span 
-                    key={i} 
-                    variants={{
-                      hidden: { opacity: 0, y: 15, rotateX: -45 },
-                      visible: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.5, ease: [0.215, 0.61, 0.355, 1] } }
-                    }} 
-                    className="inline-block mr-[0.25em]"
-                    style={{ transformOrigin: "bottom" }}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-              </h1>
-
-              <motion.p 
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
-                }}
-                className="mb-8 font-roboto text-sm font-medium uppercase tracking-[0.16em] text-gold sm:mb-10 sm:text-base sm:tracking-[0.2em] md:text-xl lg:text-2xl"
-                style={{ transform: "translateZ(30px)" }}
               >
-                Together we can, Together we will
-              </motion.p>
-
-              <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
-                }}
-                style={{ transform: "translateZ(40px)" }}
-                className="mt-2 w-full sm:mt-4"
-              >
-                <Link
-                  href="/about-us"
-                  className="group relative inline-flex min-h-14 w-full items-center justify-center overflow-hidden rounded-full bg-gold px-6 py-4 text-navy shadow-[0_0_40px_rgba(255,215,0,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400 hover:shadow-[0_0_60px_rgba(255,215,0,0.5)] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-[#050B14] sm:min-h-0 sm:w-auto sm:px-10 md:px-12"
-                  aria-label="Learn more about MVPManila Security Agency services"
+                {/* Badge */}
+                <motion.div 
+                  variants={{
+                    hidden: { opacity: 0, y: 15 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                  }}
+                  className="inline-flex items-center gap-2 sm:gap-3 mb-5 sm:mb-6 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gray-200 bg-gray-50/50"
                 >
-                  <span className="relative z-10 text-center font-montserrat text-sm font-bold uppercase tracking-[0.12em] sm:text-base md:text-lg">Learn More About Us</span>
-                  <div className="absolute inset-0 h-full w-0 bg-white/30 transition-all duration-500 ease-out group-hover:w-full z-0 transform skew-x-12 -ml-4"></div>
-                </Link>
+                  <span className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gold/10">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gold"></span>
+                  </span>
+                  <span className="font-montserrat text-[10px] sm:text-xs font-semibold tracking-[0.1em] sm:tracking-[0.12em] text-gray-600 uppercase">
+                    DOLE Certified · Since 2013
+                  </span>
+                </motion.div>
+
+                {/* Heading */}
+                <motion.h1 
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+                  }}
+                  className="font-montserrat text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold leading-[1.1] sm:leading-[1.08] tracking-tight text-navy mb-5 sm:mb-6"
+                >
+                  Securing people, facilities, and assets with{" "}
+                  <span className="italic">reliability, integrity, and service excellence.</span>
+                </motion.h1>
+
+                {/* Description */}
+                <motion.p 
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+                  }}
+                  className="font-roboto text-sm sm:text-base text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-xl"
+                >
+                  Since 2013, MVPManila has been the trusted security partner for multinational 
+                  corporations, educational institutions, and healthcare facilities across the 
+                  Philippines. We deliver professional guarding, risk management, and comprehensive 
+                  security solutions tailored to your organization&apos;s needs.
+                </motion.p>
+
+                {/* CTAs */}
+                <motion.div 
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+                  }}
+                  className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
+                >
+                  <button
+                    onClick={() => setIsContactModalOpen(true)}
+                    className="w-full sm:w-auto group inline-flex items-center justify-center bg-navy text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded font-montserrat text-xs sm:text-sm font-bold uppercase tracking-[0.1em] transition-all duration-300 hover:bg-[#0D2240] hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2 cursor-pointer"
+                  >
+                    Get a Free Consultation
+                  </button>
+                  <Link
+                    href="/services"
+                    className="w-full sm:w-auto group inline-flex items-center justify-center sm:justify-start gap-2 font-montserrat text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] text-navy transition-colors duration-300 hover:text-gray-600"
+                  >
+                    Our Services
+                    <svg 
+                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </motion.div>
-          
-          {/* Scroll Indicator */}
-          <motion.div 
-            className="absolute bottom-4 lg:-bottom-5 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center justify-center sm:flex md:bottom-5"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 1 }}
-            style={{ opacity: opacityContent }}
-          >
-            <span className="mb-3 rounded-full border border-white/20 bg-black/35 px-4 py-1.5 font-montserrat text-[11px] font-semibold uppercase tracking-[0.3em] text-white shadow-[0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-sm">
-              Scroll Explore
-            </span>
-            <div className="relative h-12 w-[2px] overflow-hidden rounded-full bg-white/35 shadow-[0_0_12px_rgba(255,255,255,0.18)]">
+
+              {/* Right Column - Image */}
               <motion.div 
-                className="absolute top-0 h-1/2 w-full rounded-full bg-gold shadow-[0_0_14px_rgba(255,215,0,0.75)]"
-                animate={{ top: ["-50%", "100%"] }}
-                transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-              />
+                className="flex-1 w-full relative hidden sm:block"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              >
+                <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/HeroSection.jpeg"
+                    alt="MVPManila security professionals in modern corporate lobby"
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 45vw"
+                  />
+                </div>
+
+                {/* Floating Card */}
+                <motion.div 
+                  className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 sm:px-5 sm:py-4 shadow-[0_8px_30px_rgba(0,0,0,0.12)] max-w-[220px] sm:max-w-[280px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+                >
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-navy/10 flex items-center justify-center">
+                      <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-navy" />
+                    </div>
+                    <div>
+                      <p className="font-montserrat text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider">24/7 Coverage</p>
+                      <p className="font-montserrat text-sm sm:text-lg font-bold text-navy">Active Operations</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
-        <section id="about" className="py-20 bg-slate">
+        <section id="about" className="py-20 bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto px-4">
             <motion.div 
               variants={staggerContainer}
@@ -328,7 +295,7 @@ export default function HomeClient() {
           </div>
         </section>
 
-        <section id="services" className="py-24 bg-white">
+        <section id="services" className="py-24">
           <div className="max-w-7xl mx-auto px-4">
             <SectionHeading>Why Choose MVPManila</SectionHeading>
             
@@ -372,7 +339,7 @@ export default function HomeClient() {
           </div>
         </section>
 
-        <section className="py-20 bg-gray-50 border-y border-gray-200 overflow-hidden">
+        <section className="py-20 bg-[#f8fafc] border-y border-gray-200 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 mb-10 text-center">
             <h3 className="font-montserrat text-2xl font-bold text-navy">Agency Employee&apos;s Welfare Program & Legal Partners</h3>
           </div>
@@ -405,7 +372,7 @@ export default function HomeClient() {
           </div>
         </section>
 
-        <section className="py-24 bg-white">
+        <section className="py-24">
           <div className="max-w-7xl mx-auto px-4">
             <SectionHeading>Awards, Certificate of Appreciation & Service Excellence</SectionHeading>
             
@@ -420,7 +387,7 @@ export default function HomeClient() {
                 <motion.div 
                   key={certificate.src}
                   variants={fadeInUp}
-                  className="bg-slate rounded-lg overflow-hidden border border-gray-100 shadow-sm transition-shadow"
+                  className="rounded-lg overflow-hidden shadow-md"
                 >
                   <Image
                     src={certificate.src}
@@ -543,6 +510,11 @@ export default function HomeClient() {
       </main>
 
       <Footer showScrollTop={showScrollTop} />
+      
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
     </div>
   );
 }
