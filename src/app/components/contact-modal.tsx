@@ -259,7 +259,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <button
                       type="submit"
                       disabled={isSubmitting || submitCount >= MAX_SUBMISSIONS || !captchaVerified}
-                      className="w-full bg-gold hover:bg-[#F5CE00] text-navy font-bold py-4 px-6 rounded-xl transition-all transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(255,215,0,0.3)] font-montserrat text-[15px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                      className="w-full bg-gold hover:bg-emerald-400 text-navy font-bold py-4 px-6 rounded-xl transition-all transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(16,185,129,0.3)] font-montserrat text-[15px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center gap-2">

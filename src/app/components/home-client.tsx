@@ -192,7 +192,7 @@ export default function HomeClient() {
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: "60px", opacity: 1 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-              className="mx-auto mb-6 h-1 w-12 rounded-full bg-gold shadow-[0_0_10px_rgba(255,215,0,0.5)] sm:mb-8 sm:w-[60px]"
+              className="mx-auto mb-6 h-1 w-12 rounded-full bg-gold shadow-[0_0_10px_rgba(16,185,129,0.5)] sm:mb-8 sm:w-[60px]"
             />
 
             <h1 className="mb-6 font-montserrat text-[clamp(2.55rem,10vw,4.6rem)] font-extrabold leading-[0.96] tracking-[-0.03em] text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] sm:mb-8 sm:text-[clamp(3.2rem,9vw,5.25rem)] sm:leading-[1.01] md:text-6xl md:leading-[1.03] lg:text-7xl xl:text-[80px]">
@@ -227,7 +227,7 @@ export default function HomeClient() {
             >
               <Link
                 href="/about-us"
-                className="group relative inline-flex min-h-14 w-full items-center justify-center overflow-hidden rounded-full bg-gold px-6 py-4 text-navy shadow-[0_0_40px_rgba(255,215,0,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400 hover:shadow-[0_0_60px_rgba(255,215,0,0.5)] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-[#050B14] sm:min-h-0 sm:w-auto sm:px-10 md:px-12"
+                className="group relative inline-flex min-h-14 w-full items-center justify-center overflow-hidden rounded-full bg-gold px-6 py-4 text-navy shadow-[0_0_40px_rgba(16,185,129,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-400 hover:shadow-[0_0_60px_rgba(16,185,129,0.5)] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-[#050B14] sm:min-h-0 sm:w-auto sm:px-10 md:px-12"
                 aria-label="Learn more about MVPManila Security Agency services"
               >
                 <span className="relative z-10 text-center font-montserrat text-sm font-bold uppercase tracking-[0.12em] sm:text-base md:text-lg">Learn More About Us</span>
@@ -248,7 +248,7 @@ export default function HomeClient() {
             </span>
             <div className="relative h-12 w-[2px] overflow-hidden rounded-full bg-white/35 shadow-[0_0_12px_rgba(255,255,255,0.18)]">
               <motion.div 
-                className="absolute top-0 h-1/2 w-full rounded-full bg-gold shadow-[0_0_14px_rgba(255,215,0,0.75)]"
+                className="absolute top-0 h-1/2 w-full rounded-full bg-gold shadow-[0_0_14px_rgba(16,185,129,0.75)]"
                 animate={{ top: ["-50%", "100%"] }}
                 transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
               />
