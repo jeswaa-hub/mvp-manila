@@ -139,7 +139,7 @@ export default function ClientsClient() {
     { name: "St. Vermillion Academy", logoSrc: "/images/logo_clients/StVermillionAcademy.jpg" },
     { name: "Philippine Institute of Quezon City", logoSrc: "/images/logo_clients/PhilippineInstituteofQC.png" },
     { name: "University of Santo Tomas-Legazpi", logoSrc: "/images/logo_clients/UST-Legazpi.png" },
-    { name: "St. Mary's Academy Branches", logoSrc: "/images/logo_clients/StMaryAcademy.png" }
+    { name: "St. Peter Academy", logoSrc: "/images/logo_clients/StPeterAcademy.jpg" }
   ];
 
   return (
@@ -151,62 +151,91 @@ export default function ClientsClient() {
       />
 
       <main className="grow pt-20">
-        <section
-          className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden bg-navy"
-          aria-label="MVPManila Clients and Partners"
-        >
-          <motion.div
-            className="absolute inset-0 z-0 w-full h-[120%]"
-            style={{ y: isMounted ? scrollY * 0.4 : 0 }}
-            initial={{ scale: 1.05 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=2670&auto=format&fit=crop"
-              alt="Professional security personnel in uniform standing in a diverse lineup"
-              fill
-              priority
-              className="object-cover object-center"
-              sizes="100vw"
-              quality={75}
-            />
-          </motion.div>
+        {/* ═══════════════════════════════════════════════════════════
+            PAGE HEADER BANNER — Premium Tactical Style
+        ═══════════════════════════════════════════════════════════ */}
+        <section className="relative bg-white overflow-hidden border-b border-[#E2E8F0]">
+          {/* Radial gradient base */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+            style={{
+              background: "radial-gradient(ellipse 80% 60% at 50% 0%, #FFFFFF 0%, #F8FAFC 100%)",
+            }}
+          />
 
-          <div className="absolute inset-0 z-10 bg-navy/80 mix-blend-multiply" aria-hidden="true" />
-          <div className="absolute inset-0 z-10 bg-linear-to-t from-navy/90 via-navy/40 to-transparent" aria-hidden="true" />
+          {/* LEFT: Vertical tech lines */}
+          <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-[#0A192F]/[0.04] to-transparent" style={{ left: "8%" }} aria-hidden="true" />
+          <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-[#0A192F]/[0.03] to-transparent" style={{ left: "8.5%" }} aria-hidden="true" />
+          <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-[#047857]/[0.04] to-transparent" style={{ left: "9%" }} aria-hidden="true" />
 
-          <div className="relative z-20 w-full max-w-4xl mx-auto px-4 text-center mt-10">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.15 }
-                }
-              }}
-            >
-              <motion.h1
-                variants={fadeInUp}
-                className="font-montserrat text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-4"
+          {/* RIGHT: Isometric radar/sonar rings */}
+          <div className="absolute top-1/2 -translate-y-1/2 pointer-events-none" style={{ right: "-5%", opacity: 0.04 }} aria-hidden="true">
+            <svg width="600" height="600" viewBox="0 0 600 600" fill="none">
+              <circle cx="300" cy="300" r="80" stroke="#0A192F" strokeWidth="1" />
+              <circle cx="300" cy="300" r="140" stroke="#0A192F" strokeWidth="0.75" strokeDasharray="4 6" />
+              <circle cx="300" cy="300" r="200" stroke="#0A192F" strokeWidth="0.5" />
+              <circle cx="300" cy="300" r="260" stroke="#0A192F" strokeWidth="0.5" strokeDasharray="2 8" />
+              <circle cx="300" cy="300" r="300" stroke="#0A192F" strokeWidth="0.5" strokeDasharray="1 12" />
+              <line x1="300" y1="0" x2="300" y2="600" stroke="#0A192F" strokeWidth="0.5" />
+              <line x1="0" y1="300" x2="600" y2="300" stroke="#0A192F" strokeWidth="0.5" />
+              <line x1="100" y1="100" x2="500" y2="500" stroke="#047857" strokeWidth="0.5" />
+              <line x1="500" y1="100" x2="100" y2="500" stroke="#047857" strokeWidth="0.5" />
+              <circle cx="300" cy="300" r="3" fill="#047857" />
+              <circle cx="380" cy="260" r="2" fill="#0A192F" />
+              <circle cx="240" cy="340" r="2" fill="#0A192F" />
+              <circle cx="320" cy="180" r="1.5" fill="#047857" />
+              <circle cx="200" cy="280" r="1.5" fill="#0A192F" />
+            </svg>
+          </div>
+
+          {/* RIGHT-LOWER: Fine grid mesh */}
+          <div className="absolute bottom-0 right-0 pointer-events-none" style={{ opacity: 0.025 }} aria-hidden="true">
+            <svg width="400" height="300" viewBox="0 0 400 300" fill="none">
+              {[...Array(16)].map((_, i) => (
+                <line key={`h${i}`} x1="0" y1={i * 20} x2="400" y2={i * 20} stroke="#0A192F" strokeWidth="0.5" />
+              ))}
+              {[...Array(21)].map((_, i) => (
+                <line key={`v${i}`} x1={i * 20} y1="0" x2={i * 20} y2="300" stroke="#0A192F" strokeWidth="0.5" />
+              ))}
+              <rect x="195" y="135" width="10" height="10" stroke="#047857" strokeWidth="0.75" fill="none" />
+              <line x1="200" y1="120" x2="200" y2="180" stroke="#047857" strokeWidth="0.5" />
+              <line x1="180" y1="140" x2="220" y2="140" stroke="#047857" strokeWidth="0.5" />
+            </svg>
+          </div>
+
+          {/* Content */}
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+              <motion.div
+                className="lg:col-span-12"
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer}
               >
-                OUR CLIENTS
-              </motion.h1>
-              <motion.p
-                variants={fadeInUp}
-                className="font-roboto text-lg md:text-xl text-gold font-bold tracking-widest uppercase mb-8"
-              >
-                LIST OF CURRENT AND ON-GOING PROJECTS/CLIENTS
-              </motion.p>
-              <motion.p
-                variants={fadeInUp}
-                className="font-roboto text-lg md:text-xl text-gray-200 font-light max-w-2xl mx-auto"
-              >
-                Protecting corporate, commercial, and residential clients with proven expertise.
-              </motion.p>
-            </motion.div>
+                <motion.nav
+                  variants={fadeInUp}
+                  aria-label="Breadcrumb"
+                  className="flex items-center gap-2 mb-6"
+                >
+                  <a href="/" className="font-roboto text-sm text-[#94A3B8] hover:text-[#0A192F] transition-colors duration-200 cursor-pointer">
+                    Home
+                  </a>
+                  <span className="font-roboto text-sm text-[#CBD5E1]">/</span>
+                  <span className="font-roboto text-sm font-medium text-[#047857] flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#047857]" />
+                    Clients
+                  </span>
+                </motion.nav>
+
+                <motion.h1
+                  variants={fadeInUp}
+                  className="font-montserrat text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-extrabold text-[#0A192F] leading-[1.05] tracking-[-0.02em]"
+                >
+                  Our Clients
+                </motion.h1>
+              </motion.div>
+            </div>
           </div>
         </section>
 

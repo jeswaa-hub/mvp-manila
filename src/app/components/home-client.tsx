@@ -214,7 +214,7 @@ export default function HomeClient() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.8 }}
-              className="mb-8 font-roboto text-sm font-medium uppercase tracking-[0.16em] text-white sm:mb-10 sm:text-base sm:tracking-[0.2em] md:text-xl lg:text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+              className="mb-8 font-montserrat text-sm font-bold uppercase tracking-[0.16em] text-gold sm:mb-10 sm:text-base sm:tracking-[0.2em] md:text-xl lg:text-2xl drop-shadow-[0_2px_8px_rgba(4,120,87,0.6)]"
             >
               Together we can, Together we will
             </motion.p>
@@ -316,19 +316,19 @@ export default function HomeClient() {
               </motion.div>
 
               <motion.div variants={fadeInUp} className="bg-slate p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-100 group">
-                <Users className="w-12 h-12 text-navy mb-6 group-hover:scale-110 transition-transform" />
+                <Users className="w-12 h-12 text-gold mb-6 group-hover:scale-110 transition-transform" />
                 <h3 className="font-montserrat text-xl font-bold text-navy mb-3">700+ Strong Force</h3>
                 <p className="font-roboto text-gray-600">A dedicated, highly-trained, and continuously growing security and manpower force.</p>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="bg-slate p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-100 group">
-                <Building2 className="w-12 h-12 text-navy mb-6 group-hover:scale-110 transition-transform" />
+                <Building2 className="w-12 h-12 text-gold mb-6 group-hover:scale-110 transition-transform" />
                 <h3 className="font-montserrat text-xl font-bold text-navy mb-3">Premium Clientele</h3>
                 <p className="font-roboto text-gray-600">Trusted by Multinational Corporations, Educational Institutions, Healthcare Facilities, and Logistics Hubs.</p>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="bg-slate p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-100 group">
-                <HeartHandshake className="w-12 h-12 text-navy mb-6 group-hover:scale-110 transition-transform" />
+                <HeartHandshake className="w-12 h-12 text-gold mb-6 group-hover:scale-110 transition-transform" />
                 <h3 className="font-montserrat text-xl font-bold text-navy mb-3">Employee Focus</h3>
                 <p className="font-roboto text-gray-600">Standard wages and comprehensive health benefits provided in full and always on time.</p>
               </motion.div>

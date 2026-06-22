@@ -3,14 +3,14 @@
 import React, { useState, useEffect } from "react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import { 
-  Building2, 
-  GraduationCap, 
-  Briefcase, 
-  HeartPulse, 
-  UtensilsCrossed, 
-  Store, 
-  Factory, 
+import {
+  Building2,
+  GraduationCap,
+  Briefcase,
+  HeartPulse,
+  UtensilsCrossed,
+  Store,
+  Factory,
   Home,
   CheckCircle2,
   Target,
@@ -20,22 +20,26 @@ import {
   Truck,
   Radio,
   Siren,
-  Award
+  Award,
+  Users,
+  Clock,
+  TrendingUp,
+  Shield,
 } from "lucide-react";
 import Header from "./header";
 import Footer from "./footer";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
+    transition: { staggerChildren: 0.12 },
+  },
 };
 
 export default function AboutClient() {
@@ -59,26 +63,46 @@ export default function AboutClient() {
     };
   }, []);
 
-  const logistics = [
-    { icon: <Radio className="w-6 h-6" />, title: "Communications", desc: "State-of-the-art radio & dispatch systems." },
-    { icon: <Truck className="w-6 h-6" />, title: "Response Vehicles", desc: "Rapid deployment and emergency transport." },
-    { icon: <Siren className="w-6 h-6" />, title: "Fire Safety", desc: "Advanced fire suppression and monitoring." },
-    { icon: <ShieldCheck className="w-6 h-6" />, title: "Weapons Asset", desc: "Licensed and strictly regulated armory." },
+  const stats = [
+    { value: "12+", label: "Years Active", icon: <Clock className="w-5 h-5" /> },
+    { value: "700+", label: "Elite Personnel", icon: <Users className="w-5 h-5" /> },
+    { value: "99.8%", label: "Client Retention", icon: <TrendingUp className="w-5 h-5" /> },
+    { value: "500+", label: "Clients Nationwide", icon: <Shield className="w-5 h-5" /> },
   ];
 
   const coreValues = [
-    "God-fearing", "Humble", "Loyal", "Integrity", "Reliability", "Service Excellence-driven"
+    { title: "God-fearing", desc: "Guided by faith and moral principles in every decision we make." },
+    { title: "Humble", desc: "Approaching every client and challenge with modesty and respect." },
+    { title: "Loyal", desc: "Unwavering dedication to our clients, personnel, and mission." },
+    { title: "Integrity", desc: "Transparent operations and honest dealings at every level." },
+    { title: "Reliability", desc: "Consistent, dependable service when it matters most." },
+    { title: "Service Excellence", desc: "Relentless pursuit of the highest standards in security." },
+  ];
+
+  const pillars = [
+    {
+      icon: <Target className="w-7 h-7" />,
+      title: "Our Vision",
+      desc: "Be the leader in providing competent, functional & resilient security and manpower services with an end result of being one of the finest services provider in the country.",
+      span: "col-span-1 md:col-span-2",
+    },
+    {
+      icon: <Compass className="w-7 h-7" />,
+      title: "Our Mission",
+      desc: "To effectively provide SECURITY & MANPOWER SOLUTIONS for every business establishment, multinational corporations, schools, universities, and events nationwide, servicing fellow Filipinos to create more jobs helping this industry to grow further.",
+      span: "col-span-1 md:col-span-2",
+    },
   ];
 
   const industries = [
-    { icon: <Building2 className="w-8 h-8" />, title: "Commercial & High-Rise Buildings", image: "/images/industries/img1.jpeg" },
-    { icon: <GraduationCap className="w-8 h-8" />, title: "Educational Institutions (Schools & Campuses)", image: "/images/industries/img2.jpeg" },
-    { icon: <Briefcase className="w-8 h-8" />, title: "Multinational Corporations & BPOs", image: "/images/industries/img3.jpeg" },
-    { icon: <HeartPulse className="w-8 h-8" />, title: "Healthcare Facilities & Hospitals", image: "/images/industries/taytayDoctors.jpg" },
-    { icon: <UtensilsCrossed className="w-8 h-8" />, title: "Hospitality (Hotels & Restaurants)", image: "/images/industries/elJardin.jpg" },
-    { icon: <Store className="w-8 h-8" />, title: "Retail Centers & Malls", image: "/images/industries/LazadaWarehouse.jpg" },
-    { icon: <Factory className="w-8 h-8" />, title: "Industrial, Manufacturing & Logistics", image: "/images/industries/Logistics.png" },
-    { icon: <Home className="w-8 h-8" />, title: "Residential Subdivisions & Condominiums", image: "/images/industries/GolfHill.jpeg" }
+    { icon: <Building2 className="w-6 h-6" />, title: "Commercial & High-Rise Buildings", image: "/images/industries/img1.jpeg" },
+    { icon: <GraduationCap className="w-6 h-6" />, title: "Educational Institutions", image: "/images/industries/img2.jpeg" },
+    { icon: <Briefcase className="w-6 h-6" />, title: "Multinational Corporations & BPOs", image: "/images/industries/img3.jpeg" },
+    { icon: <HeartPulse className="w-6 h-6" />, title: "Healthcare Facilities & Hospitals", image: "/images/industries/taytayDoctors.jpg" },
+    { icon: <UtensilsCrossed className="w-6 h-6" />, title: "Hospitality (Hotels & Restaurants)", image: "/images/industries/elJardin.jpg" },
+    { icon: <Store className="w-6 h-6" />, title: "Retail Centers & Malls", image: "/images/industries/LazadaWarehouse.jpg" },
+    { icon: <Factory className="w-6 h-6" />, title: "Industrial, Manufacturing & Logistics", image: "/images/industries/Logistics.png" },
+    { icon: <Home className="w-6 h-6" />, title: "Residential Subdivisions & Condos", image: "/images/industries/GolfHill.jpeg" },
   ];
 
   const competencies = [
@@ -92,257 +116,266 @@ export default function AboutClient() {
     "Design and Installation of CCTV cameras",
     "Security Risk Assessment, Planning and Design",
     "Investigation and Surveillance / VIP Security and K9 Services",
-    "Security Consultancy"
+    "Security Consultancy",
+  ];
+
+  const logistics = [
+    { icon: <Radio className="w-5 h-5" />, title: "Communications", desc: "State-of-the-art radio & dispatch systems." },
+    { icon: <Truck className="w-5 h-5" />, title: "Response Vehicles", desc: "Rapid deployment and emergency transport." },
+    { icon: <Siren className="w-5 h-5" />, title: "Fire Safety", desc: "Advanced fire suppression and monitoring." },
+    { icon: <ShieldCheck className="w-5 h-5" />, title: "Weapons Asset", desc: "Licensed and strictly regulated armory." },
+  ];
+
+  const certifications = [
+    "SEC Registration",
+    "License to Operate (valid until September 2029)",
+    "Business / Mayor's Permit",
+    "BIR Certificate of Registration",
+    "BIR Tax Clearance Certificate",
+    "Firearms Licenses (Authentic, Validated)",
+    "Firearms & Explosive Office (FEO) PNP, CAMP CRAME, QC - 2024-2028",
+    "SSS Certificate of Registration 2025 (Security)",
+    "Security Agency DOLE 174-17 Certificate of Registration 2024-2026",
+    "DOLE Non-Pending Case Certificate for CY 2024-2025",
+    "NLRC Non-Pending Case Certificate for CY 2024-2025",
+    "Telecommunication & Radio Licenses, NTC License Certification",
   ];
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <Header 
-        isScrolled={isScrolled} 
-        isMobileMenuOpen={isMobileMenuOpen} 
-        setIsMobileMenuOpen={setIsMobileMenuOpen} 
+      <Header
+        isScrolled={isScrolled}
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
 
       <main className="grow pt-20">
-      <section 
-        className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden bg-navy"
-        aria-label="About MVPManila Security Agency"
-      >
-        <motion.div 
-          className="absolute inset-0 z-0 w-full h-[120%]"
-          style={{ y: isMounted ? scrollY * 0.4 : 0 }}
-          initial={{ scale: 1.05 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          <Image
-            src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=2670&auto=format&fit=crop"
-            alt="Professional security guards standing in line"
-            fill
-            priority
-            className="object-cover object-center"
-              sizes="100vw"
-              quality={75}
-            />
-          </motion.div>
-        
-        <div className="absolute inset-0 z-10 bg-navy/70 mix-blend-multiply" aria-hidden="true" />
-        <div className="absolute inset-0 z-10 bg-linear-to-t from-navy/90 via-navy/40 to-transparent" aria-hidden="true" />
 
-        <div className="relative z-20 w-full max-w-4xl mx-auto px-4 text-center mt-10">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.15 }
-              }
+        {/* ═══════════════════════════════════════════════════════════
+            SECTION 1: PREMIUM TACTICAL PAGE BANNER
+            Ultra-modern corporate header with abstract background textures
+        ═══════════════════════════════════════════════════════════ */}
+        <section className="relative bg-white overflow-hidden border-b border-[#E2E8F0]">
+          {/* ── Radial gradient base ── */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+            style={{
+              background: "radial-gradient(ellipse 80% 60% at 50% 0%, #FFFFFF 0%, #F8FAFC 100%)",
             }}
-          >
-            <motion.h1 
-              variants={fadeInUp}
-              className="font-montserrat text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6"
-            >
-              ABOUT US
-            </motion.h1>
-            <motion.p 
-              variants={fadeInUp}
-              className="font-roboto text-xl md:text-2xl text-gold font-medium tracking-wide max-w-3xl mx-auto"
-            >
-              We deliver professional security services founded on integrity, expertise, and commitment.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+          />
 
-      <section className="py-24 md:py-32 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.h2 
-              variants={fadeInUp}
-              className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-8 uppercase tracking-wide"
-            >
-              WELCOME TO MVPMANILA SECURITY AGENCY INC.
-            </motion.h2>
-            <motion.div 
-              variants={fadeInUp}
-              className="w-24 h-1 bg-gold mx-auto mb-10 rounded-full"
-            />
-            <motion.p 
-              variants={fadeInUp}
-              className="font-roboto text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
-            >
-              MVPManila Security Agency Inc. (MVPMSAI) offers Total Security Solutions designed to cope with current security trends. We take pride in having gained the confidence of hundreds of clients nationwide.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+          {/* ── LEFT: Vertical tech lines (blueprint margins) ── */}
+          <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-[#0A192F]/[0.04] to-transparent" style={{ left: "8%" }} aria-hidden="true" />
+          <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-[#0A192F]/[0.03] to-transparent" style={{ left: "8.5%" }} aria-hidden="true" />
+          <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-transparent via-[#047857]/[0.04] to-transparent" style={{ left: "9%" }} aria-hidden="true" />
 
-      <section className="py-24 bg-[#F8FAFC]">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          >
-            <motion.div 
-              variants={fadeInUp}
-              className="bg-white p-10 md:p-12 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
-            >
-              <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center mb-8 text-navy">
-                <Target className="w-7 h-7" />
-              </div>
-              <h3 className="font-montserrat text-2xl font-bold text-navy mb-4">Our Vision</h3>
-              <p className="font-roboto text-[15px] leading-[1.8] text-gray-600 grow">
-                Be the leader in providing competent, functional & resilient security and manpower services with an end result of being one of the finest services provider in the country.
-              </p>
-            </motion.div>
+          {/* ── RIGHT: Isometric radar/sonar rings ── */}
+          <div className="absolute top-1/2 -translate-y-1/2 pointer-events-none" style={{ right: "-5%", opacity: 0.04 }} aria-hidden="true">
+            <svg width="600" height="600" viewBox="0 0 600 600" fill="none">
+              {/* Concentric sonar rings */}
+              <circle cx="300" cy="300" r="80" stroke="#0A192F" strokeWidth="1" />
+              <circle cx="300" cy="300" r="140" stroke="#0A192F" strokeWidth="0.75" strokeDasharray="4 6" />
+              <circle cx="300" cy="300" r="200" stroke="#0A192F" strokeWidth="0.5" />
+              <circle cx="300" cy="300" r="260" stroke="#0A192F" strokeWidth="0.5" strokeDasharray="2 8" />
+              <circle cx="300" cy="300" r="300" stroke="#0A192F" strokeWidth="0.5" strokeDasharray="1 12" />
+              {/* Crosshair lines */}
+              <line x1="300" y1="0" x2="300" y2="600" stroke="#0A192F" strokeWidth="0.5" />
+              <line x1="0" y1="300" x2="600" y2="300" stroke="#0A192F" strokeWidth="0.5" />
+              {/* Diagonal tracking lines */}
+              <line x1="100" y1="100" x2="500" y2="500" stroke="#047857" strokeWidth="0.5" />
+              <line x1="500" y1="100" x2="100" y2="500" stroke="#047857" strokeWidth="0.5" />
+              {/* Small tracking dots */}
+              <circle cx="300" cy="300" r="3" fill="#047857" />
+              <circle cx="380" cy="260" r="2" fill="#0A192F" />
+              <circle cx="240" cy="340" r="2" fill="#0A192F" />
+              <circle cx="320" cy="180" r="1.5" fill="#047857" />
+              <circle cx="200" cy="280" r="1.5" fill="#0A192F" />
+            </svg>
+          </div>
 
-            <motion.div 
-              variants={fadeInUp}
-              className="bg-[#0A192F] p-10 md:p-12 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_40px_rgba(10,25,47,0.3)] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl"></div>
-              
-              <div className="w-14 h-14 bg-[#1a2b45] rounded-xl flex items-center justify-center mb-8 text-gold relative z-10">
-                <Compass className="w-7 h-7" />
-              </div>
-              <h3 className="font-montserrat text-2xl font-bold text-white mb-4 relative z-10">Our Mission</h3>
-              <p className="font-roboto text-[15px] leading-[1.8] text-gray-300 grow relative z-10">
-                To effectively provide SECURITY & MANPOWER SOLUTIONS for every business establishment, multinational corporations, schools, universities, and events nationwide, servicing fellow Filipinos to create more jobs helping this industry to grow further.
-              </p>
-            </motion.div>
+          {/* ── RIGHT-LOWER: Fine grid mesh ── */}
+          <div className="absolute bottom-0 right-0 pointer-events-none" style={{ opacity: 0.025 }} aria-hidden="true">
+            <svg width="400" height="300" viewBox="0 0 400 300" fill="none">
+              {/* Horizontal grid lines */}
+              {[...Array(16)].map((_, i) => (
+                <line key={`h${i}`} x1="0" y1={i * 20} x2="400" y2={i * 20} stroke="#0A192F" strokeWidth="0.5" />
+              ))}
+              {/* Vertical grid lines */}
+              {[...Array(21)].map((_, i) => (
+                <line key={`v${i}`} x1={i * 20} y1="0" x2={i * 20} y2="300" stroke="#0A192F" strokeWidth="0.5" />
+              ))}
+              {/* Accent crosshair at intersection */}
+              <rect x="195" y="135" width="10" height="10" stroke="#047857" strokeWidth="0.75" fill="none" />
+              <line x1="200" y1="120" x2="200" y2="180" stroke="#047857" strokeWidth="0.5" />
+              <line x1="180" y1="140" x2="220" y2="140" stroke="#047857" strokeWidth="0.5" />
+            </svg>
+          </div>
 
-            <motion.div 
-              variants={fadeInUp}
-              className="bg-white p-10 md:p-12 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 flex flex-col h-full md:col-span-2 relative overflow-hidden"
-            >
-              <div className="absolute -bottom-10 -right-10 text-gray-50 opacity-50 pointer-events-none rotate-12">
-                <Star className="w-64 h-64" />
-              </div>
+          {/* ── Content ── */}
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
 
-              <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start relative z-10 h-full">
-                <div className="shrink-0 w-full md:w-1/3">
-                  <div className="w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center text-gold mb-6">
-                    <Star className="w-7 h-7" />
-                  </div>
-                  <h3 className="font-montserrat text-3xl font-bold text-navy leading-tight">
-                    Our Core <br className="hidden md:block" />
-                    <span className="text-gold">Values</span>
-                  </h3>
-                  <div className="w-12 h-1 bg-gray-200 mt-6 rounded-full" />
-                </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-12 w-full mt-2 md:mt-0">
-                  {coreValues.map((value, idx) => (
-                    <div 
-                      key={idx} 
-                      className="group flex items-start gap-4"
-                    >
-                      <div className="mt-1 font-montserrat text-xs font-bold text-gray-300 group-hover:text-gold transition-colors duration-300 w-6">
-                        0{idx + 1}.
-                      </div>
-                      <div>
-                        <h4 className="font-montserrat text-lg font-bold text-navy group-hover:text-gold transition-colors duration-300 mb-1">
-                          {value}
-                        </h4>
-                        <div className="h-[2px] w-0 bg-gold group-hover:w-8 transition-all duration-500 ease-out" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-[#F8FAFC]">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="text-center mb-20"
-          >
-            <motion.h2 
-              variants={fadeInUp}
-              className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-6"
-            >
-              Industries We Protect
-            </motion.h2>
-            <motion.div 
-              variants={fadeInUp}
-              className="w-24 h-1 bg-gold mx-auto rounded-full" 
-            />
-          </motion.div>
-          
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {industries.map((industry, idx) => (
-              <motion.div 
-                key={idx}
-                variants={fadeInUp}
-                className="group bg-white border border-[#E2E8F0] rounded-[16px] overflow-hidden hover:shadow-[0_12px_32px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
+              {/* LEFT — Breadcrumb + Title */}
+              <motion.div
+                className="lg:col-span-8"
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer}
               >
-                <div className="relative w-full overflow-hidden aspect-video border-b border-[#E2E8F0]">
-                  <Image
-                    src={industry.image}
-                    alt={industry.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                </div>
+                {/* Breadcrumb */}
+                <motion.nav
+                  variants={fadeInUp}
+                  aria-label="Breadcrumb"
+                  className="flex items-center gap-2 mb-6"
+                >
+                  <a
+                    href="/"
+                    className="font-roboto text-sm text-[#94A3B8] hover:text-[#0A192F] transition-colors duration-200 cursor-pointer"
+                  >
+                    Home
+                  </a>
+                  <span className="font-roboto text-sm text-[#CBD5E1]">/</span>
+                  <span className="font-roboto text-sm font-medium text-[#047857] flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#047857]" />
+                    About Us
+                  </span>
+                </motion.nav>
 
-                {/* Content Area */}
-                <div className="p-6 flex flex-col flex-1 justify-between">
-                  <div className="font-mono text-xs font-semibold text-gray-400 group-hover:text-gold transition-colors duration-300 tracking-widest uppercase">
-                    {String(idx + 1).padStart(2, '0')}
-                  </div>
-                  <h4 className="font-montserrat font-bold text-navy group-hover:text-gold transition-colors duration-300 text-base md:text-lg leading-snug mt-4">
-                    {industry.title}
-                  </h4>
-                </div>
+                {/* Page Title */}
+                <motion.h1
+                  variants={fadeInUp}
+                  className="font-montserrat text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-extrabold text-[#0A192F] leading-[1.05] tracking-[-0.02em]"
+                >
+                  About Us
+                </motion.h1>
               </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
-      <section className="py-24 bg-slate border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+            </div>
+          </div>
+        </section>
+
+
+        {/* ═══════════════════════════════════════════════════════════
+            SECTION 2: THE SECURITY BENTO GRID
+            Vision / Mission / Core Values — asymmetric bento layout
+        ═══════════════════════════════════════════════════════════ */}
+        <section className="py-24 md:py-32 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl"
+              variants={staggerContainer}
+              className="text-center mb-20"
             >
-              <Image
-                src="/images/aboutUS.jpeg"
-                alt="Security personnel in a professional briefing"
-                fill
-                className="object-cover scale-120"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+              <motion.h2
+                variants={fadeInUp}
+                className="font-montserrat text-3xl md:text-4xl font-bold text-[#0A192F] mb-6"
+              >
+                Foundation of Trust
+              </motion.h2>
+              <motion.div
+                variants={fadeInUp}
+                className="w-16 h-[3px] bg-[#047857] mx-auto rounded-full"
               />
-              <div className="absolute inset-0 bg-linear-to-tr from-navy/60 to-transparent"></div>
+            </motion.div>
+
+            {/* Vision + Mission Row */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid grid-cols-1 md:grid-cols-4 gap-5 mb-5"
+            >
+              {pillars.map((pillar, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={fadeInUp}
+                  className={`group relative bg-white border border-[#E2E8F0] rounded-2xl p-8 md:p-10 hover:border-[#047857] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(4,120,87,0.06)] ${pillar.span}`}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center text-[#0A192F] group-hover:bg-[#047857]/5 group-hover:text-[#047857] group-hover:border-[#047857]/20 transition-all duration-300 mb-6">
+                    {pillar.icon}
+                  </div>
+                  <h3 className="font-montserrat text-xl font-bold text-[#0A192F] mb-4 tracking-tight">
+                    {pillar.title}
+                  </h3>
+                  <p className="font-roboto text-[15px] leading-[1.8] text-[#64748B]">
+                    {pillar.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Core Values Grid */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-10 h-10 rounded-xl bg-[#047857]/10 flex items-center justify-center">
+                  <Star className="w-5 h-5 text-[#047857]" />
+                </div>
+                <h3 className="font-montserrat text-xl font-bold text-[#0A192F] tracking-tight">
+                  Core Values
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {coreValues.map((value, idx) => (
+                  <motion.div
+                    key={idx}
+                    variants={fadeInUp}
+                    className="group flex items-start gap-4 bg-white border border-[#E2E8F0] rounded-2xl p-6 hover:border-[#047857] transition-all duration-300 hover:shadow-[0_4px_20px_rgba(4,120,87,0.06)]"
+                  >
+                    <div className="shrink-0 w-8 h-8 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center font-montserrat text-xs font-bold text-[#94A3B8] group-hover:bg-[#047857] group-hover:text-white group-hover:border-[#047857] transition-all duration-300">
+                      {String(idx + 1).padStart(2, "0")}
+                    </div>
+                    <div>
+                      <h4 className="font-montserrat text-base font-bold text-[#0A192F] mb-1 group-hover:text-[#047857] transition-colors duration-300">
+                        {value.title}
+                      </h4>
+                      <p className="font-roboto text-sm text-[#94A3B8] leading-relaxed group-hover:text-[#64748B] transition-colors duration-300">
+                        {value.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+          </div>
+        </section>
+
+
+        {/* ═══════════════════════════════════════════════════════════
+            SECTION 3: INDUSTRIES WE PROTECT
+            Image-forward grid with overlay hover
+        ═══════════════════════════════════════════════════════════ */}
+        <section className="py-24 md:py-32 bg-[#F8FAFC]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="text-center mb-20"
+            >
+              <motion.h2
+                variants={fadeInUp}
+                className="font-montserrat text-3xl md:text-4xl font-bold text-[#0A192F] mb-6"
+              >
+                Industries We Protect
+              </motion.h2>
+              <motion.div
+                variants={fadeInUp}
+                className="w-16 h-[3px] bg-[#047857] mx-auto rounded-full"
+              />
             </motion.div>
 
             <motion.div
@@ -350,164 +383,278 @@ export default function AboutClient() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
             >
-              <motion.h2 
-                variants={fadeInUp}
-                className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-10"
-              >
-                Competencies
-              </motion.h2>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
-                {competencies.map((item, idx) => (
-                  <motion.div 
-                    key={idx}
-                    variants={fadeInUp}
-                    className="flex items-start gap-4"
-                  >
-                    <CheckCircle2 className="w-6 h-6 text-gold shrink-0 mt-0.5" />
-                    <span className="font-roboto text-gray-700 font-medium leading-tight">
-                      {item}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+              {industries.map((industry, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={fadeInUp}
+                  className="group relative bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden hover:border-[#047857] hover:shadow-[0_12px_32px_rgba(4,120,87,0.1)] transition-all duration-300"
+                >
+                  <div className="relative w-full overflow-hidden aspect-[4/3]">
+                    <Image
+                      src={industry.image}
+                      alt={industry.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/70 via-[#0A192F]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                      <div className="text-white mb-2">{industry.icon}</div>
+                      <h4 className="font-montserrat font-bold text-white text-sm leading-snug">
+                        {industry.title}
+                      </h4>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <div className="font-mono text-[10px] font-semibold text-[#CBD5E1] tracking-widest uppercase mb-2 group-hover:text-[#047857] transition-colors duration-300">
+                      {String(idx + 1).padStart(2, "0")}
+                    </div>
+                    <h4 className="font-montserrat font-bold text-[#0A192F] text-sm leading-snug group-hover:text-[#047857] transition-colors duration-300">
+                      {industry.title}
+                    </h4>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* The Management Section - Commented out
-      <section className="py-24 bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <motion.h2 
+          </div>
+        </section>
+
+
+        {/* ═══════════════════════════════════════════════════════════
+            SECTION 4: COMPETENCIES
+            Split layout — image left, checklist right
+        ═══════════════════════════════════════════════════════════ */}
+        <section className="py-24 md:py-32 bg-white border-t border-[#E2E8F0]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="relative h-[500px] lg:h-[600px] w-full rounded-2xl overflow-hidden border border-[#E2E8F0]"
+              >
+                <Image
+                  src="/images/aboutUS.jpeg"
+                  alt="Security personnel in a professional briefing"
+                  fill
+                  className="object-cover scale-125"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#0A192F]/40 to-transparent" />
+              </motion.div>
+
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <motion.div
+                  variants={fadeInUp}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#047857]/10 border border-[#047857]/20 mb-6"
+                >
+                  <ShieldCheck className="w-4 h-4 text-[#047857]" />
+                  <span className="font-roboto text-xs font-semibold text-[#047857] tracking-wider uppercase">
+                    Our Expertise
+                  </span>
+                </motion.div>
+
+                <motion.h2
+                  variants={fadeInUp}
+                  className="font-montserrat text-3xl md:text-4xl font-bold text-[#0A192F] mb-10 tracking-tight"
+                >
+                  Competencies
+                </motion.h2>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
+                  {competencies.map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      variants={fadeInUp}
+                      className="flex items-start gap-3"
+                    >
+                      <CheckCircle2 className="w-5 h-5 text-[#047857] shrink-0 mt-0.5" />
+                      <span className="font-roboto text-sm text-[#475569] font-medium leading-snug">
+                        {item}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
+
+        {/* ═══════════════════════════════════════════════════════════
+            SECTION 5: LOGISTICS & SUPPORT
+            Bento cards with image
+        ═══════════════════════════════════════════════════════════ */}
+        <section className="py-24 md:py-32 bg-[#F8FAFC]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+              >
+                <motion.div
+                  variants={fadeInUp}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#047857]/10 border border-[#047857]/20 mb-6"
+                >
+                  <Truck className="w-4 h-4 text-[#047857]" />
+                  <span className="font-roboto text-xs font-semibold text-[#047857] tracking-wider uppercase">
+                    Operational Assets
+                  </span>
+                </motion.div>
+
+                <motion.h2
+                  variants={fadeInUp}
+                  className="font-montserrat text-3xl md:text-4xl font-bold text-[#0A192F] mb-6 tracking-tight"
+                >
+                  Logistics & Support
+                </motion.h2>
+
+                <motion.p
+                  variants={fadeInUp}
+                  className="font-roboto text-lg text-[#64748B] mb-10 leading-relaxed"
+                >
+                  Behind every secure operation is our commitment to dependable logistics and support. We equip our detachments with the highest grade of operational assets.
+                </motion.p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {logistics.map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      variants={fadeInUp}
+                      className="group bg-white border border-[#E2E8F0] rounded-2xl p-6 hover:border-[#047857] transition-all duration-300 hover:shadow-[0_4px_20px_rgba(4,120,87,0.06)]"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center text-[#0A192F] group-hover:bg-[#047857]/5 group-hover:text-[#047857] group-hover:border-[#047857]/20 transition-all duration-300 mb-4">
+                        {item.icon}
+                      </div>
+                      <h4 className="font-montserrat font-bold text-[#0A192F] text-sm mb-1.5 group-hover:text-[#047857] transition-colors duration-300">
+                        {item.title}
+                      </h4>
+                      <p className="font-roboto text-xs text-[#94A3B8] leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="relative h-[450px] lg:h-[550px] w-full rounded-2xl overflow-hidden border border-[#E2E8F0]"
+              >
+                <Image
+                  src="https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=2080&auto=format&fit=crop"
+                  alt="Security logistics and tactical equipment"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
+
+        {/* ═══════════════════════════════════════════════════════════
+            SECTION 6: PERMITS, LICENSES & COMPLIANCE
+            Military-grade metrics with green status indicators
+        ═══════════════════════════════════════════════════════════ */}
+        <section className="py-24 md:py-32 bg-white border-t border-[#E2E8F0]">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="text-center mb-16"
+            >
+              <motion.div
+                variants={fadeInUp}
+                className="w-14 h-14 rounded-2xl bg-[#047857]/10 border border-[#047857]/20 flex items-center justify-center mx-auto mb-6"
+              >
+                <Award className="w-7 h-7 text-[#047857]" />
+              </motion.div>
+              <motion.h2
+                variants={fadeInUp}
+                className="font-montserrat text-3xl md:text-4xl font-bold text-[#0A192F] mb-6 tracking-tight"
+              >
+                Permits, Licenses & Compliance
+              </motion.h2>
+              <motion.p
+                variants={fadeInUp}
+                className="font-roboto text-lg text-[#64748B] leading-relaxed max-w-3xl mx-auto"
+              >
+                MVPManila Security Agency Inc. strictly complies with all government-mandated business permits, licenses, registrations, certifications, and memberships.
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
+              {certifications.map((cert, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={fadeInUp}
+                  className="group flex items-start gap-3 p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#047857] hover:bg-white hover:shadow-[0_4px_20px_rgba(4,120,87,0.06)] transition-all duration-300"
+                >
+                  <div className="shrink-0 mt-0.5">
+                    <div className="w-2 h-2 rounded-full bg-[#047857] group-hover:scale-125 transition-transform duration-300" />
+                  </div>
+                  <span className="font-roboto text-sm font-medium text-[#334155] leading-snug group-hover:text-[#0A192F] transition-colors duration-300">
+                    {cert}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Compliance Ticker */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-4"
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="mt-12 flex flex-wrap items-center justify-center gap-6 md:gap-10 py-8 px-6 rounded-2xl bg-[#0A192F]"
             >
-              The Management
-            </motion.h2>
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="w-24 h-1 bg-gold mx-auto rounded-full mb-6" 
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <motion.div 
-                key={item}
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                className="group flex flex-col items-center"
-              >
-                <div className="w-48 h-48 bg-slate rounded-full mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:border-gold transition-colors duration-300 relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-roboto text-sm">
-                    Photo Placeholder
-                  </div>
-                </div>
-                <h4 className="font-montserrat font-bold text-xl text-navy mb-1">Executive Name</h4>
-                <p className="font-roboto text-gold font-medium text-sm mb-3 uppercase tracking-wider">Board Director</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      */}
-
-      <section className="py-24 bg-slate">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-6">
-                Logistics & Support
-              </h2>
-              <p className="font-roboto text-lg text-gray-600 mb-8 leading-relaxed">
-                Behind every secure operation is our commitment to dependable logistics and support. We equip our detachments with the highest grade of operational assets.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {logistics.map((item, idx) => (
-                  <div key={idx} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <div className="text-navy mb-3">{item.icon}</div>
-                    <h4 className="font-montserrat font-bold text-navy text-sm mb-2">{item.title}</h4>
-                    <p className="font-roboto text-xs text-gray-500">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=2080&auto=format&fit=crop"
-                alt="Security logistics and tactical equipment"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-navy/20"></div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-white text-center border-t border-gray-200">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Award className="w-8 h-8 text-gold" />
-            </div>
-            <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-6">
-              Permits, Licenses & Membership
-            </h2>
-            <p className="font-roboto text-lg text-gray-600 leading-relaxed mb-12 max-w-4xl mx-auto">
-              Like any other businesses, MVPMANILA SECURITY AGENCY INC (MVPMSAI) strictly complies with all government mandated business permits, licenses, registrations, certifications and memberships such as:
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
               {[
-                'SEC Registration', 
-                'License to Operate (valid until September 2029)', 
-                'Business / Mayor’s Permit', 
-                'BIR Certificate of Registration',
-                'BIR Tax Clearance Certificate',
-                'Firearms Licenses (Authentic, Validated)',
-                'Firearms & Explosive Office (FEO) PNP, CAMP CRAME, QC - 2024 - 2028',
-                'SSS CERTIFICATE OF REGISTRATION 2025 (security)',
-                'Security Agency DOLE 174-17 2024 Certificate of Registration 2024-2026',
-                'DOLE Non-Pending Case Certificate for CY 2024-2025',
-                'NLRC Non-Pending Case Certificate for CY 2024-2025',
-                'Telecommunication & Radio Licenses, NTC License Certification'
-              ].map((cert, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-4 rounded-xl bg-slate border border-gray-100 hover:border-gold hover:shadow-md transition-all duration-300 group">
-                  <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span className="font-roboto text-sm font-medium text-navy leading-snug">
-                    {cert}
+                "PNP-SOSIA Compliant",
+                "DOLE Registered",
+                "Fully Bonded & Insured",
+                "RA-11917 Certified",
+              ].map((badge, idx) => (
+                <div key={idx} className="flex items-center gap-2.5">
+                  <div className="w-2 h-2 rounded-full bg-[#047857] shadow-[0_0_8px_rgba(4,120,87,0.6)]" />
+                  <span className="font-roboto text-sm font-medium text-white/80">
+                    {badge}
                   </span>
                 </div>
               ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            </motion.div>
+
+          </div>
+        </section>
 
       </main>
 
