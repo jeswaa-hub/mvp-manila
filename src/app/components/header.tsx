@@ -95,7 +95,7 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
         {/* Desktop Contact Button - Only on lg screens */}
         <button 
           onClick={() => setIsContactModalOpen(true)}
-          className={`hidden lg:block bg-emerald-500 text-white font-bold py-2.5 px-6 rounded-sm font-montserrat transition-all duration-300 hover:bg-emerald-600 hover:shadow-md ${isTransparent ? "shadow-[0_0_15px_rgba(16,185,129,0.3)]" : ""}`}
+          className={`hidden lg:block bg-gold text-white font-bold py-2.5 px-6 rounded-sm font-montserrat transition-all duration-300 hover:bg-emerald-700 hover:shadow-md ${isTransparent ? "shadow-[0_0_15px_rgba(4,120,87,0.3)]" : ""}`}
         >
           Contact Us
         </button>
@@ -134,7 +134,7 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
                 setIsContactModalOpen(true);
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full bg-emerald-500 text-white font-bold py-3 rounded-sm font-montserrat hover:bg-emerald-600 transition-colors"
+              className="w-full bg-gold text-white font-bold py-3 rounded-sm font-montserrat hover:bg-emerald-700 transition-colors"
             >
               Contact Us
             </button>

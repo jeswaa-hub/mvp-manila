@@ -176,7 +176,7 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 w-12 h-12 bg-emerald-500 text-white rounded-full shadow-lg hover:shadow-xl hover:bg-emerald-600 transition-all z-50 flex items-center justify-center"
+            className="fixed bottom-8 right-8 w-12 h-12 bg-gold text-white rounded-full shadow-lg hover:shadow-xl hover:bg-emerald-700 transition-all z-50 flex items-center justify-center"
             aria-label="Scroll to top"
           >
             <ArrowUp size={20} strokeWidth={2.5} />
