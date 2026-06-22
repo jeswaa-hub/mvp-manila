@@ -7,8 +7,7 @@ import {
   FileBadge, 
   Users, 
   Building2, 
-  HeartHandshake,
-  Shield
+  HeartHandshake
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -181,132 +180,61 @@ export default function HomeClient() {
           <div className="pointer-events-none absolute bottom-[12%] right-[8%] hidden h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[120px] mix-blend-screen md:block" />
 
           {/* Content Container */}
-          <div className="relative z-20 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-28">
-            <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-16">
-              {/* Left Column - Text Content */}
-              <motion.div 
-                className="flex-1 w-full"
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.15, delayChildren: 0.1 }
-                  }
-                }}
+          <motion.div 
+            className="relative z-20 mx-auto flex min-h-full w-full max-w-5xl flex-col items-center justify-center px-5 py-28 text-center sm:px-6 sm:py-32 md:px-6 md:py-28"
+            style={{ 
+              y: yBackground,
+              transformStyle: "preserve-3d" 
+            }}
+          >
+            {/* Top Accent Line */}
+            <motion.div 
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "60px", opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="mx-auto mb-6 h-1 w-12 rounded-full bg-gold shadow-[0_0_10px_rgba(255,215,0,0.5)] sm:mb-8 sm:w-[60px]"
+            />
+
+            <h1 className="mb-6 font-montserrat text-[clamp(2.55rem,10vw,4.6rem)] font-extrabold leading-[0.96] tracking-[-0.03em] text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] sm:mb-8 sm:text-[clamp(3.2rem,9vw,5.25rem)] sm:leading-[1.01] md:text-6xl md:leading-[1.03] lg:text-7xl xl:text-[80px]">
+              {"Securing people, facilities, and assets with reliability, integrity, and service excellence.".split(" ").map((word, i) => (
+                <motion.span 
+                  key={i} 
+                  initial={{ opacity: 0, y: 15, rotateX: -45 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1], delay: 0.3 + i * 0.04 }}
+                  className="inline-block mr-[0.25em]"
+                  style={{ transformOrigin: "bottom" }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </h1>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.8 }}
+              className="mb-8 font-roboto text-sm font-medium uppercase tracking-[0.16em] text-gold sm:mb-10 sm:text-base sm:tracking-[0.2em] md:text-xl lg:text-2xl"
+            >
+              Together we can, Together we will
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 1 }}
+              className="mt-2 w-full sm:mt-4"
+            >
+              <Link
+                href="/about-us"
+                className="group relative inline-flex min-h-14 w-full items-center justify-center overflow-hidden rounded-full bg-gold px-6 py-4 text-navy shadow-[0_0_40px_rgba(255,215,0,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400 hover:shadow-[0_0_60px_rgba(255,215,0,0.5)] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-[#050B14] sm:min-h-0 sm:w-auto sm:px-10 md:px-12"
+                aria-label="Learn more about MVPManila Security Agency services"
               >
-                {/* Badge */}
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, y: 15 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-                  }}
-                  className="inline-flex items-center gap-2 sm:gap-3 mb-5 sm:mb-6 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm"
-                >
-                  <span className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gold/20">
-                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gold"></span>
-                  </span>
-                  <span className="font-montserrat text-[10px] sm:text-xs font-semibold tracking-[0.1em] sm:tracking-[0.12em] text-white/80 uppercase">
-                    DOLE Certified · Since 2013
-                  </span>
-                </motion.div>
-
-                {/* Heading */}
-                <motion.h1 
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-                  }}
-                  className="font-montserrat text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold leading-[1.1] sm:leading-[1.08] tracking-tight text-white mb-5 sm:mb-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]"
-                >
-                  Securing people, facilities, and assets with{" "}
-                  <span className="italic">reliability, integrity, and service excellence.</span>
-                </motion.h1>
-
-                {/* Description */}
-                <motion.p 
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-                  }}
-                  className="font-roboto text-sm sm:text-base text-white/70 leading-relaxed mb-6 sm:mb-8 max-w-xl"
-                >
-                  Since 2013, MVPManila has been the trusted security partner for multinational 
-                  corporations, educational institutions, and healthcare facilities across the 
-                  Philippines. We deliver professional guarding, risk management, and comprehensive 
-                  security solutions tailored to your organization&apos;s needs.
-                </motion.p>
-
-                {/* CTAs */}
-                <motion.div 
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-                  }}
-                  className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
-                >
-                  <button
-                    onClick={() => setIsContactModalOpen(true)}
-                    className="w-full sm:w-auto group inline-flex items-center justify-center bg-gold text-navy px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-montserrat text-xs sm:text-sm font-bold uppercase tracking-[0.1em] transition-all duration-300 hover:bg-yellow-400 hover:shadow-[0_0_40px_rgba(255,215,0,0.4)] hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-[#050B14] cursor-pointer"
-                  >
-                    Get a Free Consultation
-                  </button>
-                  <Link
-                    href="/services"
-                    className="w-full sm:w-auto group inline-flex items-center justify-center sm:justify-start gap-2 font-montserrat text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] text-white/80 hover:text-white transition-colors duration-300"
-                  >
-                    Our Services
-                    <svg 
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </motion.div>
-              </motion.div>
-
-              {/* Right Column - Image */}
-              <motion.div 
-                className="flex-1 w-full relative hidden sm:block"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              >
-                <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] rounded-lg overflow-hidden border border-white/10">
-                  <Image
-                    src="/images/HeroSection.jpeg"
-                    alt="MVPManila security professionals in modern corporate lobby"
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 45vw"
-                  />
-                </div>
-
-                {/* Floating Card */}
-                <motion.div 
-                  className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 sm:px-5 sm:py-4 shadow-[0_8px_30px_rgba(0,0,0,0.3)] max-w-[220px] sm:max-w-[280px]"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-                >
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-navy/10 flex items-center justify-center">
-                      <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-navy" />
-                    </div>
-                    <div>
-                      <p className="font-montserrat text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider">24/7 Coverage</p>
-                      <p className="font-montserrat text-sm sm:text-lg font-bold text-navy">Active Operations</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
+                <span className="relative z-10 text-center font-montserrat text-sm font-bold uppercase tracking-[0.12em] sm:text-base md:text-lg">Learn More About Us</span>
+                <div className="absolute inset-0 h-full w-0 bg-white/30 transition-all duration-500 ease-out group-hover:w-full z-0 transform skew-x-12 -ml-4"></div>
+              </Link>
+            </motion.div>
+          </motion.div>
 
           {/* Scroll Indicator */}
           <motion.div 
