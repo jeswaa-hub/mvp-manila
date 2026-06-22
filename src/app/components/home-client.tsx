@@ -214,7 +214,7 @@ export default function HomeClient() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.8 }}
-              className="mb-8 font-roboto text-sm font-medium uppercase tracking-[0.16em] text-gold sm:mb-10 sm:text-base sm:tracking-[0.2em] md:text-xl lg:text-2xl"
+              className="mb-8 font-roboto text-sm font-medium uppercase tracking-[0.16em] text-white sm:mb-10 sm:text-base sm:tracking-[0.2em] md:text-xl lg:text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
             >
               Together we can, Together we will
             </motion.p>
