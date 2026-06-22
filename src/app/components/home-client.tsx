@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
 import { 
   ShieldCheck, 
   FileBadge, 
@@ -96,6 +96,32 @@ export default function HomeClient() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
+  // Parallax Effects
+  const { scrollY: framerScrollY } = useScroll();
+  const yBackground = useTransform(framerScrollY, [0, 1000], [0, 300]);
+  
+  // Mouse Tracking for Gradient
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
+  const mouseXProgress = useSpring(useTransform(mouseX, [-0.5, 0.5], [0, 100]), springConfig);
+  const mouseYProgress = useSpring(useTransform(mouseY, [-0.5, 0.5], [0, 100]), springConfig);
+  const backgroundGradient = useMotionTemplate`radial-gradient(circle at ${mouseXProgress}% ${mouseYProgress}%, rgba(255, 215, 0, 0.15) 0%, transparent 60%)`;
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (matchMedia("(pointer: coarse)").matches) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const mouseXValue = (e.clientX - rect.left) / rect.width - 0.5;
+    const mouseYValue = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(mouseXValue);
+    mouseY.set(mouseYValue);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -106,19 +132,7 @@ export default function HomeClient() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen relative">
-      {/* Fixed Background Logo Silhouette - follows scroll everywhere */}
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0" aria-hidden="true">
-        <Image
-          src="/images/logo1.jpg"
-          alt=""
-          width={800}
-          height={800}
-          className="w-[500px] h-[500px] md:w-[700px] md:h-[700px] object-contain opacity-[0.06]"
-          priority={false}
-        />
-      </div>
-
+    <div className="flex flex-col min-h-screen">
       <Header 
         isScrolled={isScrolled} 
         isMobileMenuOpen={isMobileMenuOpen} 
@@ -128,10 +142,46 @@ export default function HomeClient() {
       <main className="grow relative z-10">
         <section 
           id="home" 
-          className="relative w-full overflow-hidden"
+          className="hero-fullscreen relative w-full flex items-center justify-center overflow-hidden bg-[#050B14]"
           aria-label="Welcome to MVPManila Security Agency"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{ perspective: 1200 }}
         >
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-28">
+          {/* Layered Parallax Background */}
+          <motion.div 
+            className="absolute inset-0 z-0 w-full h-[120%]"
+            style={{ y: yBackground }}
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+          >
+            <Image
+              src="/images/bgHeroSection.jpeg"
+              alt="Modern corporate skyscrapers representing secure facilities and corporate integrity"
+              fill
+              priority
+              className="object-cover object-[62%_center] md:object-center"
+              sizes="100vw"
+              quality={75}
+            />
+          </motion.div>
+
+          {/* Premium Gradient Overlays for Depth */}
+          <div className="absolute inset-0 z-10 bg-navy/70 mix-blend-multiply" aria-hidden="true" />
+          <div className="absolute inset-0 z-10 bg-linear-to-b from-[#050B14]/94 via-[#0A192F]/72 to-[#050B14]/96 md:from-[#050B14]/90 md:via-[#0A192F]/50 md:to-[#050B14]/95" aria-hidden="true" />
+          <motion.div 
+            className="absolute inset-0 z-10" 
+            style={{ background: backgroundGradient }} 
+            aria-hidden="true" 
+          />
+
+          {/* Glowing Orbs / Particles */}
+          <div className="pointer-events-none absolute left-1/2 top-[16%] h-48 w-48 -translate-x-1/2 rounded-full bg-gold/10 blur-[72px] mix-blend-screen md:left-1/4 md:top-1/4 md:h-96 md:w-96 md:translate-x-0 md:blur-[100px]" />
+          <div className="pointer-events-none absolute bottom-[12%] right-[8%] hidden h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[120px] mix-blend-screen md:block" />
+
+          {/* Content Container */}
+          <div className="relative z-20 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-28">
             <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-16">
               {/* Left Column - Text Content */}
               <motion.div 
@@ -152,12 +202,12 @@ export default function HomeClient() {
                     hidden: { opacity: 0, y: 15 },
                     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
                   }}
-                  className="inline-flex items-center gap-2 sm:gap-3 mb-5 sm:mb-6 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gray-200 bg-gray-50/50"
+                  className="inline-flex items-center gap-2 sm:gap-3 mb-5 sm:mb-6 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm"
                 >
-                  <span className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gold/10">
+                  <span className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gold/20">
                     <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gold"></span>
                   </span>
-                  <span className="font-montserrat text-[10px] sm:text-xs font-semibold tracking-[0.1em] sm:tracking-[0.12em] text-gray-600 uppercase">
+                  <span className="font-montserrat text-[10px] sm:text-xs font-semibold tracking-[0.1em] sm:tracking-[0.12em] text-white/80 uppercase">
                     DOLE Certified · Since 2013
                   </span>
                 </motion.div>
@@ -168,7 +218,7 @@ export default function HomeClient() {
                     hidden: { opacity: 0, y: 20 },
                     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
                   }}
-                  className="font-montserrat text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold leading-[1.1] sm:leading-[1.08] tracking-tight text-navy mb-5 sm:mb-6"
+                  className="font-montserrat text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold leading-[1.1] sm:leading-[1.08] tracking-tight text-white mb-5 sm:mb-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]"
                 >
                   Securing people, facilities, and assets with{" "}
                   <span className="italic">reliability, integrity, and service excellence.</span>
@@ -180,7 +230,7 @@ export default function HomeClient() {
                     hidden: { opacity: 0, y: 20 },
                     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
                   }}
-                  className="font-roboto text-sm sm:text-base text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-xl"
+                  className="font-roboto text-sm sm:text-base text-white/70 leading-relaxed mb-6 sm:mb-8 max-w-xl"
                 >
                   Since 2013, MVPManila has been the trusted security partner for multinational 
                   corporations, educational institutions, and healthcare facilities across the 
@@ -198,13 +248,13 @@ export default function HomeClient() {
                 >
                   <button
                     onClick={() => setIsContactModalOpen(true)}
-                    className="w-full sm:w-auto group inline-flex items-center justify-center bg-navy text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded font-montserrat text-xs sm:text-sm font-bold uppercase tracking-[0.1em] transition-all duration-300 hover:bg-[#0D2240] hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2 cursor-pointer"
+                    className="w-full sm:w-auto group inline-flex items-center justify-center bg-gold text-navy px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-montserrat text-xs sm:text-sm font-bold uppercase tracking-[0.1em] transition-all duration-300 hover:bg-yellow-400 hover:shadow-[0_0_40px_rgba(255,215,0,0.4)] hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-[#050B14] cursor-pointer"
                   >
                     Get a Free Consultation
                   </button>
                   <Link
                     href="/services"
-                    className="w-full sm:w-auto group inline-flex items-center justify-center sm:justify-start gap-2 font-montserrat text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] text-navy transition-colors duration-300 hover:text-gray-600"
+                    className="w-full sm:w-auto group inline-flex items-center justify-center sm:justify-start gap-2 font-montserrat text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] text-white/80 hover:text-white transition-colors duration-300"
                   >
                     Our Services
                     <svg 
@@ -226,7 +276,7 @@ export default function HomeClient() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               >
-                <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] rounded-lg overflow-hidden">
+                <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] rounded-lg overflow-hidden border border-white/10">
                   <Image
                     src="/images/HeroSection.jpeg"
                     alt="MVPManila security professionals in modern corporate lobby"
@@ -239,7 +289,7 @@ export default function HomeClient() {
 
                 {/* Floating Card */}
                 <motion.div 
-                  className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 sm:px-5 sm:py-4 shadow-[0_8px_30px_rgba(0,0,0,0.12)] max-w-[220px] sm:max-w-[280px]"
+                  className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto bg-white/95 backdrop-blur-sm rounded-lg px-4 py-3 sm:px-5 sm:py-4 shadow-[0_8px_30px_rgba(0,0,0,0.3)] max-w-[220px] sm:max-w-[280px]"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
@@ -257,6 +307,25 @@ export default function HomeClient() {
               </motion.div>
             </div>
           </div>
+
+          {/* Scroll Indicator */}
+          <motion.div 
+            className="absolute bottom-4 lg:-bottom-5 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center justify-center sm:flex md:bottom-5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 1 }}
+          >
+            <span className="mb-3 rounded-full border border-white/20 bg-black/35 px-4 py-1.5 font-montserrat text-[11px] font-semibold uppercase tracking-[0.3em] text-white shadow-[0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-sm">
+              Scroll Explore
+            </span>
+            <div className="relative h-12 w-[2px] overflow-hidden rounded-full bg-white/35 shadow-[0_0_12px_rgba(255,255,255,0.18)]">
+              <motion.div 
+                className="absolute top-0 h-1/2 w-full rounded-full bg-gold shadow-[0_0_14px_rgba(255,215,0,0.75)]"
+                animate={{ top: ["-50%", "100%"] }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+              />
+            </div>
+          </motion.div>
         </section>
 
         <section id="about" className="py-20 bg-[#f8fafc]">
