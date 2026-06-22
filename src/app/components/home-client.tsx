@@ -167,8 +167,8 @@ export default function HomeClient() {
           </motion.div>
 
           {/* Premium Gradient Overlays for Depth */}
-          <div className="absolute inset-0 z-10 bg-navy/70 mix-blend-multiply" aria-hidden="true" />
-          <div className="absolute inset-0 z-10 bg-linear-to-b from-[#050B14]/94 via-[#0A192F]/72 to-[#050B14]/96 md:from-[#050B14]/90 md:via-[#0A192F]/50 md:to-[#050B14]/95" aria-hidden="true" />
+          <div className="absolute inset-0 z-10 bg-navy/50 mix-blend-multiply" aria-hidden="true" />
+          <div className="absolute inset-0 z-10 bg-linear-to-b from-[#050B14]/70 via-[#0A192F]/40 to-[#050B14]/75 md:from-[#050B14]/65 md:via-[#0A192F]/30 md:to-[#050B14]/70" aria-hidden="true" />
           <motion.div 
             className="absolute inset-0 z-10" 
             style={{ background: backgroundGradient }} 
