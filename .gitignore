@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# skills (installed via npx skills add)
+/.agents/skills/
+skills-lock.json
+
+# opencode config
+/.opencode/
+
+# trae config
+/.trae/
+
+# impeccable config
+/.impeccable/
