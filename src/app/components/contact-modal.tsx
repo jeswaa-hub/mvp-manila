@@ -313,34 +313,29 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <p className="font-roboto text-[13px] font-bold text-gray-400 mb-4 uppercase tracking-wider text-center">
                       Direct Lines
                     </p>
-                    <div className="grid grid-cols-2 gap-3">
-                      <a 
-                        href="tel:83537353" 
-                        className="flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl border border-gray-100 bg-white hover:border-gold hover:bg-gold/5 transition-all group"
-                      >
-                        <Phone size={16} className="text-gray-400 group-hover:text-gold transition-colors" />
-                        <span className="font-roboto font-medium text-navy text-sm">8353-7353</span>
-                      </a>
-                      <a 
-                        href="tel:83736860" 
-                        className="flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl border border-gray-100 bg-white hover:border-gold hover:bg-gold/5 transition-all group"
-                      >
-                        <Phone size={16} className="text-gray-400 group-hover:text-gold transition-colors" />
-                        <span className="font-roboto font-medium text-navy text-sm">8373-6860</span>
-                      </a>
+                    <div className="flex flex-col gap-3">
+                      <div className="grid grid-cols-2 gap-3">
+                        <a 
+                          href="tel:83537353" 
+                          className="flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl border border-gray-100 bg-white hover:border-gold hover:bg-gold/5 transition-all group"
+                        >
+                          <Phone size={16} className="text-gray-400 group-hover:text-gold transition-colors" />
+                          <span className="font-roboto font-medium text-navy text-sm">8353-7353</span>
+                        </a>
+                        <a 
+                          href="tel:83736860" 
+                          className="flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl border border-gray-100 bg-white hover:border-gold hover:bg-gold/5 transition-all group"
+                        >
+                          <Phone size={16} className="text-gray-400 group-hover:text-gold transition-colors" />
+                          <span className="font-roboto font-medium text-navy text-sm">8373-6860</span>
+                        </a>
+                      </div>
                       <a 
                         href="tel:09258771953" 
                         className="flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl border border-gray-100 bg-white hover:border-gold hover:bg-gold/5 transition-all group"
                       >
                         <Smartphone size={16} className="text-gray-400 group-hover:text-gold transition-colors" />
                         <span className="font-roboto font-medium text-navy text-sm">0925-8771953</span>
-                      </a>
-                      <a 
-                        href="tel:09165890318" 
-                        className="flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl border border-gray-100 bg-white hover:border-gold hover:bg-gold/5 transition-all group"
-                      >
-                        <Smartphone size={16} className="text-gray-400 group-hover:text-gold transition-colors" />
-                        <span className="font-roboto font-medium text-navy text-sm">0916-5890318</span>
                       </a>
                     </div>
                   </div>

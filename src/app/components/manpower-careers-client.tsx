@@ -154,27 +154,27 @@ export default function ManpowerCareersClient() {
             <div className="border-b lg:border-b-0 lg:border-r border-slate-200">
               {/* Header Band */}
               <div className="border-b border-slate-200 px-8 lg:px-12 py-6 bg-white">
-                <span className="text-[#047857] font-montserrat font-bold text-[10px] tracking-[0.25em] uppercase block mb-2">For Corporate Clients</span>
-                <h2 className="text-xl font-bold text-[#0A192F] font-montserrat tracking-tight">
+                <span className="text-[#047857] font-montserrat font-bold text-xs tracking-[0.25em] uppercase block mb-2">For Corporate Clients</span>
+                <h2 className="text-2xl font-bold text-[#0A192F] font-montserrat tracking-tight">
                   Institutional Manpower Solutions
                 </h2>
               </div>
 
               {/* Addresses */}
               <div className="px-8 lg:px-12 py-10 border-b border-slate-200 bg-white">
-                <h3 className="text-[10px] font-bold text-[#047857] font-montserrat uppercase tracking-[0.2em] mb-6">Office Locations</h3>
+                <h3 className="text-xs font-bold text-[#047857] font-montserrat uppercase tracking-[0.2em] mb-6">Office Locations</h3>
                 <div className="grid sm:grid-cols-2 gap-px bg-slate-200">
                   <div className="bg-white p-6">
-                    <span className="text-[10px] font-bold text-[#0A192F] font-montserrat uppercase tracking-wider block mb-3">Main Office (Manila)</span>
-                    <p className="text-slate-500 text-xs leading-relaxed font-light">
+                    <span className="text-xs font-bold text-[#0A192F] font-montserrat uppercase tracking-wider block mb-3">Main Office (Manila)</span>
+                    <p className="text-slate-500 text-sm leading-relaxed font-light font-roboto">
                       1269 Estrada Street, Brgy. 749, Zone 81,<br />
                       Sta. Ana, Manila 1009, Philippines
                     </p>
                   </div>
                   <div className="bg-white p-6">
-                    <span className="text-[10px] font-bold text-[#0A192F] font-montserrat uppercase tracking-wider block mb-3">Office (Legazpi)</span>
-                    <p className="text-slate-500 text-xs leading-relaxed font-light">
-                      72 Purok 2, Brgy. 40, Washington Drive,<br />
+                    <span className="text-xs font-bold text-[#0A192F] font-montserrat uppercase tracking-wider block mb-3">Extension - Office (Legazpi)</span>
+                    <p className="text-slate-500 text-sm leading-relaxed font-light font-roboto">
+                      272 Purok, Bgy. 40, Washington Drive,<br />
                       Cruzada, Legazpi City 4500, Philippines
                     </p>
                   </div>
@@ -183,16 +183,16 @@ export default function ManpowerCareersClient() {
 
               {/* Contact Channels */}
               <div className="px-8 lg:px-12 py-10 bg-white">
-                <h3 className="text-[10px] font-bold text-[#047857] font-montserrat uppercase tracking-[0.2em] mb-6">Communication Channels</h3>
+                <h3 className="text-xs font-bold text-[#047857] font-montserrat uppercase tracking-[0.2em] mb-6">Communication Channels</h3>
                 <div className="space-y-0">
                   {[
-                    { label: "Landline Operations", value: "(8) 353-7353" },
+                    { label: "Landline Operations", value: "8353-7353 / 8373-6860" },
                     { label: "Mobile Operations", value: "(0925) 877-1953" },
                     { label: "Secure B2B Email", value: "mvpmanila2013@yahoo.com" },
                   ].map((channel, i) => (
                     <div key={i} className="border-b border-slate-100 py-4 last:border-0">
-                      <span className="text-[10px] font-bold text-[#047857] font-montserrat uppercase tracking-wider block mb-1">{channel.label}</span>
-                      <span className="text-[#0A192F] font-medium text-sm">{channel.value}</span>
+                      <span className="text-xs font-bold text-[#047857] font-montserrat uppercase tracking-wider block mb-1">{channel.label}</span>
+                      <span className="text-[#0A192F] font-medium text-sm font-roboto">{channel.value}</span>
                     </div>
                   ))}
                 </div>
@@ -203,15 +203,15 @@ export default function ManpowerCareersClient() {
             <div>
               {/* Header Band */}
               <div className="border-b border-slate-200 px-8 lg:px-12 py-6 bg-white">
-                <span className="text-[#047857] font-montserrat font-bold text-[10px] tracking-[0.25em] uppercase block mb-2">For Job Seekers</span>
-                <h2 className="text-xl font-bold text-[#0A192F] font-montserrat tracking-tight">
+                <span className="text-[#047857] font-montserrat font-bold text-xs tracking-[0.25em] uppercase block mb-2">For Job Seekers</span>
+                <h2 className="text-2xl font-bold text-[#0A192F] font-montserrat tracking-tight">
                   Join Our Workforce
                 </h2>
               </div>
 
               {/* Qualifications Checklist */}
               <div className="px-8 lg:px-12 py-10 border-b border-slate-200 bg-white">
-                <h3 className="text-[10px] font-bold text-[#047857] font-montserrat uppercase tracking-[0.2em] mb-6">Pre-Employment Qualifications</h3>
+                <h3 className="text-sm font-bold text-[#047857] font-montserrat uppercase tracking-[0.2em] mb-6">Pre-Employment Qualifications</h3>
                 <div className="space-y-0">
                   {[
                     { title: "Valid Government ID", detail: "Any issued government identification card for identity verification." },
@@ -222,12 +222,12 @@ export default function ManpowerCareersClient() {
                   ].map((item, i) => (
                     <div key={i} className="border-b border-slate-100 py-4 last:border-0">
                       <div className="flex items-start gap-3">
-                        <span className="w-4 h-4 border border-slate-300 flex-shrink-0 mt-0.5 flex items-center justify-center">
-                          <span className="text-[#047857] text-[10px] font-bold">{i + 1}</span>
+                        <span className="w-6 h-6 border border-slate-300 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                          <span className="text-[#047857] text-xs font-bold">{i + 1}</span>
                         </span>
                         <div>
-                          <span className="font-montserrat font-semibold text-[#0A192F] text-xs block mb-1">{item.title}</span>
-                          <span className="text-slate-400 text-[11px] font-light leading-relaxed">{item.detail}</span>
+                          <span className="font-montserrat font-semibold text-[#0A192F] text-base block mb-1">{item.title}</span>
+                           <span className="text-slate-600 text-sm font-medium leading-relaxed font-roboto">{item.detail}</span>
                         </div>
                       </div>
                     </div>
@@ -237,7 +237,7 @@ export default function ManpowerCareersClient() {
 
               {/* 4-Step Pipeline */}
               <div className="px-8 lg:px-12 py-10 bg-white">
-                <h3 className="text-[10px] font-bold text-[#047857] font-montserrat uppercase tracking-[0.2em] mb-6">4-Step Recruitment Pipeline</h3>
+                <h3 className="text-sm font-bold text-[#047857] font-montserrat uppercase tracking-[0.2em] mb-6">4-Step Recruitment Pipeline</h3>
                 <div className="space-y-0">
                   {[
                     { step: "01", title: "Systematic Vetting & Interview", description: "Comprehensive assessment of background documents and technical capacity verification." },
@@ -247,10 +247,10 @@ export default function ManpowerCareersClient() {
                   ].map((item, i) => (
                     <div key={i} className="border-b border-slate-100 py-4 last:border-0">
                       <div className="flex items-start gap-3">
-                        <span className="text-[#047857] font-montserrat font-bold text-xs tracking-[0.2em] flex-shrink-0 mt-0.5">{item.step}</span>
+                        <span className="text-[#047857] font-montserrat font-bold text-base tracking-[0.2em] flex-shrink-0 mt-0.5">{item.step}</span>
                         <div>
-                          <span className="font-montserrat font-semibold text-[#0A192F] text-xs block mb-1">{item.title}</span>
-                          <span className="text-slate-400 text-[11px] font-light leading-relaxed">{item.description}</span>
+                          <span className="font-montserrat font-semibold text-[#0A192F] text-base block mb-1">{item.title}</span>
+                           <span className="text-slate-600 text-sm font-medium leading-relaxed font-roboto">{item.description}</span>
                         </div>
                       </div>
                     </div>

@@ -32,19 +32,19 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
     ? {
       logo: "/images/logo2.jpg",
       companyName: "MVPManila Manpower Services",
-      tagline: "Professional manpower outsourcing and staffing solutions since 2013.",
+      tagline: "Professional manpower outsourcing and staffing solutions since 2022.",
       offices: [
         {
           label: "Main Office (Manila)",
           address: "1269 Estrada Street, Bgy. 749, Zone 81, Sta. Ana, Manila 1009, Philippines"
         },
         {
-          label: "Office (Legazpi)",
-          address: "72 Purok 2, Bgy. 40, Washington Drive, Cruzada, Legazpi City 4500, Philippines"
+          label: "Extension Office (Legazpi)",
+          address: "272 Purok, Bgy. 40, Washington Drive, Cruzada, Legazpi City 4500, Philippines"
         }
       ],
       phones: [
-        { label: "Telephone", numbers: ["(8) 353-7353"] },
+        { label: "Landline", numbers: ["8353-7353", "8373-6860"] },
         { label: "Mobile", numbers: ["(0925) 877-1953"] }
       ],
       email: "mvpmanila2013@yahoo.com",
@@ -60,8 +60,8 @@ export default function Footer({ showScrollTop = false }: FooterProps) {
           address: "1269 Estrada Street, Bgy. 749, Sta. Ana, Manila 1009, Philippines"
         },
         {
-          label: "Office (Legazpi)",
-          address: "272 Purok 2, Brgy. 40, Washington Drive, Cruzada, Legazpi City 4500, Philippines"
+          label: "Extension Office (Legazpi)",
+          address: "272 Purok, Bgy. 40, Washington Drive, Cruzada, Legazpi City 4500, Philippines"
         }
       ],
       phones: [
