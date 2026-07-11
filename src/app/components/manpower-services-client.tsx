@@ -193,7 +193,7 @@ export default function ManpowerServicesClient() {
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-t border-slate-200 pt-12">
-            <p className="text-slate-600 leading-[1.8] text-lg font-light">
+            <p className="text-slate-700 leading-[1.8] text-lg font-roboto">
               At MVPManila, we delicately offer corporate service solutions tailored exactly to our clients' evolving institutional needs. We do not just deploy personnel; we manage an ecosystem of highly vetted, thoroughly evaluated, and legally compliant workers. More importantly, we believe that operational excellence on the field begins with the outstanding care and protection of our workforce.
             </p>
           </div>
@@ -236,17 +236,17 @@ export default function ManpowerServicesClient() {
               <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-2 uppercase tracking-[0.15em]">
                 {tabContent[activeTab].title}
               </h3>
-              <p className="text-[#047857] text-xs font-medium mb-6 uppercase tracking-wider">
+              <p className="text-[#047857] text-xs font-medium mb-6 uppercase tracking-wider font-roboto">
                 {tabContent[activeTab].subtitle}
               </p>
-              <p className="text-slate-500 text-sm leading-relaxed mb-6 font-light">
+              <p className="text-slate-700 text-sm leading-relaxed mb-6 font-roboto">
                 {tabContent[activeTab].description}
               </p>
               <div className="space-y-4">
                 {tabContent[activeTab].items.map((item, i) => (
                   <div key={i} className="border-t border-slate-100 pt-4">
                     <h4 className="font-montserrat font-semibold text-[#0A192F] text-sm mb-1">{item.title}</h4>
-                    <p className="text-slate-400 text-xs font-light">{item.description}</p>
+                    <p className="text-slate-600 text-xs font-medium font-roboto">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -267,14 +267,14 @@ export default function ManpowerServicesClient() {
               <p className="text-[#047857] text-xs font-medium mb-6 uppercase tracking-wider">
                 Technical Personnel with Guaranteed Expertise
               </p>
-              <p className="text-slate-500 text-sm leading-relaxed mb-6 font-light">
+              <p className="text-slate-700 text-sm leading-relaxed mb-6 font-roboto">
                 Competent and technically proficient personnel equipped with the right operational expertise and necessary TESDA/professional certifications to execute specialized on-site maintenance.
               </p>
               <div className="space-y-4 mt-auto">
                 {tabContent.skilled.items.map((item, i) => (
                   <div key={i} className="border-t border-slate-100 pt-4">
                     <h4 className="font-montserrat font-semibold text-[#0A192F] text-sm mb-1">{item.title}</h4>
-                    <p className="text-slate-400 text-xs font-light">{item.description}</p>
+                    <p className="text-slate-600 text-xs font-medium font-roboto">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -296,7 +296,7 @@ export default function ManpowerServicesClient() {
                 {tabContent.nonskilled.items.map((item, i) => (
                   <div key={i} className="border-t border-slate-100 pt-4">
                     <h4 className="font-montserrat font-semibold text-[#0A192F] text-sm mb-1">{item.title}</h4>
-                    <p className="text-slate-400 text-xs font-light">{item.description}</p>
+                    <p className="text-slate-600 text-xs font-medium font-roboto">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -311,14 +311,14 @@ export default function ManpowerServicesClient() {
               <h3 className="text-sm font-bold text-white font-montserrat mb-2 uppercase tracking-[0.15em]">
                 Professional Staffing
               </h3>
-              <p className="text-slate-400 text-xs font-medium mb-4 uppercase tracking-wider">
+              <p className="text-slate-300 text-sm font-medium mb-4 uppercase tracking-wider font-roboto">
                 Administrative & Corporate Support
               </p>
               <div className="space-y-3">
                 {tabContent.professional.items.map((item, i) => (
                   <div key={i} className="border-t border-white/10 pt-3">
-                    <h4 className="font-montserrat font-semibold text-white text-xs mb-1">{item.title}</h4>
-                    <p className="text-slate-500 text-[11px] font-light leading-relaxed">{item.description}</p>
+                    <h4 className="font-montserrat font-semibold text-white text-sm mb-1">{item.title}</h4>
+                    <p className="text-slate-300 text-xs font-medium leading-relaxed font-roboto">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -330,7 +330,7 @@ export default function ManpowerServicesClient() {
               <span className="text-sm font-bold text-[#0A192F] font-montserrat uppercase tracking-wider mb-4">
                 Manpower Categories
               </span>
-              <p className="text-slate-500 text-xs font-light leading-relaxed">
+              <p className="text-slate-700 text-xs font-medium leading-relaxed font-roboto">
                 End-to-end workforce solutions across technical, operational, and corporate functions.
               </p>
             </div>
@@ -341,7 +341,7 @@ export default function ManpowerServicesClient() {
               <span className="text-sm font-bold text-[#0A192F] font-montserrat uppercase tracking-wider mb-4">
                 DOLE Compliant Deployment
               </span>
-              <p className="text-slate-500 text-xs font-light leading-relaxed">
+              <p className="text-slate-700 text-xs font-medium leading-relaxed font-roboto">
                 Every personnel is fully vetted, medically cleared, and legally documented before on-site deployment.
               </p>
             </div>
@@ -356,7 +356,7 @@ export default function ManpowerServicesClient() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#0A192F] font-montserrat mb-4 tracking-tight">
               Our Team Deployment
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto font-light">
+            <p className="text-slate-600 max-w-2xl mx-auto font-roboto">
               Showcasing our active, compliant, and resilient manpower units deployed across premier national institutions and commercial estates.
             </p>
           </div>
@@ -390,9 +390,9 @@ export default function ManpowerServicesClient() {
                     className="transition-transform duration-500 group-hover:scale-102"
                   />
                 </div>
-                <p className="text-xs font-mono text-slate-500 uppercase mt-2 tracking-wider">
-                  Claret School of Quezon City
-                </p>
+              <p className="text-xs font-mono text-slate-500 uppercase mt-2 tracking-wider font-roboto">
+                Claret School of Quezon City
+              </p>
               </div>
             </div>
 
@@ -408,7 +408,7 @@ export default function ManpowerServicesClient() {
                   className="transition-transform duration-500 group-hover:scale-102"
                 />
               </div>
-              <p className="text-xs font-mono text-slate-500 uppercase mt-2 tracking-wider">
+              <p className="text-xs font-mono text-slate-500 uppercase mt-2 tracking-wider font-roboto">
                 University of Santo Tomas – Legazpi
               </p>
             </div>
@@ -425,7 +425,7 @@ export default function ManpowerServicesClient() {
                   className="transition-transform duration-500 group-hover:scale-102"
                 />
               </div>
-              <p className="text-xs font-mono text-slate-500 uppercase mt-2 tracking-wider">
+              <p className="text-xs font-mono text-slate-500 uppercase mt-2 tracking-wider font-roboto">
                 UST Legazpi Hospital
               </p>
             </div>
@@ -440,7 +440,7 @@ export default function ManpowerServicesClient() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#0A192F] font-montserrat mb-4 tracking-tight">
               Hiring & Operation
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto font-light">
+            <p className="text-slate-600 max-w-2xl mx-auto font-roboto">
               MVPMANILA MANPOWER SERVICES (MVPMS) has managed its operations thru the following discipline
             </p>
           </div>
@@ -471,7 +471,7 @@ export default function ManpowerServicesClient() {
                 <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-4 uppercase tracking-wider">
                   {protocol.title}
                 </h3>
-                <p className="text-slate-500 text-sm leading-relaxed font-light">
+                <p className="text-slate-700 text-sm leading-relaxed font-roboto">
                   {protocol.description}
                 </p>
               </div>
@@ -487,7 +487,7 @@ export default function ManpowerServicesClient() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#0A192F] font-montserrat mb-4 tracking-tight">
               Employee Welfare Protection Program
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto font-light">
+            <p className="text-slate-700 max-w-2xl mx-auto font-roboto">
               True operational excellence comes from financial protection and compliance. Our institutional-grade welfare infrastructure is a core B2B value proposition.
             </p>
           </div>
@@ -499,14 +499,14 @@ export default function ManpowerServicesClient() {
                 <span className="text-[#047857] font-montserrat font-bold text-xs tracking-[0.2em]">01</span>
                 <span className="w-8 h-px bg-slate-300" />
               </div>
-              <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-4 uppercase tracking-[0.15em]">
+              <h3 className="text-base font-bold text-[#0A192F] font-montserrat mb-4 uppercase tracking-[0.15em]">
                 Guaranteed Accident Protection Program
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed font-light mb-8">
+              <p className="text-slate-700 text-base leading-relaxed mb-8 font-roboto">
                 We heavily protect our valuable field assets. All deployed technical and janitorial units are covered by a robust accident protection program, significantly subsidized by the agency under Standard Insurance. This ensures your facilities remain safe and completely insulated from liability issues.
               </p>
               <div className="border-t border-slate-100 pt-6">
-                <span className="text-[#047857] font-montserrat font-bold text-xs uppercase tracking-wider">Coverage Highlights</span>
+                <span className="text-[#047857] font-montserrat font-bold text-sm uppercase tracking-wider">Coverage Highlights</span>
                 <ul className="mt-4 space-y-3">
                   {[
                     "Subsidized by agency under Standard Insurance",
@@ -515,8 +515,8 @@ export default function ManpowerServicesClient() {
                     "Accident and injury claims fully managed by MVPManila"
                   ].map((point, i) => (
                     <li key={i} className="flex items-start gap-3 border-b border-slate-50 pb-3 last:border-0 last:pb-0">
-                      <span className="w-1 h-1 rounded-full bg-[#047857] mt-2 flex-shrink-0" />
-                      <span className="text-slate-600 text-xs font-light leading-relaxed">{point}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#047857] mt-2 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm font-medium leading-relaxed font-roboto">{point}</span>
                     </li>
                   ))}
                 </ul>
@@ -529,10 +529,10 @@ export default function ManpowerServicesClient() {
                 <span className="text-[#047857] font-montserrat font-bold text-xs tracking-[0.2em]">02</span>
                 <span className="w-8 h-px bg-slate-300" />
               </div>
-              <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-4 uppercase tracking-[0.15em]">
+              <h3 className="text-base font-bold text-[#0A192F] font-montserrat mb-4 uppercase tracking-[0.15em]">
                 Rigid Statutory Compliance & Remittance
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed font-light mb-6">
+              <p className="text-slate-700 text-base leading-relaxed mb-6 font-roboto">
                 MVPManila strictly mandates the regular and punctual remittance of all government-mandated employee contributions. For every billing cycle, our clients are proactively provided with verifiable copies of paid remittance slips.
               </p>
               <div className="border-t border-slate-100 pt-6">
@@ -544,9 +544,9 @@ export default function ManpowerServicesClient() {
                   ].map((item, i) => (
                     <div key={i} className="border-b border-slate-50 pb-3 last:border-0 last:pb-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-montserrat font-bold text-[#0A192F] text-xs">{item.label}</span>
+                        <span className="font-montserrat font-bold text-[#0A192F] text-base">{item.label}</span>
                       </div>
-                      <p className="text-slate-500 text-[11px] font-light leading-relaxed">{item.detail}</p>
+                      <p className="text-slate-600 text-sm font-medium leading-relaxed font-roboto">{item.detail}</p>
                     </div>
                   ))}
                 </div>
@@ -559,10 +559,10 @@ export default function ManpowerServicesClient() {
                 <span className="text-[#047857] font-montserrat font-bold text-xs tracking-[0.2em]">03</span>
                 <span className="w-8 h-px bg-slate-300" />
               </div>
-              <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-4 uppercase tracking-[0.15em]">
+              <h3 className="text-base font-bold text-[#0A192F] font-montserrat mb-4 uppercase tracking-[0.15em]">
                 Cashless Payroll Infrastructure
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed font-light mb-6">
+              <p className="text-slate-700 text-base leading-relaxed mb-6 font-roboto">
                 To eliminate delays in field wages, our financial system is backed by a professional, cashless banking integration with BDO. Personnel receive their standard legal salaries on time, every time.
               </p>
               <div className="border-t border-slate-100 pt-6">
@@ -574,9 +574,9 @@ export default function ManpowerServicesClient() {
                   ].map((item, i) => (
                     <div key={i} className="border-b border-slate-50 pb-3 last:border-0 last:pb-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-montserrat font-bold text-[#0A192F] text-xs">{item.label}</span>
+                        <span className="font-montserrat font-bold text-[#0A192F] text-base">{item.label}</span>
                       </div>
-                      <p className="text-slate-500 text-[11px] font-light leading-relaxed">{item.detail}</p>
+                      <p className="text-slate-600 text-sm font-medium leading-relaxed font-roboto">{item.detail}</p>
                     </div>
                   ))}
                 </div>

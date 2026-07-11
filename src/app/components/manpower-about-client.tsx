@@ -122,7 +122,7 @@ function CredentialCard({
             {credential.number}
           </p>
         </div>
-        <p className="text-slate-400 text-xs leading-relaxed font-light mt-2">
+          <p className="text-slate-400 text-xs leading-relaxed font-light mt-2 font-roboto">
           {credential.description}
         </p>
       </div>
@@ -275,10 +275,10 @@ export default function ManpowerAboutClient() {
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-t border-slate-200 pt-12">
-            <p className="text-slate-600 leading-[1.8] text-lg mb-8 font-light">
+            <p className="text-slate-600 leading-[1.8] text-lg mb-8 font-light font-roboto">
               Established in 2022, MVPManila Manpower Services was founded with a singular, resolute mission: to effectively bridge the gap between premium business establishments and competent, dedicated Filipino workers.
             </p>
-            <p className="text-slate-600 leading-[1.8] text-lg font-light">
+            <p className="text-slate-600 leading-[1.8] text-lg font-light font-roboto">
               Led and managed by our President and CEO, <span className="text-[#0A192F] font-medium">Maria Vivian Perea Manila</span>, our agency has grown into a resilient and highly trusted service partner nationwide. Even amidst previous global pandemics and shifts in the economic climate, our field personnel have remained standing on the ground—unwaveringly serving, maintaining, and protecting our valuable clientele across multi-use real estate, educational institutions, and healthcare complexes.
             </p>
           </div>
@@ -298,7 +298,7 @@ export default function ManpowerAboutClient() {
               <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-6 uppercase tracking-[0.15em]">
                 Our Mission
               </h3>
-              <p className="text-slate-500 leading-[1.8] text-sm font-light">
+              <p className="text-slate-700 leading-[1.8] text-sm font-roboto">
                 To effectively provide tailored manpower solutions for business establishments, multinational corporations, schools, universities, and high-profile events nationwide—servicing fellow Filipinos by creating sustainable jobs and proactively driving industry growth.
               </p>
             </div>
@@ -312,7 +312,7 @@ export default function ManpowerAboutClient() {
               <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-6 uppercase tracking-[0.15em]">
                 Our Vision
               </h3>
-              <p className="text-slate-500 leading-[1.8] text-sm font-light">
+              <p className="text-slate-700 leading-[1.8] text-sm font-roboto">
                 To be the pioneering leader in providing highly competent, structural, functional, and efficient manpower services with an end result of being recognized as one of the finest and most reliable service providers in the country.
               </p>
             </div>
@@ -326,7 +326,7 @@ export default function ManpowerAboutClient() {
               <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-6 uppercase tracking-[0.15em]">
                 Our Strategic Values
               </h3>
-              <p className="text-slate-400 text-xs mb-6 uppercase tracking-wider">
+              <p className="text-slate-600 text-xs mb-6 uppercase tracking-wider font-roboto">
                 Our organization operates rigidly under a distinct code of institutional behavior:
               </p>
               <div className="space-y-4">
@@ -338,7 +338,7 @@ export default function ManpowerAboutClient() {
                 ].map((value, index) => (
                   <div key={index} className="border-b border-slate-100 pb-4 last:border-0 last:pb-0">
                     <span className="font-montserrat font-semibold text-xs text-[#0A192F] uppercase tracking-wider">{value.label}</span>
-                    <span className="text-slate-400 text-xs"> — {value.description}</span>
+                    <span className="text-slate-600 text-xs font-roboto"> — {value.description}</span>
                   </div>
                 ))}
               </div>
@@ -354,7 +354,7 @@ export default function ManpowerAboutClient() {
             <h2 className="text-2xl md:text-3xl font-bold text-[#0A192F] font-montserrat mb-4 tracking-tight">
               Our Corporate Management Group
             </h2>
-            <p className="text-slate-400 max-w-xl text-sm">
+            <p className="text-slate-600 max-w-xl text-sm font-roboto">
               Guided by experienced administrators to ensure seamless deployment and zero operational downtime.
             </p>
           </div>
@@ -366,7 +366,7 @@ export default function ManpowerAboutClient() {
                 <span className="text-[#0A192F] font-montserrat font-bold text-sm tracking-wider">MVM</span>
               </div>
               <div>
-                <p className="text-slate-400 text-xs font-montserrat uppercase tracking-[0.2em] mb-1">President & CEO</p>
+                <p className="text-slate-600 text-xs font-montserrat uppercase tracking-[0.2em] mb-1">President & CEO</p>
                 <h3 className="text-xl font-bold text-[#0A192F] font-montserrat tracking-tight">
                   Maria Vivian Perea Manila
                 </h3>
@@ -381,7 +381,7 @@ export default function ManpowerAboutClient() {
               <h4 className="font-montserrat font-bold text-[#0A192F] mb-4 text-sm uppercase tracking-wider">
                 Operational Division
               </h4>
-              <p className="text-slate-500 text-sm leading-relaxed font-light">
+              <p className="text-slate-700 text-sm leading-relaxed font-roboto">
                 Managing on-site personnel deployments, shift rotation scheduling (7-to-15 days cycles), and continuous quarterly and annual performance reviews.
               </p>
             </div>
@@ -391,7 +391,7 @@ export default function ManpowerAboutClient() {
               <h4 className="font-montserrat font-bold text-[#0A192F] mb-4 text-sm uppercase tracking-wider">
                 Human Resources & Welfare Unit
               </h4>
-              <p className="text-slate-500 text-sm leading-relaxed font-light">
+              <p className="text-slate-700 text-sm leading-relaxed font-roboto">
                 Overseeing legal background checks, mandatory health evaluations (Annual Physical Exams and drug testings), and remittance operations.
               </p>
             </div>
@@ -401,7 +401,7 @@ export default function ManpowerAboutClient() {
               <h4 className="font-montserrat font-bold text-[#0A192F] mb-4 text-sm uppercase tracking-wider">
                 Finance & Payroll Group
               </h4>
-              <p className="text-slate-500 text-sm leading-relaxed font-light">
+              <p className="text-slate-700 text-sm leading-relaxed font-roboto">
                 Mandating precise, cashless payroll releases securely backed up by our banking integration partner, BDO.
               </p>
             </div>
@@ -413,8 +413,8 @@ export default function ManpowerAboutClient() {
               <span className="text-[#047857] font-montserrat font-bold text-xs uppercase tracking-[0.2em]">Institutional Legal Counsel</span>
               <span className="flex-1 h-px bg-slate-200" />
             </div>
-            <p className="text-slate-500 leading-relaxed text-sm font-light">
-              To guarantee maximum compliance with existing labor statutes and administrative mandates, our entire nationwide operational landscape is rigidly advised and legally protected by the <span className="text-[#0A192F] font-medium">Loseriaga Carullo Tulay Law Firm</span>.
+            <p className="text-slate-700 leading-relaxed text-sm font-roboto">
+              To guarantee maximum compliance with existing labor statutes and administrative mandates, our entire nationwide operational landscape is rigidly advised and legally protected by the <span className="text-[#0A192F] font-semibold">Loseriaga Carullo Tulay Law Firm</span>.
             </p>
           </div>
         </div>
@@ -427,7 +427,7 @@ export default function ManpowerAboutClient() {
             <h2 className="text-2xl md:text-3xl font-bold text-[#0A192F] font-montserrat mb-4 tracking-tight">
               Credentials, Registrations & Certifications
             </h2>
-            <p className="text-slate-400 max-w-2xl text-sm">
+            <p className="text-slate-400 max-w-2xl text-sm font-roboto">
               Absolute legal compliance is non-negotiable. Below is our verified documentation ecosystem validating our capacity to operate legally under Department of Labor and Employment (DOLE) mandates.
             </p>
           </div>
@@ -540,10 +540,10 @@ export default function ManpowerAboutClient() {
                 <span className="text-[#047857] font-montserrat font-bold text-xs uppercase tracking-[0.2em]">The Handbook Directive</span>
                 <span className="flex-1 h-px bg-slate-200" />
               </div>
-              <p className="text-slate-500 leading-[1.8] text-base mb-6 font-light">
+              <p className="text-slate-700 leading-[1.8] text-base mb-6 font-roboto">
                 Every deployment under the MVPManila banner is strictly bounded by our proprietary Agency Policy Handbook. This comprehensive framework is embedded into our mandatory Manpower Code of Discipline, followed meticulously by all technical, housekeeping, and professional units deployed nationwide.
               </p>
-              <p className="text-[#0A192F] leading-[1.8] text-base font-medium">
+              <p className="text-[#0A192F] leading-[1.8] text-base font-medium font-roboto">
                 Our strict preparation protocols assure our corporate partners that every worker who steps foot into their facility is fully vetted, medically cleared, highly trained, and legally compliant.
               </p>
             </div>
@@ -559,7 +559,7 @@ export default function ManpowerAboutClient() {
                 <div key={index} className="bg-white p-8 text-center">
                   <span className="text-[#047857] font-montserrat font-bold text-2xl">{item.step}</span>
                   <h4 className="font-montserrat font-bold text-[#0A192F] mt-4 mb-2 text-xs uppercase tracking-wider">{item.title}</h4>
-                  <p className="text-slate-400 text-xs font-light">{item.description}</p>
+                  <p className="text-slate-600 text-xs font-medium font-roboto">{item.description}</p>
                 </div>
               ))}
             </div>

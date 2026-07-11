@@ -170,7 +170,7 @@ export default function ManpowerHomeClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.7 }}
-            className="mb-8 text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+            className="mb-8 text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] font-roboto"
           >
             Providing competent, functional, and efficient manpower services nationwide since 2022. We effectively bridge the gap between businesses and dedicated Filipino workers.
           </motion.p>
@@ -235,7 +235,7 @@ export default function ManpowerHomeClient() {
                 <p className="font-montserrat font-bold text-xs text-[#0A192F] leading-tight uppercase tracking-wider">
                   {badge.label}
                 </p>
-                <p className="text-slate-400 text-[10px] mt-1 font-light">
+                <p className="text-slate-500 text-xs mt-1 font-medium font-roboto">
                   {badge.sublabel}
                 </p>
               </div>
@@ -251,7 +251,7 @@ export default function ManpowerHomeClient() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#0A192F] font-montserrat mb-4 tracking-tight">
               Our Manpower Solutions
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto font-light">
+            <p className="text-slate-400 max-w-2xl mx-auto font-light font-roboto">
               We delicately offer service solutions tailored exactly to our client's needs, ensuring high performance and proper job protocols.
             </p>
           </div>
@@ -278,13 +278,13 @@ export default function ManpowerHomeClient() {
                 <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-4 uppercase tracking-wider">
                   {service.title}
                 </h3>
-                <p className="text-slate-500 leading-relaxed mb-6 text-sm font-light">
+                <p className="text-slate-700 leading-relaxed mb-6 text-sm font-roboto">
                   {service.description}
                 </p>
                 <div className="space-y-3">
                   {service.items.map((item, i) => (
-                    <div key={i} className="border-t border-slate-100 pt-3">
-                      <span className="text-slate-400 text-xs font-light">{item}</span>
+                    <div key={i} className="border-t border-slate-200 pt-3">
+                      <span className="text-slate-600 text-sm font-medium font-roboto">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -308,7 +308,7 @@ export default function ManpowerHomeClient() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#0A192F] font-montserrat mb-4 tracking-tight">
               Grounded in Integrity, Driven by Excellence
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto font-light">
+            <p className="text-slate-400 max-w-2xl mx-auto font-light font-roboto">
               Why Partner with MVPManila?
             </p>
           </div>
@@ -344,7 +344,7 @@ export default function ManpowerHomeClient() {
                 <h3 className="text-sm font-bold text-[#0A192F] font-montserrat mb-4 uppercase tracking-wider">
                   {feature.title}
                 </h3>
-                <p className="text-slate-500 leading-relaxed text-sm font-light">
+                <p className="text-slate-700 leading-relaxed text-sm font-roboto">
                   {feature.description}
                 </p>
               </div>
@@ -360,7 +360,7 @@ export default function ManpowerHomeClient() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#0A192F] font-montserrat mb-4 tracking-tight">
               Our Valued Clientele
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto font-light">
+            <p className="text-slate-400 max-w-2xl mx-auto font-light font-roboto">
               Proudly servicing schools, universities, hospitals, residential property management, and private firms nationwide.
             </p>
           </div>
@@ -393,7 +393,7 @@ export default function ManpowerHomeClient() {
                     <span className="font-montserrat text-sm md:text-base font-extrabold text-[#0A192F] tracking-[0.08em] uppercase">
                       {getLogoLabel(client.name)}
                     </span>
-                    <span className="text-[8px] md:text-[9px] text-slate-400 font-light mt-1 max-w-[80px] leading-tight truncate block">
+                    <span className="text-[8px] md:text-[9px] text-slate-400 font-light mt-1 max-w-[80px] leading-tight truncate block font-roboto">
                       {client.name}
                     </span>
                   </div>
@@ -415,7 +415,7 @@ export default function ManpowerHomeClient() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-montserrat mb-6 leading-[1.1] tracking-tight">
                 Ready to elevate your operations with the right manpower solutions?
               </h2>
-              <p className="text-slate-400 mb-10 text-base md:text-lg leading-relaxed font-light">
+              <p className="text-slate-400 mb-10 text-base md:text-lg leading-relaxed font-light font-roboto">
                 Partner with a DOLE-compliant, highly reliable agency today. Let us manage the workforce so you can focus on growing your business.
               </p>
               
