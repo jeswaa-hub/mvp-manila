@@ -133,11 +133,9 @@ export default function AboutClient() {
     "BIR Certificate of Registration",
     "BIR Tax Clearance Certificate",
     "Firearms Licenses (Authentic, Validated)",
-    "Firearms & Explosive Office (FEO) PNP, CAMP CRAME, QC - 2024-2028",
-    "SSS Certificate of Registration 2025 (Security)",
-    "Security Agency DOLE 174-17 Certificate of Registration 2024-2026",
-    "DOLE Non-Pending Case Certificate for CY 2024-2025",
-    "NLRC Non-Pending Case Certificate for CY 2024-2025",
+    "SSS Certificate of Registration",
+    "PhilHealth Certificate of Registration",
+    "PAG-IBIG Certificate of Registration",
     "Telecommunication & Radio Licenses, NTC License Certification",
   ];
 
