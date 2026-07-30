@@ -163,7 +163,7 @@ export default function ServicesClient() {
               
               <motion.p 
                 variants={fadeInUp}
-                className="font-roboto text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
+                className="font-roboto text-lg md:text-xl text-black leading-relaxed max-w-3xl mx-auto"
               >
                 MVPManila Security Agency Inc. (MVPMSAI) offers an extensive range of security management services that can be customized to correspond to a particular customers&apos; need. Our Central Operation Team will do an on-site visit and evaluation to create a plan for a tailor fit course of action and solutions. Our goal is to provide security services that will meet customer&apos;s total satisfaction.
               </motion.p>
@@ -204,13 +204,13 @@ export default function ServicesClient() {
                   <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
                     UNIVERSITIES, COLLEGES, CAMPUSES AND BUILDING PROTECTION SERVICES
                   </h2>
-                  <p className="font-roboto text-gray-600 text-[15px] md:text-base leading-[1.8] mb-6">
+                                      <p className="font-roboto text-black text-[15px] md:text-base leading-[1.8] mb-6">
                     MVPMSAI offers Campuses & Building Protection Services. We have stationed our security officers wherever additional security is required. Our officers are available to work in a corporate environment as well. First thing in the morning to last thing at night, welcoming your visitors, providing cover, patrolling your premises, securing vulnerabilities and helping you as well.
                   </p>
                   <div className="bg-white p-6 rounded-xl border-l-4 border-gold shadow-sm mt-4">
                     <p className="font-roboto text-gray-800 text-[15px] font-medium leading-[1.7]">
                       <span className="text-gold font-bold mr-2">Key Highlight:</span>
-                      MVPMSAI is compliant with PNP-SOSIA Directives as mandated by RA-11917. But no matter what our security officers are wearing, rest assured that we will deploy our highly-trained security professionals on your place. MVPMSAI is proud of its service and every security personnel carries our badge with pride.
+                      MVPMSAI is compliant with PNP-SOSIA Directives as mandated by RA-11917. But no matter what level of security you need, we will deploy trained security personnel on your premises. To employ security and safety, peace and order.
                     </p>
                   </div>
                 </motion.div>
@@ -235,13 +235,13 @@ export default function ServicesClient() {
                   <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
                     UNIVERSITIES, COLLEGES, BUILDINGS AND EVENT SECURITY MANAGEMENT
                   </h2>
-                  <p className="font-roboto text-gray-600 text-[15px] md:text-base leading-[1.8] mb-6">
-                    MVPMSAI offers Campuses, Buildings and Event Security Management. With our highly-trained security officers we have been able to diffuse any situation that may have had potential to grow. Our team is fully wired for quick response and assistance from one officer to another. Our goal is to keep the environment peaceful and to make certain that the whole safety and security of the activities and the event is truly a success without any unnecessary incidents nor accidents.
+                                      <p className="font-roboto text-black text-[15px] md:text-base leading-[1.8] mb-6">
+                    MVPMSAI offers Campuses, Buildings and Event Security Management. With our trained security officers we have been able to diffuse any situation that may have had potential to grow. Our team is fully wired for quick response and assistance from one officer to another. Our goal is to keep the environment peaceful and to make certain that the whole safety and security of the activities and the event is truly a success without any unnecessary incidents nor accidents.
                   </p>
                   <div className="bg-slate p-6 rounded-xl border-l-4 border-gold shadow-sm mt-4">
                     <p className="font-roboto text-gray-800 text-[15px] font-medium leading-[1.7]">
                       <span className="text-gold font-bold mr-2">Key Highlight:</span>
-                      Whether you prefer formal attire or tactical-type officer&apos;s clothing, MVPMSAI will accommodate to satisfy your requirements.
+                      Whether you prefer active, proactive resilient type of security, MVPMSAI will accommodate to satisfy your requirements.
                     </p>
                   </div>
                 </motion.div>
@@ -296,8 +296,8 @@ export default function ServicesClient() {
                   <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
                     DESIGN AND INSTALLATION OF CLOSED CIRCUIT TELEVISION (CCTV) SYSTEM
                   </h2>
-                  <p className="font-roboto text-gray-600 text-[15px] md:text-base leading-[1.8]">
-                    MVPMSAI offers Closed Circuit Television (CCTV) Systems design and installation. Our Central Technical team will do a detailed site analysis and evaluation to create a highly efficient and reliable electronic surveillance system&apos;s solution.
+                                      <p className="font-roboto text-black text-[15px] md:text-base leading-[1.8]">
+                    MVPMSAI offers Closed Circuit Television (CCTV) Systems design and installation. Our Central Technical team will do a detailed site analysis and evaluation to create a highly efficient and reliable electronic surveillance systems solution.
                   </p>
                 </motion.div>
               </motion.div>
@@ -321,10 +321,10 @@ export default function ServicesClient() {
                   <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
                     SECURITY RISK ANALYSIS AND PLANNING
                   </h2>
-                  <p className="font-roboto text-gray-600 text-[15px] md:text-base leading-[1.8] mb-6">
+                  <p className="font-roboto text-black text-[15px] md:text-base leading-[1.8] mb-6">
                     MVPMSAI offers Security Risk Analysis and Planning. We understand that you have invested heavily in your business and you need to ensure it remains safe, secure and viable. Being better prepared reassures your customers and suppliers that you take security seriously. It is good for you, your business and reputation.
                   </p>
-                  <p className="font-roboto text-gray-500 text-[14px] leading-[1.7] italic bg-slate p-6 rounded-xl border-l-2 border-gray-300">
+                  <p className="font-roboto text-black text-[14px] leading-[1.7] italic bg-slate p-6 rounded-xl border-l-2 border-gray-300">
                     Our aim is to make you aware of the threats your business may be vulnerable to, from both outside and within your operations. In reality, your business is more likely to suffer from the effects of theft, burglary, fraud, fire, etc. However, these unfriendly elements are always looking for ways to exploit the vulnerabilities of those they wish to damage. By remaining vigilant, being security minded and having an in-placed security measures, We can help to protect your business against this group of people and individuals.
                   </p>
                 </motion.div>
