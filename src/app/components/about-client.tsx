@@ -101,7 +101,7 @@ export default function AboutClient() {
     { icon: <HeartPulse className="w-6 h-6" />, title: "Healthcare Facilities & Hospitals", image: "/images/industries/taytayDoctors.jpg" },
     { icon: <UtensilsCrossed className="w-6 h-6" />, title: "Hospitality (Hotels & Restaurants)", image: "/images/industries/elJardin.jpg" },
     { icon: <Store className="w-6 h-6" />, title: "Retail Centers & Malls", image: "/images/industries/LazadaWarehouse.jpg" },
-    { icon: <Factory className="w-6 h-6" />, title: "Industrial, Manufacturing & Logistics", image: "/images/industries/Logistics.png" },
+    { icon: <Factory className="w-6 h-6" />, title: "Industrial, Manufacturing & Logistics", image: "/images/industries/Logistics.png", zoom: true },
     { icon: <Home className="w-6 h-6" />, title: "Residential Subdivisions & Condos", image: "/images/industries/GolfHill.jpeg" },
   ];
 
@@ -131,12 +131,12 @@ export default function AboutClient() {
     "License to Operate (valid until September 2029)",
     "Business / Mayor's Permit",
     "BIR Certificate of Registration",
-    "BIR Tax Clearance Certificate",
-    "Firearms Licenses (Authentic, Validated)",
-    "SSS Certificate of Registration",
-    "PhilHealth Certificate of Registration",
-    "PAG-IBIG Certificate of Registration",
     "Telecommunication & Radio Licenses, NTC License Certification",
+    "BIR Tax Clearance Certificate",
+    "SSS Certificate of Registration",
+    "PAG-IBIG Certificate of Registration",
+    "PhilHealth Certificate of Registration",
+    "Firearms Licenses (Authentic, Validated)",
   ];
 
   return (
@@ -394,7 +394,7 @@ export default function AboutClient() {
                       src={industry.image}
                       alt={industry.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className={`object-cover transition-transform duration-500 group-hover:scale-105 ${industry.zoom ? "scale-125 group-hover:scale-150" : ""}`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/70 via-[#0A192F]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -427,65 +427,172 @@ export default function AboutClient() {
         ═══════════════════════════════════════════════════════════ */}
         <section className="py-24 md:py-32 bg-white border-t border-[#E2E8F0]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
 
+            {/* Header — centered */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="text-center mb-16"
+            >
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="relative h-[500px] lg:h-[600px] w-full rounded-2xl overflow-hidden border border-[#E2E8F0]"
+                variants={fadeInUp}
+                className="inline-flex items-center gap-2 mb-4"
               >
-                <Image
-                  src="/images/aboutUs.jpeg"
-                  alt="Security personnel in a professional briefing"
-                  fill
-                  className="object-cover scale-125"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0A192F]/40 to-transparent" />
+                <ShieldCheck className="w-5 h-5 text-[#047857]" />
+                <span className="font-roboto text-sm font-semibold text-[#047857] tracking-wider uppercase">
+                  Our Expertise
+                </span>
               </motion.div>
-
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+              <motion.h2
+                variants={fadeInUp}
+                className="font-montserrat text-3xl md:text-4xl lg:text-5xl font-bold text-[#0A192F] tracking-tight"
               >
-                <motion.div
-                  variants={fadeInUp}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#047857]/10 border border-[#047857]/20 mb-6"
-                >
-                  <ShieldCheck className="w-4 h-4 text-[#047857]" />
-                  <span className="font-roboto text-xs font-semibold text-[#047857] tracking-wider uppercase">
-                    Our Expertise
-                  </span>
-                </motion.div>
+                Competencies
+              </motion.h2>
+            </motion.div>
 
-                <motion.h2
-                  variants={fadeInUp}
-                  className="font-montserrat text-3xl md:text-4xl font-bold text-[#0A192F] mb-10 tracking-tight"
-                >
-                  Competencies
-                </motion.h2>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
-                  {competencies.map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      variants={fadeInUp}
-                      className="flex items-start gap-3"
-                    >
-                      <CheckCircle2 className="w-5 h-5 text-[#047857] shrink-0 mt-0.5" />
-                      <span className="font-roboto text-sm text-[#475569] font-medium leading-snug">
-                        {item}
-                      </span>
-                    </motion.div>
-                  ))}
+            {/* Row 1 — Images Left | Competencies 1-3 Right */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-12"
+            >
+              <motion.div
+                variants={fadeInUp}
+                className="grid grid-cols-2 grid-rows-2 gap-3 h-[350px] lg:h-[420px] w-full"
+              >
+                <div className="row-span-2 relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/aboutUs.jpeg" alt="Security personnel briefing" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#0A192F]/40 to-transparent" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img9.png" alt="Security operations" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img11.jpeg" alt="CCTV surveillance" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
                 </div>
               </motion.div>
+              <motion.div variants={staggerContainer} className="space-y-6">
+                {competencies.slice(0, 3).map((item, idx) => (
+                  <motion.div key={idx} variants={fadeInUp} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#047857] shrink-0 mt-0.5" />
+                    <span className="font-roboto text-lg md:text-xl text-[#475569] font-medium leading-snug">{item}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
 
-            </div>
+            {/* Row 2 — Competencies 4-6 Left | Images Right */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-12"
+            >
+              <motion.div variants={staggerContainer} className="space-y-6 order-2 lg:order-1 flex flex-col items-end text-right">
+                {competencies.slice(3, 6).map((item, idx) => (
+                  <motion.div key={idx} variants={fadeInUp} className="flex items-start gap-3">
+                    <span className="font-roboto text-lg md:text-xl text-[#475569] font-medium leading-snug">{item}</span>
+                    <CheckCircle2 className="w-5 h-5 text-[#047857] shrink-0 mt-0.5" />
+                  </motion.div>
+                ))}
+              </motion.div>
+              <motion.div
+                variants={fadeInUp}
+                className="grid grid-cols-2 grid-rows-2 gap-3 h-[350px] lg:h-[420px] w-full order-1 lg:order-2"
+              >
+                <div className="row-span-2 relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img1.jpeg" alt="Building security" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#0A192F]/40 to-transparent" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img3.jpeg" alt="Event security" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img4.jpeg" alt="Campus protection" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Row 3 — Images Left | Competencies 7-9 Right */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-12"
+            >
+              <motion.div
+                variants={fadeInUp}
+                className="grid grid-cols-2 grid-rows-2 gap-3 h-[350px] lg:h-[420px] w-full"
+              >
+                <div className="row-span-2 relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img5.jpeg" alt="Guard deployment" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#0A192F]/40 to-transparent" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img6.jpeg" alt="CCTV installation" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img7.jpeg" alt="Risk assessment" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
+                </div>
+              </motion.div>
+              <motion.div variants={staggerContainer} className="space-y-6">
+                {competencies.slice(6, 9).map((item, idx) => (
+                  <motion.div key={idx} variants={fadeInUp} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#047857] shrink-0 mt-0.5" />
+                    <span className="font-roboto text-lg md:text-xl text-[#475569] font-medium leading-snug">{item}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Row 4 — Competencies 10-11 Left | Images Right */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+            >
+              <motion.div variants={staggerContainer} className="space-y-6 order-2 lg:order-1 flex flex-col items-end text-right">
+                {competencies.slice(9, 11).map((item, idx) => (
+                  <motion.div key={idx} variants={fadeInUp} className="flex items-start gap-3">
+                    <span className="font-roboto text-lg md:text-xl text-[#475569] font-medium leading-snug">{item}</span>
+                    <CheckCircle2 className="w-5 h-5 text-[#047857] shrink-0 mt-0.5" />
+                  </motion.div>
+                ))}
+              </motion.div>
+              <motion.div
+                variants={fadeInUp}
+                className="grid grid-cols-2 grid-rows-2 gap-3 h-[350px] lg:h-[420px] w-full order-1 lg:order-2"
+              >
+                <div className="row-span-2 relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img8.jpeg" alt="Investigation team" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#0A192F]/40 to-transparent" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/img10.jpeg" alt="VIP security" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
+                  <Image src="/images/industries/GolfHill.jpeg" alt="Security consultancy" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
+                </div>
+              </motion.div>
+            </motion.div>
+
           </div>
         </section>
 
@@ -616,7 +723,11 @@ export default function AboutClient() {
                 <motion.div
                   key={idx}
                   variants={fadeInUp}
-                  className="group flex items-start gap-3 p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#047857] hover:bg-white hover:shadow-[0_4px_20px_rgba(4,120,87,0.06)] transition-all duration-300"
+                  className={`group flex items-start gap-3 p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#047857] hover:bg-white hover:shadow-[0_4px_20px_rgba(4,120,87,0.06)] transition-all duration-300 ${
+                    idx === certifications.length - 1 && certifications.length % 3 === 1
+                      ? "md:col-start-2"
+                      : ""
+                  }`}
                 >
                   <div className="shrink-0 mt-0.5">
                     <div className="w-2 h-2 rounded-full bg-[#047857] group-hover:scale-125 transition-transform duration-300" />
