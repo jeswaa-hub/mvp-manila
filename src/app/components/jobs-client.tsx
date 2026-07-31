@@ -301,7 +301,7 @@ export default function JobsClient() {
           </div>
         </section>
 
-        <section className="bg-white py-20 md:py-24">
+        <section className="bg-white py-24 md:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -315,29 +315,28 @@ export default function JobsClient() {
                 description="MVPMSAI supports every deployment with continuing training, client-specific workshops, and regular performance evaluation for both security and service quality."
               />
 
-              <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-                <div className="grid gap-4 md:grid-cols-3">
-                  {trainingHighlights.map(({ title, description, icon: Icon }) => (
-                    <motion.div
-                      key={title}
-                      variants={fadeInUp}
-                      className="rounded-2xl border border-slate-200 bg-slate-50 p-6"
-                    >
-                      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 text-gold">
-                        <Icon size={22} />
-                      </div>
-                      <h3 className="font-montserrat text-lg font-bold text-navy">{title}</h3>
-                      <p className="mt-3 font-roboto text-sm leading-7 text-slate-600">
-                        {description}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
+              <div className="grid gap-6 md:grid-cols-3 mb-6">
+                {trainingHighlights.map(({ title, description, icon: Icon }) => (
+                  <motion.div
+                    key={title}
+                    variants={fadeInUp}
+                    className="rounded-2xl border border-slate-200 bg-slate-50 p-8"
+                  >
+                    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold">
+                      <Icon size={26} />
+                    </div>
+                    <h3 className="font-montserrat text-xl font-bold text-navy">{title}</h3>
+                    <p className="mt-4 font-roboto text-base leading-7 text-slate-600">
+                      {description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
 
-                <motion.div
-                  variants={fadeInUp}
-                  className="rounded-2xl bg-navy p-7 text-white shadow-xl shadow-navy/10"
-                >
+              <motion.div
+                variants={fadeInUp}
+                className="rounded-2xl bg-navy p-9 text-white shadow-xl shadow-navy/10"
+              >
                   <p className="font-montserrat text-sm font-semibold uppercase tracking-[0.2em] text-gold">
                     Included Training Topics
                   </p>
@@ -365,7 +364,6 @@ export default function JobsClient() {
                     </a>
                   </div>
                 </motion.div>
-              </div>
             </motion.div>
           </div>
         </section>
