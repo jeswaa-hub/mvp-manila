@@ -196,7 +196,7 @@ export default function HomeClient() {
             />
 
             <h1 className="mb-6 font-montserrat text-[clamp(2.55rem,10vw,4.6rem)] font-extrabold leading-[0.96] tracking-[-0.03em] text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] sm:mb-8 sm:text-[clamp(3.2rem,9vw,5.25rem)] sm:leading-[1.01] md:text-6xl md:leading-[1.03] lg:text-7xl xl:text-[80px]">
-              {"Securing people, facilities, and assets with reliability, integrity, and service excellence.".split(" ").map((word, i) => (
+              {"Securing people, facilities, and assets with reliability, integrity and service excellence.".split(" ").map((word, i) => (
                 <motion.span 
                   key={i} 
                   initial={{ opacity: 0, y: 15, rotateX: -45 }}
@@ -294,7 +294,7 @@ export default function HomeClient() {
 
         <section id="services" className="py-24">
           <div className="max-w-7xl mx-auto px-4">
-            <SectionHeading>Why Choose MVPManila</SectionHeading>
+            <SectionHeading>Why Choose MVPManila Security Agency</SectionHeading>
             
             <motion.div 
               variants={staggerContainer}
@@ -305,8 +305,8 @@ export default function HomeClient() {
             >
               <motion.div variants={fadeInUp} className="lg:col-span-2 bg-slate p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-100 group">
                 <ShieldCheck className="w-12 h-12 text-gold mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="font-montserrat text-xl font-bold text-navy mb-3">Over 12 Years of Service</h3>
-                <p className="font-roboto text-gray-600">Securing valued clients nationwide from 2013 to 2025 with an unblemished track record of excellence and reliability.</p>
+                <h3 className="font-montserrat text-xl font-bold text-navy mb-3">Over a Decade of Experience</h3>
+                <p className="font-roboto text-gray-600">Securing valued clients nationwide from 2013 until present with an unblemished track record of excellence and reliability.</p>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="bg-navy p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
