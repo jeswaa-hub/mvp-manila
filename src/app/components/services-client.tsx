@@ -241,7 +241,7 @@ export default function ServicesClient() {
                   <div className="bg-slate p-6 rounded-xl border-l-4 border-gold shadow-sm mt-4">
                     <p className="font-roboto text-gray-800 text-[15px] font-medium leading-[1.7]">
                       <span className="text-gold font-bold mr-2">Key Highlight:</span>
-                      Whether you prefer active, proactive resilient type of security, MVPMSAI will accommodate to satisfy your requirements.
+                      Whether you prefer active, proactive or resilient type of security, MVPMSAI will accommodate to satisfy your requirements.
                     </p>
                   </div>
                 </motion.div>
