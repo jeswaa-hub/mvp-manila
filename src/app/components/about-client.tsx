@@ -470,11 +470,11 @@ export default function AboutClient() {
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#0A192F]/40 to-transparent" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
-                  <Image src="/images/about-us-mvpmanila/about-us-2.jpeg" alt="Security operations" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <Image src="/images/about-us-mvpmanila/about-us-13.jpeg" alt="Security operations" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
-                  <Image src="/images/about-us-mvpmanila/about-us-3.jpeg" alt="CCTV surveillance" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <Image src="/images/about-us-mvpmanila/about-us-14.jpeg" alt="CCTV surveillance" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
                 </div>
               </motion.div>
@@ -517,7 +517,7 @@ export default function AboutClient() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden border border-[#E2E8F0]">
-                  <Image src="/images/about-us-mvpmanila/about-us-6.jpeg" alt="Campus protection" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
+                  <Image src="/images/about-us-mvpmanila/about-us-3.jpeg" alt="Campus protection" fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/30 to-transparent" />
                 </div>
               </motion.div>
