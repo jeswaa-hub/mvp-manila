@@ -19,6 +19,7 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const mobileBrandDropdownRef = useRef<HTMLDivElement>(null);
   
   const isHome = pathname === "/";
   const isManpower = pathname.startsWith("/manpower");
@@ -59,7 +60,10 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      const clickedInsideDropdown = dropdownRef.current?.contains(target);
+      const clickedInsideMobileBrand = mobileBrandDropdownRef.current?.contains(target);
+      if (!clickedInsideDropdown && !clickedInsideMobileBrand) {
         setIsBrandDropdownOpen(false);
       }
     }
@@ -70,10 +74,13 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
   return (
     <>
       {/* Backdrop overlay */}
-      {isMobileMenuOpen && (
+      {(isMobileMenuOpen || isBrandDropdownOpen) && (
         <div
           className="fixed inset-0 bg-black/40 z-40 lg:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
+          onClick={() => {
+            setIsMobileMenuOpen(false);
+            setIsBrandDropdownOpen(false);
+          }}
         />
       )}
 
@@ -113,8 +120,9 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
               onClick={(e) => {
                 e.preventDefault();
                 setIsBrandDropdownOpen(!isBrandDropdownOpen);
+                setIsMobileMenuOpen(false);
               }}
-              className={`flex items-center justify-center w-6 h-6 rounded-full transition-all duration-200 border ${
+              className={`flex items-center justify-center w-6 h-6 rounded-full transition-all duration-200 border cursor-pointer ${
                 isBrandDropdownOpen
                   ? "bg-[#047857] text-white border-[#047857]"
                   : isTransparent
@@ -126,13 +134,13 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
               <ChevronDown size={14} className={`transition-transform duration-200 ${isBrandDropdownOpen ? "rotate-180" : ""}`} />
             </button>
 
-            {/* Brand Dropdown Menu */}
+            {/* Desktop Brand Dropdown Menu (Anchored under logo) */}
             {isBrandDropdownOpen && (
-              <div className="absolute top-full left-0 mt-3 w-72 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-100/50 py-2 z-50 overflow-hidden">
+              <div className="hidden lg:block absolute top-full left-0 mt-3 w-80 bg-white/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-100/80 py-2.5 z-50 overflow-hidden">
                 {brands.map((brand) => (
                   <button
                     key={brand.name}
-                    className={`w-full px-4 py-3.5 text-left transition-all duration-200 ${
+                    className={`w-full px-5 py-3.5 text-left transition-all duration-200 cursor-pointer ${
                       brand.active 
                         ? "bg-gradient-to-r from-[#047857]/10 to-transparent" 
                         : "hover:bg-gray-50/80"
@@ -142,30 +150,30 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
                       setIsBrandDropdownOpen(false);
                     }}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden transition-all ${
+                    <div className="flex items-center gap-3.5">
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center overflow-hidden shrink-0 transition-all ${
                         brand.active 
-                          ? "shadow-lg shadow-[#047857]/20 ring-2 ring-[#047857]/20" 
+                          ? "shadow-md shadow-[#047857]/20 ring-2 ring-[#047857]/30" 
                           : "ring-1 ring-gray-200"
                       }`}>
                         <Image
                           src={brand.logo}
                           alt={`MVPManila ${brand.name} Logo`}
-                          width={40}
-                          height={40}
+                          width={44}
+                          height={44}
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="flex-1">
-                        <div className={`font-montserrat font-semibold text-[13px] ${
+                        <div className={`font-montserrat font-bold text-[15px] ${
                           brand.active ? "text-[#047857]" : "text-[#0A192F]"
                         }`}>
                           MVPManila {brand.name}
                         </div>
-                        <div className="text-[11px] text-gray-400">{brand.subtitle}</div>
+                        <div className="text-xs text-gray-500 font-roboto">{brand.subtitle}</div>
                       </div>
                       {brand.active && (
-                        <div className="w-2 h-2 rounded-full bg-[#047857] shadow-lg shadow-[#047857]/30" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#047857] shadow-lg shadow-[#047857]/40 shrink-0" />
                       )}
                     </div>
                   </button>
@@ -185,7 +193,10 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
                   ? "text-white hover:bg-white/10" 
                   : "text-[#0A192F] hover:bg-gray-100"
             }`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => {
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+              setIsBrandDropdownOpen(false);
+            }}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -232,60 +243,65 @@ export default function Header({ isScrolled, isMobileMenuOpen, setIsMobileMenuOp
           </button>
         </div>
 
+        {/* Mobile/Tablet Brand Switcher Drawer (Full-width, zero margins/spacing, flush under header) */}
+        <div 
+          ref={mobileBrandDropdownRef}
+          className={`lg:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden z-50 ${
+            isBrandDropdownOpen ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+          }`}
+        >
+          <div className="divide-y divide-gray-100">
+            {brands.map((brand) => (
+              <button
+                key={brand.name}
+                className={`w-full px-5 py-4 text-left transition-all duration-200 cursor-pointer flex items-center justify-between ${
+                  brand.active 
+                    ? "bg-[#047857]/5" 
+                    : "hover:bg-gray-50 active:bg-gray-100"
+                }`}
+                onClick={() => {
+                  router.push(brand.href);
+                  setIsBrandDropdownOpen(false);
+                }}
+              >
+                <div className="flex items-center gap-3.5">
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center overflow-hidden shrink-0 transition-all ${
+                    brand.active 
+                      ? "shadow-md shadow-[#047857]/20 ring-2 ring-[#047857]/30" 
+                      : "ring-1 ring-gray-200"
+                  }`}>
+                    <Image
+                      src={brand.logo}
+                      alt={`MVPManila ${brand.name} Logo`}
+                      width={44}
+                      height={44}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <div className={`font-montserrat font-bold text-[15px] ${
+                      brand.active ? "text-[#047857]" : "text-[#0A192F]"
+                    }`}>
+                      MVPManila {brand.name}
+                    </div>
+                    <div className="text-xs text-gray-500 font-roboto">{brand.subtitle}</div>
+                  </div>
+                </div>
+                {brand.active && (
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#047857] shadow-lg shadow-[#047857]/40 shrink-0" />
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Mobile/Tablet Menu */}
         <div 
-          className={`lg:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden ${
-            isMobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          className={`lg:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden ${
+            isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"
           }`}
         >
           <nav className="px-4 py-4">
-            {/* Mobile Brand Selector */}
-            <div className="mb-4 pb-4 border-b border-gray-100">
-              <div className="space-y-2">
-                {brands.map((brand) => (
-                  <button
-                    key={brand.name}
-                    className={`w-full px-4 py-3.5 text-left rounded-xl transition-all duration-200 ${
-                      brand.active 
-                        ? "bg-gradient-to-r from-[#047857]/10 to-transparent border border-[#047857]/20" 
-                        : "bg-gray-50 border border-transparent hover:border-gray-200"
-                    }`}
-                    onClick={() => {
-                      router.push(brand.href);
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden transition-all ${
-                        brand.active 
-                          ? "shadow-lg shadow-[#047857]/20 ring-2 ring-[#047857]/20" 
-                          : "ring-1 ring-gray-200"
-                      }`}>
-                        <Image
-                          src={brand.logo}
-                          alt={`MVPManila ${brand.name} Logo`}
-                          width={40}
-                          height={40}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className={`font-montserrat font-semibold text-[13px] ${
-                          brand.active ? "text-[#047857]" : "text-[#0A192F]"
-                        }`}>
-                          MVPManila {brand.name}
-                        </div>
-                        <div className="text-[11px] text-gray-400">{brand.subtitle}</div>
-                      </div>
-                      {brand.active && (
-                        <div className="w-2 h-2 rounded-full bg-[#047857] shadow-lg shadow-[#047857]/30" />
-                      )}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
             <ul className="flex flex-col space-y-1">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
